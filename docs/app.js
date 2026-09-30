@@ -184,6 +184,29 @@
       io.observe(el);
     });
   } else { rev.forEach(function (el) { el.classList.add('in'); }); }
+  /* Safety net: if the observer never fires (some iOS/WebKit builds, fast flicks, restored scroll positions),
+     anything at or above the bottom of the viewport is revealed on scroll, and everything after 4 seconds of scrolling around. */
+  if (!reduce && rev.length) {
+    var revLeft = function () { return rev.filter(function (e) { return !e.classList.contains('in'); }); };
+    var sweep = function () { var vh = window.innerHeight; revLeft().forEach(function (e) { if (e.getBoundingClientRect().top < vh) e.classList.add('in'); }); };
+    window.addEventListener('scroll', sweep, { passive: true });
+    setTimeout(function () { sweep(); }, 1500);
+    setTimeout(function () { revLeft().forEach(function (e) { e.classList.add('in'); }); }, 6000);
+  }
+
+  /* Photos: never leave a lazy photo waiting on the browser's heuristics. Once the page has loaded, fetch them all. */
+  window.addEventListener('load', function () { $$('img[loading="lazy"]').forEach(function (i) { i.loading = 'eager'; }); });
+
+  /* Theme: the warm paper look is the default everywhere, regardless of the phone's dark-mode setting.
+     Dark ("night train") is opt-in: open the page with ?theme=dark (remembered), or ?theme=light to clear it. */
+  (function () {
+    var root = document.documentElement, KEY = 'rumbo-theme', q = /[?&]theme=(dark|light)\b/.exec(location.search), t = null;
+    try {
+      if (q) { if (q[1] === 'dark') localStorage.setItem(KEY, 'dark'); else localStorage.removeItem(KEY); }
+      t = localStorage.getItem(KEY);
+    } catch (e) { t = q && q[1] === 'dark' ? 'dark' : null; }
+    if (t === 'dark') root.setAttribute('data-theme', 'dark');
+  })();
 
   /* Interest form: validates, never submits. */
   var form = $('#interest-form'), note = $('#form-note');

@@ -103,9 +103,10 @@
   --paper-noise:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.8' numOctaves='2' seed='3'/%3E%3CfeColorMatrix values='0 0 0 0 .35 0 0 0 0 .27 0 0 0 0 .15 0 0 0 .09 0'/%3E%3C/filter%3E%3Crect width='160' height='160' filter='url(%23n)'/%3E%3C/svg%3E");
 }
 
-/* Optional dark scheme: "night train" ink with the same clay and cobalt */
-@media (prefers-color-scheme:dark){
-  :root{
+/* Optional dark scheme: "night train" ink with the same clay and cobalt.
+   OPT-IN ONLY: the warm paper look is the default on every device, whatever the phone's system appearance is.
+   Enable with <html data-theme="dark"> (app.js sets it from ?theme=dark or localStorage 'rumbo-theme'). */
+:root[data-theme="dark"]{
     color-scheme:dark;
     --md-sys-color-primary:#a9bbff;
     --md-sys-color-on-primary:#0c1a4d;
@@ -141,7 +142,6 @@
     --md-sys-elevation-1:2px 2px 0 rgb(0 0 0 / .8);
     --md-sys-elevation-2:3px 3px 0 rgb(0 0 0 / .8);
     --md-sys-elevation-3:5px 5px 0 rgb(0 0 0 / .8);
-  }
 }
 
 /* ---------- base ---------- */
@@ -168,7 +168,7 @@ a:hover{text-decoration-thickness:3px}
 .skip:focus{top:0}
 
 :focus-visible{outline:3px solid var(--md-sys-color-primary);outline-offset:3px;border-radius:4px}
-@media (prefers-color-scheme:dark){:focus-visible{outline-color:var(--md-sys-color-sun)}}
+:root[data-theme="dark"] :focus-visible{outline-color:var(--md-sys-color-sun)}
 .section--how :focus-visible,.section--cost :focus-visible,.site-footer :focus-visible{outline-color:var(--md-sys-color-sun)}
 
 /* M3 state layer: currentColor overlay at hover/focus/pressed opacity */
@@ -330,11 +330,18 @@ main{display:block}
 .facts dd{font-weight:500}
 .leg__body .btn{justify-self:start;margin-top:8px}
 
-/* duotone art-directed photo slots: greyscale image, paper in the highlights, one ink colour in the shadows */
-.duo{position:relative;isolation:isolate;overflow:hidden;background:var(--md-sys-color-surface-container-lowest)}
-.duo img{width:100%;height:100%;object-fit:cover;filter:grayscale(1) contrast(1.15) brightness(1.02);mix-blend-mode:multiply}
-.duo::after{content:"";position:absolute;inset:0;background:var(--duo);mix-blend-mode:lighten;pointer-events:none}
-.duo::before{content:"";position:absolute;inset:0;z-index:2;background:radial-gradient(circle,rgb(34 29 24 / .28) .9px,transparent 1.2px) 0 0/5px 5px;mix-blend-mode:multiply;pointer-events:none;opacity:.55}
+/* duotone art-directed photo slots: greyscale image, paper in the highlights, one ink colour in the shadows.
+   Robustness rules (a real iPhone in system dark mode showed a flat blue square with no photo):
+   - the slot's backdrop is a FIXED light paper colour, never a theme token. The image is multiplied onto it, so a dark
+     backdrop would multiply the photo to black.
+   - the plain greyscale photo is always the base layer and is visible on its own. The tint overlay only exists where
+     mix-blend-mode is supported, so if blending is missing the photo is shown untinted instead of being covered. */
+.duo{position:relative;isolation:isolate;overflow:hidden;background:#fbf6ea}
+.duo img{width:100%;height:100%;object-fit:cover;filter:grayscale(1) contrast(1.1) brightness(1.02);mix-blend-mode:multiply}
+.duo::before{content:"";position:absolute;inset:0;z-index:2;background:radial-gradient(circle,rgb(34 29 24 / .28) .9px,transparent 1.2px) 0 0/5px 5px;pointer-events:none;opacity:.4}
+@supports (mix-blend-mode:lighten){
+  .duo::after{content:"";position:absolute;inset:0;background:var(--duo);mix-blend-mode:lighten;pointer-events:none}
+}
 .duo--cobalt{--duo:#1d3b9e}
 .duo--clay{--duo:#a33f18}
 
