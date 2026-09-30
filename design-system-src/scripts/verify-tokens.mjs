@@ -6,7 +6,7 @@ const norm = (v) => v.trim().replace(/\s+/g, ' ').replace(/"/g, "'").replace(/\s
 function decls(block) { const o = {}; for (const m of block.matchAll(/(--[\w-]+)\s*:\s*((?:[^;{}]|\([^)]*\))+);/g)) o[m[1]] = norm(m[2]); return o; }
 function between(css, startRe) { const i = css.search(startRe); let d = 0, s = css.indexOf('{', i), j = s; for (; j < css.length; j++) { if (css[j] === '{') d++; if (css[j] === '}') { d--; if (!d) break; } } return css.slice(s + 1, j); }
 const siteRoot = decls(between(site, /^:root\{/m));
-const siteDark = decls(between(between(site, /@media \(prefers-color-scheme:dark\)\{\s*:root\{/m).replace(/^\s*:root\{/, '{'), /^\{/));
+const siteDark = decls(between(site, /^:root\[data-theme="dark"\]\{/m)); // dark is opt-in on the site (data-theme), no longer prefers-color-scheme
 const dsRoot = decls(between(ds, /^:root,\[data-theme="light"\]\{/m));
 const dsDark = decls(between(ds, /^:root\[data-theme="dark"\],\[data-theme="dark"\]\{/m));
 let fail = 0, ok = 0; const notes = [];
