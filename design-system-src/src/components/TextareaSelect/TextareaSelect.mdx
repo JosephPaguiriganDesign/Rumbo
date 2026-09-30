@@ -1,0 +1,60 @@
+import { Meta, Canvas, Controls } from '@storybook/addon-docs/blocks';
+import * as TextareaSelectStories from './TextareaSelect.stories';
+
+<Meta of={TextareaSelectStories} />
+
+# Textarea & select
+
+The same underlined field, for multi-line text and native selects with a hand-drawn chevron.
+
+**Extracted from the site:** `.tf--select`, `.tf__arrow` in styles.css; textarea is a DS addition.
+
+<Canvas of={TextareaSelectStories.Default} />
+
+<Controls of={TextareaSelectStories.Default} />
+
+## Variants and states
+
+### Textarea States
+
+<Canvas of={TextareaSelectStories.TextareaStates} />
+
+### Select
+
+<Canvas of={TextareaSelectStories.Select} />
+
+### Select States
+
+<Canvas of={TextareaSelectStories.SelectStates} />
+
+## Props / variants
+
+| Prop | Type | Default | Notes |
+| --- | --- | --- | --- |
+| label | string | – |  |
+| hint | string | – | Textarea helper. |
+| error | string | – |  |
+| rows | number | 4 | Textarea rows. |
+| options / value / placeholder | string[] | – | Select options. First option is a real empty value. |
+| floating | boolean | false |  |
+
+## Usage
+
+### Do
+
+- Use a native `<select>`: it is the best mobile picker.
+- Make the first option a human sentence: “Pick one (or don’t)”.
+- Let textareas resize vertically.
+
+### Don't
+
+- Do not build a custom listbox for five options.
+- Do not cap length silently: show the limit.
+- Do not disable resize horizontally-only; leave `resize:vertical`.
+
+## Accessibility
+
+- Native select and textarea semantics, keyboard and mobile pickers come free.
+- Chevron is `aria-hidden` and `pointer-events:none`.
+- Same error and label pattern as Text field.
+- Options set `color` to ink on paper so the open list is readable in dark mode.

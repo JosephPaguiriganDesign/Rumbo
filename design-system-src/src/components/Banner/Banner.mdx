@@ -1,0 +1,55 @@
+import { Meta, Canvas, Controls } from '@storybook/addon-docs/blocks';
+import * as BannerStories from './Banner.stories';
+
+<Meta of={BannerStories} />
+
+# Banner / notice
+
+A dashed, cut-corner note. Five tones; the clay “note” is the site default for “preview only” messages.
+
+**Extracted from the site:** `.banner` in styles.css; tones are DS additions.
+
+<Canvas of={BannerStories.Default} />
+
+<Controls of={BannerStories.Default} />
+
+## Variants and states
+
+### Tones
+
+<Canvas of={BannerStories.Tones} />
+
+### Dismissible
+
+<Canvas of={BannerStories.Dismissible} />
+
+## Props / variants
+
+| Prop | Type | Default | Notes |
+| --- | --- | --- | --- |
+| tone | note \| info \| warn \| error \| success | note |  |
+| title | string | – | Bold lead-in. |
+| text | string | – |  |
+| role | note \| status \| alert | by tone | error → alert, note → note, others → status. |
+| dismissible | boolean | false | Adds a 48dp close button. |
+
+## Usage
+
+### Do
+
+- Say what and what next: “Email and age are highlighted below.”
+- Use `alert` only for errors that need attention right now.
+- Keep to two lines.
+
+### Don't
+
+- Do not stack banners.
+- Do not use `alert` for static notes (it interrupts screen readers).
+- Do not use colour alone: each tone has its own icon and a title.
+
+## Accessibility
+
+- Roles: `note` (static), `status` (polite live region), `alert` (assertive).
+- Icon is decorative, the tone is carried in the title/text.
+- Contrast: note 12.0:1, info 12.6:1, warn 11.0:1, error 13.3:1, success 11.3:1 (light).
+- Close button has `aria-label`, 48×48.

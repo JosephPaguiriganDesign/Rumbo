@@ -1,0 +1,189 @@
+// Small dependency-free token build. Reads tokens/tokens.json (DTCG-style) and writes:
+//   dist/tokens.css               CSS custom properties (light default, dark via data-theme or prefers-color-scheme)
+//   dist/tokens.js / tokens.d.ts  ES module + types (resolved values)
+//   tokens/tokens-studio.json     Tokens Studio for Figma import (single-file, sets + $themes)
+//   tokens/figma-variables.json   Figma Variables payload (REST "POST /v1/files/:key/variables" shape)
+import fs from 'node:fs';
+import path from 'node:path';
+import { fileURLToPath } from 'node:url';
+const root = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '..');
+const src = JSON.parse(fs.readFileSync(path.join(root, 'tokens/tokens.json'), 'utf8'));
+
+/* ---------- flatten + resolve ---------- */
+const flat = new Map(); // dotted path -> {value,type,description,ext}
+(function walk(node, p, type) {
+  for (const [k, v] of Object.entries(node)) {
+    if (k.startsWith('$')) continue;
+    const t = v.$type || type;
+    if (v && typeof v === 'object' && '$value' in v) flat.set([...p, k].join('.'), { value: v.$value, type: v.$type || t, description: v.$description, ext: v.$extensions?.rumbo });
+    else if (v && typeof v === 'object') walk(v, [...p, k], t);
+  }
+})(src, [], undefined);
+const refRe = /^\{([^}]+)\}$/;
+function resolve(val) {
+  if (typeof val === 'string') { const m = val.match(refRe); if (m) { const t = flat.get(m[1]); if (!t) throw new Error('Unresolved ref ' + m[1]); return resolve(t.value); } }
+  return val;
+}
+const get = (p) => resolve(flat.get(p).value);
+const shadowCss = (s) => (Array.isArray(s) ? s : [s]).map(x => `${x.offsetX} ${x.offsetY} ${x.blur}${x.spread && x.spread !== '0' ? ' ' + x.spread : ''} ${x.color}`).join(',');
+const bez = (a) => `cubic-bezier(${a.join(',')})`;
+const GENERIC = new Set(['serif','sans-serif','monospace','cursive','system-ui','ui-monospace','Georgia','Menlo']);
+const fontStack = (a) => a.map(f => (GENERIC.has(f) ? f : `'${f}'`)).join(',');
+
+/* ---------- CSS ---------- */
+const light = {}, dark = {}, common = {};
+for (const [p, t] of flat) {
+  const parts = p.split('.');
+  if (p.startsWith('color.light.')) light[`--md-sys-color-${parts[2]}`] = resolve(t.value);
+  else if (p.startsWith('color.dark.')) dark[`--md-sys-color-${parts[2]}`] = resolve(t.value);
+  else if (p.startsWith('color.fixed.')) common[`--rumbo-${parts[2]}`] = resolve(t.value);
+  else if (p.startsWith('color.palette.')) common[`--rumbo-palette-${parts[2]}`] = resolve(t.value);
+}
+for (const [p, t] of flat) {
+  const parts = p.split('.'), v = resolve(t.value), n = parts.slice(1).join('-');
+  if (p.startsWith('font.family.')) common[`--font-${parts[2]}`] = fontStack(v);
+  else if (p.startsWith('type.scale.')) common[`--md-sys-typescale-${parts[2]}`] = v;
+  else if (p.startsWith('type.weight.')) common[`--rumbo-weight-${parts[2]}`] = v;
+  else if (p.startsWith('type.leading.')) common[`--rumbo-leading-${parts[2]}`] = v;
+  else if (p.startsWith('type.tracking.')) common[`--rumbo-tracking-${parts[2]}`] = v;
+  else if (p.startsWith('type.axes.')) common[`--rumbo-axes-${parts[2]}`] = v;
+  else if (p.startsWith('space.')) common[`--rumbo-space-${parts[1]}`] = v;
+  else if (p === 'layout.bar-h') common['--bar-h'] = v;
+  else if (p === 'layout.bar-h-wide') common['--rumbo-bar-h-wide'] = v;
+  else if (p === 'layout.gutter') common['--gutter'] = v;
+  else if (p === 'layout.max') common['--max'] = v;
+  else if (p === 'layout.touch-target') common['--rumbo-touch-target'] = v;
+  else if (p.startsWith('shape.corner.')) common[`--md-sys-shape-corner-${parts[2]}`] = v;
+  else if (p === 'shape.cut.primary') common['--shape-cut'] = v;
+  else if (p === 'shape.cut.alt') common['--shape-cut-alt'] = v;
+  else if (p.startsWith('shape.cut.')) common[`--rumbo-shape-${parts[2]}`] = v;
+  else if (p.startsWith('shape.border.')) common[`--rumbo-border-${parts[2]}`] = v;
+  else if (p === 'shape.focus-offset') common['--rumbo-focus-offset'] = v;
+  else if (p.startsWith('elevation.light.')) light[`--md-sys-elevation-${parts[2]}`] = shadowCss(v);
+  else if (p.startsWith('elevation.dark.')) dark[`--md-sys-elevation-${parts[2]}`] = shadowCss(v);
+  else if (p === 'elevation.soft') common['--soft-shadow'] = shadowCss(v);
+  else if (p === 'elevation.receipt') common['--rumbo-shadow-receipt'] = shadowCss(v);
+  else if (p.startsWith('state.')) common[`--md-sys-state-${parts[1]}`] = v;
+  else if (p.startsWith('motion.easing.')) common[`--md-sys-motion-easing-${parts[2]}`] = bez(v);
+  else if (p.startsWith('motion.duration.')) common[`--md-sys-motion-duration-${parts[2]}`] = v;
+  else if (p.startsWith('z.')) common[`--rumbo-z-${parts[1]}`] = v;
+  else if (p.startsWith('breakpoint.')) common[`--rumbo-bp-${parts[1]}`] = v;
+}
+const block = (sel, o, ind = '') => `${ind}${sel}{\n${Object.entries(o).map(([k, v]) => `${ind}  ${k}:${v};`).join('\n')}\n${ind}}\n`;
+const css = `/* GENERATED by scripts/build-tokens.mjs from tokens/tokens.json. Do not edit by hand.
+   Custom-property names match /workspace/soccer-site/styles.css (--md-sys-*, --font-*, --shape-cut*, --soft-shadow, --bar-h, --gutter, --max)
+   so components lift straight onto the site. New tokens use the --rumbo-* prefix. */
+${block(':root,[data-theme="light"]', { 'color-scheme': 'light', ...common, ...light })}
+/* Dark ("night train"): data-theme on <html> or any element wins; otherwise follow the OS. */
+${block(':root[data-theme="dark"],[data-theme="dark"]', { 'color-scheme': 'dark', ...dark })}
+@media (prefers-color-scheme:dark){
+${block(':root:not([data-theme="light"])', { 'color-scheme': 'dark', ...dark }, '  ')}}
+`;
+fs.mkdirSync(path.join(root, 'dist'), { recursive: true });
+fs.writeFileSync(path.join(root, 'dist/tokens.css'), css);
+
+/* ---------- JS module ---------- */
+const tree = {};
+for (const [p, t] of flat) {
+  let v = resolve(t.value);
+  if (t.type === 'shadow') v = shadowCss(v); else if (t.type === 'cubicBezier') v = bez(v); else if (t.type === 'fontFamily') v = fontStack(v);
+  let o = tree; const ks = p.split('.'); ks.slice(0, -1).forEach(k => o = o[k] ??= {}); o[ks.at(-1)] = v;
+}
+const js = `// GENERATED by scripts/build-tokens.mjs. Do not edit.\nexport const tokens = ${JSON.stringify(tree, null, 2)};\nexport const colorLight = tokens.color.light;\nexport const colorDark = { ...tokens.color.light, ...tokens.color.dark };\nexport const cssVars = ${JSON.stringify({ common, light, dark }, null, 2)};\nexport default tokens;\n`;
+fs.writeFileSync(path.join(root, 'dist/tokens.js'), js);
+const dts = `// GENERATED\nexport type TokenTree = ${JSON.stringify(tree, (k, v) => typeof v === 'string' ? '__S__' : v, 2).replace(/"__S__"/g, 'string')};\nexport const tokens: TokenTree;\nexport const colorLight: TokenTree['color']['light'];\nexport const colorDark: TokenTree['color']['light'];\nexport const cssVars: { common: Record<string,string>; light: Record<string,string>; dark: Record<string,string> };\nexport default tokens;\n`;
+fs.writeFileSync(path.join(root, 'dist/tokens.d.ts'), dts);
+
+/* ---------- Tokens Studio ---------- */
+const tsTypeMap = { color: 'color', dimension: 'spacing', fontFamily: 'fontFamilies', fontWeight: 'fontWeights', number: 'number', duration: 'other', cubicBezier: 'other', shadow: 'boxShadow', string: 'other' };
+function tsSet(prefix, keep) {
+  const out = {};
+  for (const [p, t] of flat) {
+    if (!keep(p)) continue;
+    const rel = p.slice(prefix.length).split('.');
+    let v = t.value, type = tsTypeMap[t.type] || 'other';
+    if (typeof v === 'string' && refRe.test(v)) v = v.replace(refRe, (_, r) => '{' + r.replace(/^color\.palette\./, 'palette.').replace(/^color\.(light|dark)\./, '') + '}');
+    else if (t.type === 'shadow') v = (Array.isArray(v) ? v : [v]).map(s => ({ x: s.offsetX.replace('px', ''), y: s.offsetY.replace('px', ''), blur: s.blur.replace('px', ''), spread: String(s.spread).replace('px', ''), color: s.color, type: 'dropShadow' })); 
+    else if (t.type === 'fontFamily') v = v[0];
+    else if (t.type === 'cubicBezier') v = bez(v);
+    else if (t.type === 'fontWeight' || t.type === 'number') v = String(v);
+    let o = out; rel.slice(0, -1).forEach(k => o = o[k] ??= {});
+    o[rel.at(-1)] = { value: v, type, ...(t.description ? { description: t.description } : {}) };
+  }
+  return out;
+}
+const studio = {
+  'core/palette': { palette: tsSet('color.palette.', p => p.startsWith('color.palette.')) },
+  'theme/light': tsSet('color.light.', p => p.startsWith('color.light.')),
+  'theme/dark': tsSet('color.dark.', p => p.startsWith('color.dark.')),
+  'core/fixed': tsSet('color.fixed.', p => p.startsWith('color.fixed.')),
+  'core/type': { font: tsSet('font.', p => p.startsWith('font.')), type: tsSet('type.', p => p.startsWith('type.') && !p.startsWith('type.axes')) },
+  'core/space': { space: tsSet('space.', p => p.startsWith('space.')) },
+  'core/shape': { shape: tsSet('shape.', p => p.startsWith('shape.')) },
+  'core/elevation': { elevation: tsSet('elevation.', p => p.startsWith('elevation.')) },
+  'core/motion': { motion: tsSet('motion.', p => p.startsWith('motion.')) },
+  'core/z-breakpoint': { z: tsSet('z.', p => p.startsWith('z.')), breakpoint: tsSet('breakpoint.', p => p.startsWith('breakpoint.')) },
+  $themes: [
+    { id: 'light', name: 'Light (day dispatch)', selectedTokenSets: { 'core/palette': 'source', 'core/fixed': 'enabled', 'core/type': 'enabled', 'core/space': 'enabled', 'core/shape': 'enabled', 'core/elevation': 'enabled', 'core/motion': 'enabled', 'core/z-breakpoint': 'enabled', 'theme/light': 'enabled' } },
+    { id: 'dark', name: 'Dark (night train)', selectedTokenSets: { 'core/palette': 'source', 'core/fixed': 'enabled', 'core/type': 'enabled', 'core/space': 'enabled', 'core/shape': 'enabled', 'core/elevation': 'enabled', 'core/motion': 'enabled', 'core/z-breakpoint': 'enabled', 'theme/light': 'enabled', 'theme/dark': 'enabled' } }
+  ],
+  $metadata: { tokenSetOrder: ['core/palette', 'core/fixed', 'core/type', 'core/space', 'core/shape', 'core/elevation', 'core/motion', 'core/z-breakpoint', 'theme/light', 'theme/dark'] }
+};
+fs.writeFileSync(path.join(root, 'tokens/tokens-studio.json'), JSON.stringify(studio, null, 2));
+
+/* ---------- Figma Variables (REST payload shape) ---------- */
+function toRGBA(c) {
+  let m;
+  if ((m = c.match(/^#([0-9a-f]{6})$/i))) { const n = parseInt(m[1], 16); return { r: ((n >> 16) & 255) / 255, g: ((n >> 8) & 255) / 255, b: (n & 255) / 255, a: 1 }; }
+  if ((m = c.match(/^rgb\((\d+) (\d+) (\d+)(?: \/ ([\d.]+))?\)$/))) return { r: +m[1] / 255, g: +m[2] / 255, b: +m[3] / 255, a: m[4] ? +m[4] : 1 };
+  throw new Error('bad colour ' + c);
+}
+const num = (s) => parseFloat(String(s));
+const collections = [], variables = [], modeValues = [];
+function addCollection(name, modes) { const id = 'col:' + name; collections.push({ action: 'CREATE', id, name, initialModeId: 'mode:' + name + ':' + modes[0] }); const ids = modes.map((m, i) => { const mid = 'mode:' + name + ':' + m; if (i > 0) collections.push({ action: 'CREATE', _type: 'mode', id: mid, name: m, variableCollectionId: id }); return mid; }); return { id, ids, modes }; }
+function addVar(col, name, type, vals, desc, scopes) {
+  const id = 'var:' + col.id.slice(4) + '/' + name;
+  variables.push({ action: 'CREATE', id, name, variableCollectionId: col.id, resolvedType: type, ...(desc ? { description: desc } : {}), ...(scopes ? { scopes } : {}) });
+  vals.forEach((v, i) => modeValues.push({ variableId: id, modeId: col.ids[i], value: v }));
+}
+// Collections (see docs/figma-build-plan.md): Primitives / Theme (Light, Dark) / Type / Space / Shape / Motion / Layout
+const prim = addCollection('Primitives', ['Default']);
+for (const [p, t] of flat) if (p.startsWith('color.palette.')) addVar(prim, 'palette/' + p.split('.')[2], 'COLOR', [toRGBA(resolve(t.value))], t.description);
+for (const [p, t] of flat) if (p.startsWith('color.fixed.')) addVar(prim, 'fixed/' + p.split('.')[2], 'COLOR', [toRGBA(resolve(t.value))], t.description);
+const theme = addCollection('Theme', ['Light', 'Dark']);
+const lightKeys = [...flat.keys()].filter(k => k.startsWith('color.light.')).map(k => k.split('.')[2]);
+for (const k of lightKeys) {
+  const l = get('color.light.' + k), d = flat.has('color.dark.' + k) ? get('color.dark.' + k) : l;
+  addVar(theme, 'md-sys-color/' + k, 'COLOR', [toRGBA(l), toRGBA(d)], flat.get('color.light.' + k).description);
+}
+const ty = addCollection('Type', ['Default']);
+for (const [p, t] of flat) {
+  const parts = p.split('.');
+  if (p.startsWith('font.family.')) addVar(ty, 'family/' + parts[2], 'STRING', [resolve(t.value)[0]], t.description);
+  else if (p.startsWith('type.weight.')) addVar(ty, 'weight/' + parts[2], 'FLOAT', [t.value]);
+  else if (p.startsWith('type.leading.')) addVar(ty, 'leading/' + parts[2], 'FLOAT', [t.value]);
+  else if (p.startsWith('type.tracking.')) addVar(ty, 'tracking-em/' + parts[2], 'FLOAT', [num(t.value)]);
+  else if (p.startsWith('type.scale.')) { const e = t.ext || {}; addVar(ty, 'size/' + parts[2], 'FLOAT', [num(e.max || t.value) * 16], (t.description || '') + (e.fluid ? ' Figma value is the max (desktop) size in px; min = ' + e.min : '')); }
+}
+const sp = addCollection('Space', ['Default']);
+for (const [p, t] of flat) if (p.startsWith('space.')) addVar(sp, 'space/' + p.split('.')[1], 'FLOAT', [num(t.value)]);
+const sh = addCollection('Shape', ['Default']);
+for (const [p, t] of flat) {
+  const parts = p.split('.');
+  if (p.startsWith('shape.corner.')) addVar(sh, 'corner/' + parts[2], 'FLOAT', [Math.min(num(t.value), 999)]);
+  else if (p.startsWith('shape.border.')) addVar(sh, 'border/' + parts[2], 'FLOAT', [num(t.value)]);
+  else if (p.startsWith('shape.cut.')) { const q = t.value.split(/\s+/).map(num); ['tl', 'tr', 'br', 'bl'].forEach((c, i) => addVar(sh, `cut/${parts[2]}/${c}`, 'FLOAT', [q[i] ?? q[i % q.length]])); }
+}
+for (const lv of ['1', '2', '3']) { const l = get('elevation.light.' + lv), d = get('elevation.dark.' + lv); addVar(sh, 'elevation/' + lv + '/offset', 'FLOAT', [num(l.offsetX)]); addVar(sh, 'elevation/' + lv + '/color', 'COLOR', [toRGBA(l.color)]); addVar(sh, 'elevation/' + lv + '/color-dark', 'COLOR', [toRGBA(d.color)]); }
+const mo = addCollection('Motion', ['Default']);
+for (const [p, t] of flat) { if (p.startsWith('motion.duration.')) addVar(mo, 'duration/' + p.split('.')[2], 'FLOAT', [num(t.value)], 'milliseconds'); if (p.startsWith('motion.easing.')) addVar(mo, 'easing/' + p.split('.')[2], 'STRING', [bez(resolve(t.value))]); }
+const ly = addCollection('Layout', ['Mobile 390', 'Desktop 1280']);
+addVar(ly, 'bar-h', 'FLOAT', [64, 72]); addVar(ly, 'gutter', 'FLOAT', [19.5, 48]); addVar(ly, 'max-width', 'FLOAT', [390, 1180]); addVar(ly, 'touch-target', 'FLOAT', [48, 48]);
+for (const [p, t] of flat) if (p.startsWith('z.')) addVar(ly, 'z/' + p.split('.')[1], 'FLOAT', [t.value, t.value]);
+fs.writeFileSync(path.join(root, 'tokens/figma-variables.json'), JSON.stringify({
+  _readme: 'Figma Variables payload in the shape of the REST API POST /v1/files/:file_key/variables (variableCollections, variableModes, variables, variableModeValues). The REST API needs an Enterprise plan; on other plans import tokens/tokens-studio.json with the Tokens Studio plugin, or recreate variables from docs/figma-build-plan.md. Colours are 0..1 RGBA. NOT verified against a live Figma file.',
+  variableCollections: collections.filter(c => !c._type).map(({ _type, ...c }) => c),
+  variableModes: collections.filter(c => c._type === 'mode').map(({ _type, ...c }) => ({ action: 'CREATE', ...c })),
+  variables, variableModeValues: modeValues
+}, null, 2));
+console.log(`tokens: ${flat.size} tokens -> ${Object.keys({ ...common, ...light }).length} light/common vars, ${Object.keys(dark).length} dark overrides; figma variables ${variables.length}`);

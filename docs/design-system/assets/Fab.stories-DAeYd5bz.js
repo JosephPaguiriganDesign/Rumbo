@@ -1,0 +1,13 @@
+import{n as e,r as t}from"./rolldown-runtime-DkW27tQK.js";import{n,r}from"./icons-DjAScHZn.js";import{a as i,i as a,r as o,t as s}from"./story-C0YChiH4.js";function c({label:e=`Get on the list`,kind:t=`extended`,href:r=`#interest`,visible:i=!0,floating:a=!1,state:o=``}={}){let c=[`fab`,`state`,t===`icon`&&`fab--icon`,t===`small`&&`fab--small`,t===`extended`&&`fab--extended`,!a&&`fab--static`,a&&i&&`is-visible`,o&&`is-${o}`].filter(Boolean).join(` `),l=t===`extended`?`${e}${n.arrow(18)}`:n.arrow(24);return`<a ${s({class:c,href:r,...t===`extended`?{}:{"aria-label":e}})}>${l}</a>`}var l;function u(){return(u=e((()=>{r(),o(),l=(e={})=>`<nav aria-label="Quick link">${c({...e,floating:!0})}</nav>`})))()}var d=t({Default:()=>p,FloatingInFrame:()=>g,Kinds:()=>m,States:()=>h,__namedExportsOrder:()=>_,default:()=>f}),f,p,m,h,g,_;function v(){return(v=e((()=>{u(),o(),f={title:`Components/FAB`,argTypes:{label:{control:`text`},kind:{control:`inline-radio`,options:[`extended`,`icon`,`small`]},state:{control:`select`,options:[``,`hover`,`focus`,`pressed`]}},args:{label:`Get on the list`,kind:`extended`,state:``},render:e=>c(e)},p={},m={render:()=>i([a(`extended`,c({})),a(`icon (56)`,c({kind:`icon`,label:`Get on the list`})),a(`small (48)`,c({kind:`small`,label:`Get on the list`}))])},h={render:()=>i([``,`hover`,`focus`,`pressed`].map(e=>a(e||`default`,c({state:e}))))},g={render:()=>`<div class="sb-frame" style="height:260px"><p class="sb-panel">The FAB pins bottom-right, slightly tilted, and only shows once the hero has scrolled away and the form is not yet in view (see docs).</p>${l()}</div>`},_=[`Default`,`Kinds`,`States`,`FloatingInFrame`],p.parameters={...p.parameters,docs:{...p.parameters?.docs,source:{originalSource:`{}`,...p.parameters?.docs?.source}}},m.parameters={...m.parameters,docs:{...m.parameters?.docs,source:{originalSource:`{
+  render: () => row([labelled('extended', fab({})), labelled('icon (56)', fab({
+    kind: 'icon',
+    label: 'Get on the list'
+  })), labelled('small (48)', fab({
+    kind: 'small',
+    label: 'Get on the list'
+  }))])
+}`,...m.parameters?.docs?.source}}},h.parameters={...h.parameters,docs:{...h.parameters?.docs,source:{originalSource:`{
+  render: () => row(['', 'hover', 'focus', 'pressed'].map(s => labelled(s || 'default', fab({
+    state: s
+  }))))
+}`,...h.parameters?.docs?.source}}},g.parameters={...g.parameters,docs:{...g.parameters?.docs,source:{originalSource:'{\n  render: () => `<div class="sb-frame" style="height:260px"><p class="sb-panel">The FAB pins bottom-right, slightly tilted, and only shows once the hero has scrolled away and the form is not yet in view (see docs).</p>${floatingFab()}</div>`\n}',...g.parameters?.docs?.source}}}})))()}export{h as a,m as i,d as n,v as o,g as r,p as t};

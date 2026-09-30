@@ -1,0 +1,79 @@
+import { Meta, Canvas, Controls } from '@storybook/addon-docs/blocks';
+import * as ButtonStories from './Button.stories';
+
+<Meta of={ButtonStories} />
+
+# Button
+
+Cut-corner paper label with a hard ink offset shadow. It is the only thing on the page that asks the reader to do something, so there is one filled button per view.
+
+**Extracted from the site:** `.btn`, `.btn--filled`, `.btn--tonal`, `.btn--text`, `.btn--lg`, `.btn--block` in styles.css; `outlined`, `accent`, `sm`, `icon`, disabled are DS additions.
+
+<Canvas of={ButtonStories.Default} />
+
+<Controls of={ButtonStories.Default} />
+
+## Variants and states
+
+### Variants
+
+<Canvas of={ButtonStories.Variants} />
+
+### Sizes
+
+<Canvas of={ButtonStories.Sizes} />
+
+### With Icon
+
+<Canvas of={ButtonStories.WithIcon} />
+
+### States
+
+<Canvas of={ButtonStories.States} />
+
+### Block
+
+<Canvas of={ButtonStories.Block} />
+
+### On Colour
+
+<Canvas of={ButtonStories.OnColour} />
+
+## Props / variants
+
+| Prop | Type | Default | Notes |
+| --- | --- | --- | --- |
+| label | string | "Get on the list" | Visible text. Verb first, specific. |
+| variant | filled \| tonal \| outlined \| accent \| text | filled | filled = cobalt (primary action), tonal = sun yellow (secondary/bar CTA), outlined = ink outline, accent = clay, text = wavy underline |
+| size | sm \| md \| lg | md | 40 / 48 / 56 dp tall. `sm` keeps a 48dp hit area via a pseudo-element. |
+| icon | boolean | false | Trailing arrow (decorative). |
+| iconOnly | boolean | false | Square 48/56 button; **requires** `ariaLabel`. |
+| disabled | boolean | false | Native `disabled` on `<button>`; on links use `aria-disabled="true"` and remove `href`. |
+| block | boolean | false | Full width (drawer, form submit). |
+| href | string | – | Renders `<a class="btn">` when navigation, `<button>` when action. |
+
+## Usage
+
+### Do
+
+- Use `<a>` for navigation (goes somewhere), `<button>` for actions (does something).
+- Keep labels to 2–4 words: “Get on the list”, “Ask about the whole trip”.
+- Pair one filled with at most one tonal or text button.
+- On cobalt panels use tonal (yellow) so the ink border and shadow still read.
+
+### Don't
+
+- Do not put a text button on cobalt: its ink label measures 1.7:1.
+- Do not stack two filled buttons side by side.
+- Do not use “Click here”, “Submit”, or “Learn more”.
+- Do not rely on the shadow alone to show pressed: the button also moves 2px.
+
+## Accessibility
+
+- Native elements: `<button>` fires on Enter and Space, `<a>` on Enter.
+- Focus: 3px ring, 3px offset (`--md-sys-color-primary`, sun in dark), never removed. The state layer (12% overlay) is an extra cue, not the only one.
+- Target size: 48dp minimum (40dp `sm` gets a 4px hit-area extension top and bottom). WCAG 2.2 AA asks for 24px.
+- Contrast (measured): filled 9.0:1, tonal 10.3:1, accent 6.2:1 (light). See Accessibility page.
+- Icon-only buttons need `aria-label`. The arrow SVG is `aria-hidden`.
+- Disabled is exempt from contrast rules but keeps a dashed-free 38% ink label, no shadow, `cursor:not-allowed`. Prefer explaining why (helper text) over disabling.
+- Reduced motion: hover lift and press travel drop to 0.01ms.

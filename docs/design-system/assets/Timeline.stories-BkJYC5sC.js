@@ -1,0 +1,17 @@
+import{n as e,r as t}from"./rolldown-runtime-DkW27tQK.js";import{i as n,n as r,r as i}from"./story-C0YChiH4.js";function a({n:e,d:t,t:n,p:r,kind:i=``,current:a=!1}){return`<li class="day${i?` day--`+i:``}${a?` is-current`:``}"${a?` aria-current="date"`:``}><span class="day__n" aria-hidden="true">${e}</span><div><h3 class="day__t"><span class="mono day__d">${t}</span> ${n}${i===`match`?` <span class="tag">match day</span>`:``}</h3><p>${r}</p></div></li>`}function o({items:e=s,label:t=`Sample day-by-day plan`,current:n=-1}={}){return`<ol class="days" aria-label="${t}">${e.map((e,t)=>a({...e,current:t===n})).join(``)}</ol>`}var s;function c(){return(c=e((()=>{s=[{n:`01`,d:`Sun 11 Jul`,t:`Land in Lisbon`,p:`Airport pickup, check in, a slow walk to the water. Early night.`,kind:`wk`},{n:`02`,d:`Mon 12 Jul`,t:`First session`,p:`Team meeting after breakfast, then a light session so the coaches can see who’s who.`},{n:`03`,d:`Tue 13 Jul`,t:`Two-a-day`,p:`Morning technical work, evening small-sided games. Video review over dinner.`},{n:`04`,d:`Wed 14 Jul`,t:`Friendly No. 1`,p:`Against a local club, if the calendar cooperates. Everyone plays.`,kind:`match`}]})))()}var l=t({Default:()=>d,Kinds:()=>f,TwoColumns:()=>p,__namedExportsOrder:()=>m,default:()=>u}),u,d,f,p,m;function h(){return(h=e((()=>{c(),i(),u={title:`Components/Timeline (itinerary day)`,parameters:{layout:`padded`},argTypes:{current:{control:{type:`number`,min:-1,max:3}},label:{control:`text`}},args:{current:-1,label:`Sample day-by-day plan`},render:e=>`<div style="max-width:520px;padding:12px">${o(e)}</div>`},d={},f={render:()=>r([n(`normal`,`<ol class="days">${a(s[1])}</ol>`),n(`travel / boundary (wk)`,`<ol class="days">${a(s[0])}</ol>`),n(`match day`,`<ol class="days">${a(s[3])}</ol>`),n(`fly`,`<ol class="days">${a({n:`08`,d:`Sun 18 Jul`,t:`Fly Lisbon to Málaga`,p:`A short flight, then check in and a walk along the port.`,kind:`wk day--fly`})}</ol>`),n(`current (today)`,`<ol class="days">${a({...s[2],current:!0})}</ol>`)],300)},p={parameters:{layout:`fullscreen`},render:()=>`<div style="padding:24px;display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:12px 32px">${s.map(e=>`<ol class="days">${a(e)}</ol>`).join(``)}</div>`},m=[`Default`,`Kinds`,`TwoColumns`],d.parameters={...d.parameters,docs:{...d.parameters?.docs,source:{originalSource:`{}`,...d.parameters?.docs?.source}}},f.parameters={...f.parameters,docs:{...f.parameters?.docs,source:{originalSource:`{
+  render: () => grid([labelled('normal', \`<ol class="days">\${day(days[1])}</ol>\`), labelled('travel / boundary (wk)', \`<ol class="days">\${day(days[0])}</ol>\`), labelled('match day', \`<ol class="days">\${day(days[3])}</ol>\`), labelled('fly', \`<ol class="days">\${day({
+    n: '08',
+    d: 'Sun 18 Jul',
+    t: 'Fly Lisbon to Málaga',
+    p: 'A short flight, then check in and a walk along the port.',
+    kind: 'wk day--fly'
+  })}</ol>\`), labelled('current (today)', \`<ol class="days">\${day({
+    ...days[2],
+    current: true
+  })}</ol>\`)], 300)
+}`,...f.parameters?.docs?.source}}},p.parameters={...p.parameters,docs:{...p.parameters?.docs,source:{originalSource:`{
+  parameters: {
+    layout: 'fullscreen'
+  },
+  render: () => \`<div style="padding:24px;display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:12px 32px">\${days.map(x => \`<ol class="days">\${day(x)}</ol>\`).join('')}</div>\`
+}`,...p.parameters?.docs?.source}}}})))()}export{h as a,p as i,f as n,l as r,d as t};

@@ -1,0 +1,3 @@
+/* Docs-page chrome only (outside .rumbo). */
+.sbdocs-content .rumbo{border:1px solid #c9c1ae;border-radius:6px}
+.swatch-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(150px,1fr));gap:12px}

@@ -1,0 +1,73 @@
+import { Meta, Canvas, Controls } from '@storybook/addon-docs/blocks';
+import * as TextFieldStories from './TextField.stories';
+
+<Meta of={TextFieldStories} />
+
+# Text field (underlined)
+
+Underlined fields on a paper form card. Label sits above in mono caps (site) or floats inside (DS variant). Hover and focus paint a highlighter wash.
+
+**Extracted from the site:** `.tf`, `.tf__label`, `.tf__input`, `.tf__hint`, `.tf__err`, `.is-invalid`, `setInvalid()` in app.js; floating label is a DS variant.
+
+<Canvas of={TextFieldStories.Default} />
+
+<Controls of={TextFieldStories.Default} />
+
+## Variants and states
+
+### Variants
+
+<Canvas of={TextFieldStories.Variants} />
+
+### States
+
+<Canvas of={TextFieldStories.States} />
+
+### Error
+
+<Canvas of={TextFieldStories.Error} />
+
+### Floating Error
+
+<Canvas of={TextFieldStories.FloatingError} />
+
+### Disabled
+
+<Canvas of={TextFieldStories.Disabled} />
+
+## Props / variants
+
+| Prop | Type | Default | Notes |
+| --- | --- | --- | --- |
+| label | string | – | Always visible text; never placeholder-only. |
+| type | text \| email \| number \| tel | text | Also set `autocomplete`. |
+| hint | string | – | Linked with `aria-describedby`. |
+| error | string | – | Shows the error, sets `aria-invalid`, colours the underline. |
+| required | boolean | true | Adds “(required)” for screen readers. |
+| floating | boolean | false | Label rests in the field and rises. |
+| short | boolean | false | Max 15rem for ages, codes. |
+| disabled | boolean | false |  |
+
+## Usage
+
+### Do
+
+- Say what went wrong and how to fix it: “Please enter an age between 12 and 17.”
+- Validate on submit, clear on input as soon as valid.
+- Move focus to the first invalid field on submit.
+- Give inputs the right `type` and `autocomplete`.
+
+### Don't
+
+- Do not use placeholder as the label.
+- Do not signal errors by red alone: the message and a “!” badge are always present.
+- Do not validate on every keystroke before the user has left the field.
+
+## Accessibility
+
+- `<label for>` always; required is announced via an `sr-only` “(required)”.
+- Error: `aria-invalid="true"`, message linked in `aria-describedby`, message has an icon and bold text; underline goes from ink to error (3px). Error text on paper measures 5.5:1 (light) / 10.6:1 (dark; the DS uses M3 dark error #ffb4ab, the site keeps #ba1a1a).
+- On submit: focus the first invalid field and update a `role="status"` line.
+- Focus: underline turns cobalt, a 3px shadow and a yellow wash appear (2.4.7 and 1.4.11 met by the 3px cobalt line vs paper, 8.2:1).
+- Input height ≥52dp. Font-size 1.15rem prevents iOS zoom.
+- Floating label never shrinks below 0.78× (≈14px).

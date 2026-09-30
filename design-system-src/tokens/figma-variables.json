@@ -1,0 +1,3370 @@
+{
+  "_readme": "Figma Variables payload in the shape of the REST API POST /v1/files/:file_key/variables (variableCollections, variableModes, variables, variableModeValues). The REST API needs an Enterprise plan; on other plans import tokens/tokens-studio.json with the Tokens Studio plugin, or recreate variables from docs/figma-build-plan.md. Colours are 0..1 RGBA. NOT verified against a live Figma file.",
+  "variableCollections": [
+    {
+      "action": "CREATE",
+      "id": "col:Primitives",
+      "name": "Primitives",
+      "initialModeId": "mode:Primitives:Default"
+    },
+    {
+      "action": "CREATE",
+      "id": "col:Theme",
+      "name": "Theme",
+      "initialModeId": "mode:Theme:Light"
+    },
+    {
+      "action": "CREATE",
+      "id": "col:Type",
+      "name": "Type",
+      "initialModeId": "mode:Type:Default"
+    },
+    {
+      "action": "CREATE",
+      "id": "col:Space",
+      "name": "Space",
+      "initialModeId": "mode:Space:Default"
+    },
+    {
+      "action": "CREATE",
+      "id": "col:Shape",
+      "name": "Shape",
+      "initialModeId": "mode:Shape:Default"
+    },
+    {
+      "action": "CREATE",
+      "id": "col:Motion",
+      "name": "Motion",
+      "initialModeId": "mode:Motion:Default"
+    },
+    {
+      "action": "CREATE",
+      "id": "col:Layout",
+      "name": "Layout",
+      "initialModeId": "mode:Layout:Mobile 390"
+    }
+  ],
+  "variableModes": [
+    {
+      "action": "CREATE",
+      "id": "mode:Theme:Dark",
+      "name": "Dark",
+      "variableCollectionId": "col:Theme"
+    },
+    {
+      "action": "CREATE",
+      "id": "mode:Layout:Desktop 1280",
+      "name": "Desktop 1280",
+      "variableCollectionId": "col:Layout"
+    }
+  ],
+  "variables": [
+    {
+      "action": "CREATE",
+      "id": "var:Primitives/palette/paper",
+      "name": "palette/paper",
+      "variableCollectionId": "col:Primitives",
+      "resolvedType": "COLOR",
+      "description": "Warm paper. Page background."
+    },
+    {
+      "action": "CREATE",
+      "id": "var:Primitives/palette/ink",
+      "name": "palette/ink",
+      "variableCollectionId": "col:Primitives",
+      "resolvedType": "COLOR",
+      "description": "Ink. Text, borders, hard shadows."
+    },
+    {
+      "action": "CREATE",
+      "id": "var:Primitives/palette/cobalt",
+      "name": "palette/cobalt",
+      "variableCollectionId": "col:Primitives",
+      "resolvedType": "COLOR",
+      "description": "Azulejo cobalt. Primary."
+    },
+    {
+      "action": "CREATE",
+      "id": "var:Primitives/palette/clay",
+      "name": "palette/clay",
+      "variableCollectionId": "col:Primitives",
+      "resolvedType": "COLOR",
+      "description": "Iberian roof-tile clay. Tertiary / accent."
+    },
+    {
+      "action": "CREATE",
+      "id": "var:Primitives/palette/sun",
+      "name": "palette/sun",
+      "variableCollectionId": "col:Primitives",
+      "resolvedType": "COLOR",
+      "description": "Grass-line yellow. Used like a highlighter."
+    },
+    {
+      "action": "CREATE",
+      "id": "var:Primitives/palette/paper-light",
+      "name": "palette/paper-light",
+      "variableCollectionId": "col:Primitives",
+      "resolvedType": "COLOR",
+      "description": "Lightest paper (card face, on-primary)."
+    },
+    {
+      "action": "CREATE",
+      "id": "var:Primitives/palette/night",
+      "name": "palette/night",
+      "variableCollectionId": "col:Primitives",
+      "resolvedType": "COLOR",
+      "description": "Night-train ink. Dark background."
+    },
+    {
+      "action": "CREATE",
+      "id": "var:Primitives/palette/night-text",
+      "name": "palette/night-text",
+      "variableCollectionId": "col:Primitives",
+      "resolvedType": "COLOR",
+      "description": "Dark-mode text on night."
+    },
+    {
+      "action": "CREATE",
+      "id": "var:Primitives/fixed/receipt-paper",
+      "name": "fixed/receipt-paper",
+      "variableCollectionId": "col:Primitives",
+      "resolvedType": "COLOR",
+      "description": "Receipt face. Site uses surface-container-lowest, which turns near-black in dark; DS pins it to paper."
+    },
+    {
+      "action": "CREATE",
+      "id": "var:Primitives/fixed/receipt-ink",
+      "name": "fixed/receipt-ink",
+      "variableCollectionId": "col:Primitives",
+      "resolvedType": "COLOR"
+    },
+    {
+      "action": "CREATE",
+      "id": "var:Primitives/fixed/receipt-muted",
+      "name": "fixed/receipt-muted",
+      "variableCollectionId": "col:Primitives",
+      "resolvedType": "COLOR"
+    },
+    {
+      "action": "CREATE",
+      "id": "var:Primitives/fixed/receipt-accent",
+      "name": "fixed/receipt-accent",
+      "variableCollectionId": "col:Primitives",
+      "resolvedType": "COLOR"
+    },
+    {
+      "action": "CREATE",
+      "id": "var:Primitives/fixed/receipt-rule",
+      "name": "fixed/receipt-rule",
+      "variableCollectionId": "col:Primitives",
+      "resolvedType": "COLOR"
+    },
+    {
+      "action": "CREATE",
+      "id": "var:Primitives/fixed/receipt-in",
+      "name": "fixed/receipt-in",
+      "variableCollectionId": "col:Primitives",
+      "resolvedType": "COLOR"
+    },
+    {
+      "action": "CREATE",
+      "id": "var:Primitives/fixed/receipt-out",
+      "name": "fixed/receipt-out",
+      "variableCollectionId": "col:Primitives",
+      "resolvedType": "COLOR"
+    },
+    {
+      "action": "CREATE",
+      "id": "var:Primitives/fixed/footer-bg",
+      "name": "fixed/footer-bg",
+      "variableCollectionId": "col:Primitives",
+      "resolvedType": "COLOR"
+    },
+    {
+      "action": "CREATE",
+      "id": "var:Primitives/fixed/footer-on",
+      "name": "fixed/footer-on",
+      "variableCollectionId": "col:Primitives",
+      "resolvedType": "COLOR"
+    },
+    {
+      "action": "CREATE",
+      "id": "var:Primitives/fixed/footer-accent",
+      "name": "fixed/footer-accent",
+      "variableCollectionId": "col:Primitives",
+      "resolvedType": "COLOR"
+    },
+    {
+      "action": "CREATE",
+      "id": "var:Primitives/fixed/footer-link",
+      "name": "fixed/footer-link",
+      "variableCollectionId": "col:Primitives",
+      "resolvedType": "COLOR"
+    },
+    {
+      "action": "CREATE",
+      "id": "var:Primitives/fixed/footer-body",
+      "name": "fixed/footer-body",
+      "variableCollectionId": "col:Primitives",
+      "resolvedType": "COLOR"
+    },
+    {
+      "action": "CREATE",
+      "id": "var:Primitives/fixed/footer-muted",
+      "name": "fixed/footer-muted",
+      "variableCollectionId": "col:Primitives",
+      "resolvedType": "COLOR"
+    },
+    {
+      "action": "CREATE",
+      "id": "var:Primitives/fixed/footer-fine",
+      "name": "fixed/footer-fine",
+      "variableCollectionId": "col:Primitives",
+      "resolvedType": "COLOR"
+    },
+    {
+      "action": "CREATE",
+      "id": "var:Primitives/fixed/footer-rule",
+      "name": "fixed/footer-rule",
+      "variableCollectionId": "col:Primitives",
+      "resolvedType": "COLOR"
+    },
+    {
+      "action": "CREATE",
+      "id": "var:Primitives/fixed/duo-cobalt",
+      "name": "fixed/duo-cobalt",
+      "variableCollectionId": "col:Primitives",
+      "resolvedType": "COLOR"
+    },
+    {
+      "action": "CREATE",
+      "id": "var:Primitives/fixed/duo-clay",
+      "name": "fixed/duo-clay",
+      "variableCollectionId": "col:Primitives",
+      "resolvedType": "COLOR"
+    },
+    {
+      "action": "CREATE",
+      "id": "var:Primitives/fixed/ink-line",
+      "name": "fixed/ink-line",
+      "variableCollectionId": "col:Primitives",
+      "resolvedType": "COLOR",
+      "description": "Hairline around tape."
+    },
+    {
+      "action": "CREATE",
+      "id": "var:Theme/md-sys-color/primary",
+      "name": "md-sys-color/primary",
+      "variableCollectionId": "col:Theme",
+      "resolvedType": "COLOR"
+    },
+    {
+      "action": "CREATE",
+      "id": "var:Theme/md-sys-color/on-primary",
+      "name": "md-sys-color/on-primary",
+      "variableCollectionId": "col:Theme",
+      "resolvedType": "COLOR"
+    },
+    {
+      "action": "CREATE",
+      "id": "var:Theme/md-sys-color/primary-container",
+      "name": "md-sys-color/primary-container",
+      "variableCollectionId": "col:Theme",
+      "resolvedType": "COLOR"
+    },
+    {
+      "action": "CREATE",
+      "id": "var:Theme/md-sys-color/on-primary-container",
+      "name": "md-sys-color/on-primary-container",
+      "variableCollectionId": "col:Theme",
+      "resolvedType": "COLOR"
+    },
+    {
+      "action": "CREATE",
+      "id": "var:Theme/md-sys-color/secondary",
+      "name": "md-sys-color/secondary",
+      "variableCollectionId": "col:Theme",
+      "resolvedType": "COLOR"
+    },
+    {
+      "action": "CREATE",
+      "id": "var:Theme/md-sys-color/on-secondary",
+      "name": "md-sys-color/on-secondary",
+      "variableCollectionId": "col:Theme",
+      "resolvedType": "COLOR"
+    },
+    {
+      "action": "CREATE",
+      "id": "var:Theme/md-sys-color/secondary-container",
+      "name": "md-sys-color/secondary-container",
+      "variableCollectionId": "col:Theme",
+      "resolvedType": "COLOR"
+    },
+    {
+      "action": "CREATE",
+      "id": "var:Theme/md-sys-color/on-secondary-container",
+      "name": "md-sys-color/on-secondary-container",
+      "variableCollectionId": "col:Theme",
+      "resolvedType": "COLOR"
+    },
+    {
+      "action": "CREATE",
+      "id": "var:Theme/md-sys-color/tertiary",
+      "name": "md-sys-color/tertiary",
+      "variableCollectionId": "col:Theme",
+      "resolvedType": "COLOR"
+    },
+    {
+      "action": "CREATE",
+      "id": "var:Theme/md-sys-color/on-tertiary",
+      "name": "md-sys-color/on-tertiary",
+      "variableCollectionId": "col:Theme",
+      "resolvedType": "COLOR"
+    },
+    {
+      "action": "CREATE",
+      "id": "var:Theme/md-sys-color/tertiary-container",
+      "name": "md-sys-color/tertiary-container",
+      "variableCollectionId": "col:Theme",
+      "resolvedType": "COLOR"
+    },
+    {
+      "action": "CREATE",
+      "id": "var:Theme/md-sys-color/on-tertiary-container",
+      "name": "md-sys-color/on-tertiary-container",
+      "variableCollectionId": "col:Theme",
+      "resolvedType": "COLOR"
+    },
+    {
+      "action": "CREATE",
+      "id": "var:Theme/md-sys-color/error",
+      "name": "md-sys-color/error",
+      "variableCollectionId": "col:Theme",
+      "resolvedType": "COLOR"
+    },
+    {
+      "action": "CREATE",
+      "id": "var:Theme/md-sys-color/on-error",
+      "name": "md-sys-color/on-error",
+      "variableCollectionId": "col:Theme",
+      "resolvedType": "COLOR"
+    },
+    {
+      "action": "CREATE",
+      "id": "var:Theme/md-sys-color/error-container",
+      "name": "md-sys-color/error-container",
+      "variableCollectionId": "col:Theme",
+      "resolvedType": "COLOR"
+    },
+    {
+      "action": "CREATE",
+      "id": "var:Theme/md-sys-color/on-error-container",
+      "name": "md-sys-color/on-error-container",
+      "variableCollectionId": "col:Theme",
+      "resolvedType": "COLOR"
+    },
+    {
+      "action": "CREATE",
+      "id": "var:Theme/md-sys-color/background",
+      "name": "md-sys-color/background",
+      "variableCollectionId": "col:Theme",
+      "resolvedType": "COLOR"
+    },
+    {
+      "action": "CREATE",
+      "id": "var:Theme/md-sys-color/on-background",
+      "name": "md-sys-color/on-background",
+      "variableCollectionId": "col:Theme",
+      "resolvedType": "COLOR"
+    },
+    {
+      "action": "CREATE",
+      "id": "var:Theme/md-sys-color/surface",
+      "name": "md-sys-color/surface",
+      "variableCollectionId": "col:Theme",
+      "resolvedType": "COLOR"
+    },
+    {
+      "action": "CREATE",
+      "id": "var:Theme/md-sys-color/on-surface",
+      "name": "md-sys-color/on-surface",
+      "variableCollectionId": "col:Theme",
+      "resolvedType": "COLOR"
+    },
+    {
+      "action": "CREATE",
+      "id": "var:Theme/md-sys-color/surface-variant",
+      "name": "md-sys-color/surface-variant",
+      "variableCollectionId": "col:Theme",
+      "resolvedType": "COLOR"
+    },
+    {
+      "action": "CREATE",
+      "id": "var:Theme/md-sys-color/on-surface-variant",
+      "name": "md-sys-color/on-surface-variant",
+      "variableCollectionId": "col:Theme",
+      "resolvedType": "COLOR"
+    },
+    {
+      "action": "CREATE",
+      "id": "var:Theme/md-sys-color/outline",
+      "name": "md-sys-color/outline",
+      "variableCollectionId": "col:Theme",
+      "resolvedType": "COLOR"
+    },
+    {
+      "action": "CREATE",
+      "id": "var:Theme/md-sys-color/outline-variant",
+      "name": "md-sys-color/outline-variant",
+      "variableCollectionId": "col:Theme",
+      "resolvedType": "COLOR"
+    },
+    {
+      "action": "CREATE",
+      "id": "var:Theme/md-sys-color/shadow",
+      "name": "md-sys-color/shadow",
+      "variableCollectionId": "col:Theme",
+      "resolvedType": "COLOR"
+    },
+    {
+      "action": "CREATE",
+      "id": "var:Theme/md-sys-color/scrim",
+      "name": "md-sys-color/scrim",
+      "variableCollectionId": "col:Theme",
+      "resolvedType": "COLOR"
+    },
+    {
+      "action": "CREATE",
+      "id": "var:Theme/md-sys-color/inverse-surface",
+      "name": "md-sys-color/inverse-surface",
+      "variableCollectionId": "col:Theme",
+      "resolvedType": "COLOR"
+    },
+    {
+      "action": "CREATE",
+      "id": "var:Theme/md-sys-color/inverse-on-surface",
+      "name": "md-sys-color/inverse-on-surface",
+      "variableCollectionId": "col:Theme",
+      "resolvedType": "COLOR"
+    },
+    {
+      "action": "CREATE",
+      "id": "var:Theme/md-sys-color/inverse-primary",
+      "name": "md-sys-color/inverse-primary",
+      "variableCollectionId": "col:Theme",
+      "resolvedType": "COLOR"
+    },
+    {
+      "action": "CREATE",
+      "id": "var:Theme/md-sys-color/surface-container-lowest",
+      "name": "md-sys-color/surface-container-lowest",
+      "variableCollectionId": "col:Theme",
+      "resolvedType": "COLOR"
+    },
+    {
+      "action": "CREATE",
+      "id": "var:Theme/md-sys-color/surface-container-low",
+      "name": "md-sys-color/surface-container-low",
+      "variableCollectionId": "col:Theme",
+      "resolvedType": "COLOR"
+    },
+    {
+      "action": "CREATE",
+      "id": "var:Theme/md-sys-color/surface-container",
+      "name": "md-sys-color/surface-container",
+      "variableCollectionId": "col:Theme",
+      "resolvedType": "COLOR"
+    },
+    {
+      "action": "CREATE",
+      "id": "var:Theme/md-sys-color/surface-container-high",
+      "name": "md-sys-color/surface-container-high",
+      "variableCollectionId": "col:Theme",
+      "resolvedType": "COLOR"
+    },
+    {
+      "action": "CREATE",
+      "id": "var:Theme/md-sys-color/surface-container-highest",
+      "name": "md-sys-color/surface-container-highest",
+      "variableCollectionId": "col:Theme",
+      "resolvedType": "COLOR"
+    },
+    {
+      "action": "CREATE",
+      "id": "var:Theme/md-sys-color/surface-tint",
+      "name": "md-sys-color/surface-tint",
+      "variableCollectionId": "col:Theme",
+      "resolvedType": "COLOR"
+    },
+    {
+      "action": "CREATE",
+      "id": "var:Theme/md-sys-color/sun",
+      "name": "md-sys-color/sun",
+      "variableCollectionId": "col:Theme",
+      "resolvedType": "COLOR",
+      "description": "Extended colour: highlighter yellow."
+    },
+    {
+      "action": "CREATE",
+      "id": "var:Theme/md-sys-color/on-sun",
+      "name": "md-sys-color/on-sun",
+      "variableCollectionId": "col:Theme",
+      "resolvedType": "COLOR"
+    },
+    {
+      "action": "CREATE",
+      "id": "var:Theme/md-sys-color/sun-container",
+      "name": "md-sys-color/sun-container",
+      "variableCollectionId": "col:Theme",
+      "resolvedType": "COLOR"
+    },
+    {
+      "action": "CREATE",
+      "id": "var:Theme/md-sys-color/on-sun-container",
+      "name": "md-sys-color/on-sun-container",
+      "variableCollectionId": "col:Theme",
+      "resolvedType": "COLOR"
+    },
+    {
+      "action": "CREATE",
+      "id": "var:Theme/md-sys-color/highlight-on-primary",
+      "name": "md-sys-color/highlight-on-primary",
+      "variableCollectionId": "col:Theme",
+      "resolvedType": "COLOR",
+      "description": "Custom role: marker-yellow accent on a primary (cobalt) panel: step numbers, section numerals."
+    },
+    {
+      "action": "CREATE",
+      "id": "var:Theme/md-sys-color/on-primary-muted",
+      "name": "md-sys-color/on-primary-muted",
+      "variableCollectionId": "col:Theme",
+      "resolvedType": "COLOR",
+      "description": "Custom role: secondary text on a primary panel (the site uses primary-container for this)."
+    },
+    {
+      "action": "CREATE",
+      "id": "var:Theme/md-sys-color/sun-outline",
+      "name": "md-sys-color/sun-outline",
+      "variableCollectionId": "col:Theme",
+      "resolvedType": "COLOR",
+      "description": "Custom role: rule/outline used on sun-container panels (dashed fact lines)."
+    },
+    {
+      "action": "CREATE",
+      "id": "var:Type/family/display",
+      "name": "family/display",
+      "variableCollectionId": "col:Type",
+      "resolvedType": "STRING",
+      "description": "Fraunces: headlines, numerals, drawer links. Uses SOFT and WONK axes."
+    },
+    {
+      "action": "CREATE",
+      "id": "var:Type/family/body",
+      "name": "family/body",
+      "variableCollectionId": "col:Type",
+      "resolvedType": "STRING",
+      "description": "Body copy, buttons, form input text."
+    },
+    {
+      "action": "CREATE",
+      "id": "var:Type/family/label",
+      "name": "family/label",
+      "variableCollectionId": "col:Type",
+      "resolvedType": "STRING",
+      "description": "Mono labels, dates, captions, stamps."
+    },
+    {
+      "action": "CREATE",
+      "id": "var:Type/family/hand",
+      "name": "family/hand",
+      "variableCollectionId": "col:Type",
+      "resolvedType": "STRING",
+      "description": "Margin notes only. Never for essential content."
+    },
+    {
+      "action": "CREATE",
+      "id": "var:Type/size/display-large",
+      "name": "size/display-large",
+      "variableCollectionId": "col:Type",
+      "resolvedType": "FLOAT",
+      "description": " Figma value is the max (desktop) size in px; min = 2.75rem"
+    },
+    {
+      "action": "CREATE",
+      "id": "var:Type/size/headline-large",
+      "name": "size/headline-large",
+      "variableCollectionId": "col:Type",
+      "resolvedType": "FLOAT",
+      "description": " Figma value is the max (desktop) size in px; min = 2.1rem"
+    },
+    {
+      "action": "CREATE",
+      "id": "var:Type/size/headline-medium",
+      "name": "size/headline-medium",
+      "variableCollectionId": "col:Type",
+      "resolvedType": "FLOAT",
+      "description": " Figma value is the max (desktop) size in px; min = 1.6rem"
+    },
+    {
+      "action": "CREATE",
+      "id": "var:Type/size/title-large",
+      "name": "size/title-large",
+      "variableCollectionId": "col:Type",
+      "resolvedType": "FLOAT"
+    },
+    {
+      "action": "CREATE",
+      "id": "var:Type/size/title-medium",
+      "name": "size/title-medium",
+      "variableCollectionId": "col:Type",
+      "resolvedType": "FLOAT"
+    },
+    {
+      "action": "CREATE",
+      "id": "var:Type/size/body-large",
+      "name": "size/body-large",
+      "variableCollectionId": "col:Type",
+      "resolvedType": "FLOAT"
+    },
+    {
+      "action": "CREATE",
+      "id": "var:Type/size/body-medium",
+      "name": "size/body-medium",
+      "variableCollectionId": "col:Type",
+      "resolvedType": "FLOAT"
+    },
+    {
+      "action": "CREATE",
+      "id": "var:Type/size/label-large",
+      "name": "size/label-large",
+      "variableCollectionId": "col:Type",
+      "resolvedType": "FLOAT"
+    },
+    {
+      "action": "CREATE",
+      "id": "var:Type/size/label-medium",
+      "name": "size/label-medium",
+      "variableCollectionId": "col:Type",
+      "resolvedType": "FLOAT"
+    },
+    {
+      "action": "CREATE",
+      "id": "var:Type/size/lead",
+      "name": "size/lead",
+      "variableCollectionId": "col:Type",
+      "resolvedType": "FLOAT",
+      "description": " Figma value is the max (desktop) size in px; min = undefined"
+    },
+    {
+      "action": "CREATE",
+      "id": "var:Type/size/caption",
+      "name": "size/caption",
+      "variableCollectionId": "col:Type",
+      "resolvedType": "FLOAT",
+      "description": "Mono captions under photos. Site uses .6-.66rem; the DS raises the floor to 11px. Never use for essential text."
+    },
+    {
+      "action": "CREATE",
+      "id": "var:Type/size/hand",
+      "name": "size/hand",
+      "variableCollectionId": "col:Type",
+      "resolvedType": "FLOAT"
+    },
+    {
+      "action": "CREATE",
+      "id": "var:Type/weight/regular",
+      "name": "weight/regular",
+      "variableCollectionId": "col:Type",
+      "resolvedType": "FLOAT"
+    },
+    {
+      "action": "CREATE",
+      "id": "var:Type/weight/medium",
+      "name": "weight/medium",
+      "variableCollectionId": "col:Type",
+      "resolvedType": "FLOAT"
+    },
+    {
+      "action": "CREATE",
+      "id": "var:Type/weight/semibold",
+      "name": "weight/semibold",
+      "variableCollectionId": "col:Type",
+      "resolvedType": "FLOAT"
+    },
+    {
+      "action": "CREATE",
+      "id": "var:Type/weight/bold",
+      "name": "weight/bold",
+      "variableCollectionId": "col:Type",
+      "resolvedType": "FLOAT"
+    },
+    {
+      "action": "CREATE",
+      "id": "var:Type/weight/extrabold",
+      "name": "weight/extrabold",
+      "variableCollectionId": "col:Type",
+      "resolvedType": "FLOAT"
+    },
+    {
+      "action": "CREATE",
+      "id": "var:Type/leading/display",
+      "name": "leading/display",
+      "variableCollectionId": "col:Type",
+      "resolvedType": "FLOAT"
+    },
+    {
+      "action": "CREATE",
+      "id": "var:Type/leading/headline",
+      "name": "leading/headline",
+      "variableCollectionId": "col:Type",
+      "resolvedType": "FLOAT"
+    },
+    {
+      "action": "CREATE",
+      "id": "var:Type/leading/title-xl",
+      "name": "leading/title-xl",
+      "variableCollectionId": "col:Type",
+      "resolvedType": "FLOAT"
+    },
+    {
+      "action": "CREATE",
+      "id": "var:Type/leading/title",
+      "name": "leading/title",
+      "variableCollectionId": "col:Type",
+      "resolvedType": "FLOAT"
+    },
+    {
+      "action": "CREATE",
+      "id": "var:Type/leading/lead",
+      "name": "leading/lead",
+      "variableCollectionId": "col:Type",
+      "resolvedType": "FLOAT"
+    },
+    {
+      "action": "CREATE",
+      "id": "var:Type/leading/body",
+      "name": "leading/body",
+      "variableCollectionId": "col:Type",
+      "resolvedType": "FLOAT"
+    },
+    {
+      "action": "CREATE",
+      "id": "var:Type/leading/label",
+      "name": "leading/label",
+      "variableCollectionId": "col:Type",
+      "resolvedType": "FLOAT"
+    },
+    {
+      "action": "CREATE",
+      "id": "var:Type/leading/mono",
+      "name": "leading/mono",
+      "variableCollectionId": "col:Type",
+      "resolvedType": "FLOAT"
+    },
+    {
+      "action": "CREATE",
+      "id": "var:Type/tracking-em/display",
+      "name": "tracking-em/display",
+      "variableCollectionId": "col:Type",
+      "resolvedType": "FLOAT"
+    },
+    {
+      "action": "CREATE",
+      "id": "var:Type/tracking-em/headline",
+      "name": "tracking-em/headline",
+      "variableCollectionId": "col:Type",
+      "resolvedType": "FLOAT"
+    },
+    {
+      "action": "CREATE",
+      "id": "var:Type/tracking-em/title-xl",
+      "name": "tracking-em/title-xl",
+      "variableCollectionId": "col:Type",
+      "resolvedType": "FLOAT"
+    },
+    {
+      "action": "CREATE",
+      "id": "var:Type/tracking-em/body",
+      "name": "tracking-em/body",
+      "variableCollectionId": "col:Type",
+      "resolvedType": "FLOAT"
+    },
+    {
+      "action": "CREATE",
+      "id": "var:Type/tracking-em/button",
+      "name": "tracking-em/button",
+      "variableCollectionId": "col:Type",
+      "resolvedType": "FLOAT"
+    },
+    {
+      "action": "CREATE",
+      "id": "var:Type/tracking-em/mono",
+      "name": "tracking-em/mono",
+      "variableCollectionId": "col:Type",
+      "resolvedType": "FLOAT"
+    },
+    {
+      "action": "CREATE",
+      "id": "var:Type/tracking-em/mono-wide",
+      "name": "tracking-em/mono-wide",
+      "variableCollectionId": "col:Type",
+      "resolvedType": "FLOAT"
+    },
+    {
+      "action": "CREATE",
+      "id": "var:Type/tracking-em/stamp",
+      "name": "tracking-em/stamp",
+      "variableCollectionId": "col:Type",
+      "resolvedType": "FLOAT"
+    },
+    {
+      "action": "CREATE",
+      "id": "var:Space/space/0",
+      "name": "space/0",
+      "variableCollectionId": "col:Space",
+      "resolvedType": "FLOAT"
+    },
+    {
+      "action": "CREATE",
+      "id": "var:Space/space/1",
+      "name": "space/1",
+      "variableCollectionId": "col:Space",
+      "resolvedType": "FLOAT"
+    },
+    {
+      "action": "CREATE",
+      "id": "var:Space/space/2",
+      "name": "space/2",
+      "variableCollectionId": "col:Space",
+      "resolvedType": "FLOAT"
+    },
+    {
+      "action": "CREATE",
+      "id": "var:Space/space/3",
+      "name": "space/3",
+      "variableCollectionId": "col:Space",
+      "resolvedType": "FLOAT"
+    },
+    {
+      "action": "CREATE",
+      "id": "var:Space/space/4",
+      "name": "space/4",
+      "variableCollectionId": "col:Space",
+      "resolvedType": "FLOAT"
+    },
+    {
+      "action": "CREATE",
+      "id": "var:Space/space/5",
+      "name": "space/5",
+      "variableCollectionId": "col:Space",
+      "resolvedType": "FLOAT"
+    },
+    {
+      "action": "CREATE",
+      "id": "var:Space/space/6",
+      "name": "space/6",
+      "variableCollectionId": "col:Space",
+      "resolvedType": "FLOAT"
+    },
+    {
+      "action": "CREATE",
+      "id": "var:Space/space/8",
+      "name": "space/8",
+      "variableCollectionId": "col:Space",
+      "resolvedType": "FLOAT"
+    },
+    {
+      "action": "CREATE",
+      "id": "var:Space/space/10",
+      "name": "space/10",
+      "variableCollectionId": "col:Space",
+      "resolvedType": "FLOAT"
+    },
+    {
+      "action": "CREATE",
+      "id": "var:Space/space/12",
+      "name": "space/12",
+      "variableCollectionId": "col:Space",
+      "resolvedType": "FLOAT"
+    },
+    {
+      "action": "CREATE",
+      "id": "var:Space/space/14",
+      "name": "space/14",
+      "variableCollectionId": "col:Space",
+      "resolvedType": "FLOAT"
+    },
+    {
+      "action": "CREATE",
+      "id": "var:Space/space/16",
+      "name": "space/16",
+      "variableCollectionId": "col:Space",
+      "resolvedType": "FLOAT"
+    },
+    {
+      "action": "CREATE",
+      "id": "var:Space/space/20",
+      "name": "space/20",
+      "variableCollectionId": "col:Space",
+      "resolvedType": "FLOAT"
+    },
+    {
+      "action": "CREATE",
+      "id": "var:Space/space/24",
+      "name": "space/24",
+      "variableCollectionId": "col:Space",
+      "resolvedType": "FLOAT"
+    },
+    {
+      "action": "CREATE",
+      "id": "var:Shape/corner/extra-small",
+      "name": "corner/extra-small",
+      "variableCollectionId": "col:Shape",
+      "resolvedType": "FLOAT"
+    },
+    {
+      "action": "CREATE",
+      "id": "var:Shape/corner/small",
+      "name": "corner/small",
+      "variableCollectionId": "col:Shape",
+      "resolvedType": "FLOAT"
+    },
+    {
+      "action": "CREATE",
+      "id": "var:Shape/corner/medium",
+      "name": "corner/medium",
+      "variableCollectionId": "col:Shape",
+      "resolvedType": "FLOAT"
+    },
+    {
+      "action": "CREATE",
+      "id": "var:Shape/corner/large",
+      "name": "corner/large",
+      "variableCollectionId": "col:Shape",
+      "resolvedType": "FLOAT"
+    },
+    {
+      "action": "CREATE",
+      "id": "var:Shape/corner/full",
+      "name": "corner/full",
+      "variableCollectionId": "col:Shape",
+      "resolvedType": "FLOAT"
+    },
+    {
+      "action": "CREATE",
+      "id": "var:Shape/cut/primary/tl",
+      "name": "cut/primary/tl",
+      "variableCollectionId": "col:Shape",
+      "resolvedType": "FLOAT"
+    },
+    {
+      "action": "CREATE",
+      "id": "var:Shape/cut/primary/tr",
+      "name": "cut/primary/tr",
+      "variableCollectionId": "col:Shape",
+      "resolvedType": "FLOAT"
+    },
+    {
+      "action": "CREATE",
+      "id": "var:Shape/cut/primary/br",
+      "name": "cut/primary/br",
+      "variableCollectionId": "col:Shape",
+      "resolvedType": "FLOAT"
+    },
+    {
+      "action": "CREATE",
+      "id": "var:Shape/cut/primary/bl",
+      "name": "cut/primary/bl",
+      "variableCollectionId": "col:Shape",
+      "resolvedType": "FLOAT"
+    },
+    {
+      "action": "CREATE",
+      "id": "var:Shape/cut/alt/tl",
+      "name": "cut/alt/tl",
+      "variableCollectionId": "col:Shape",
+      "resolvedType": "FLOAT"
+    },
+    {
+      "action": "CREATE",
+      "id": "var:Shape/cut/alt/tr",
+      "name": "cut/alt/tr",
+      "variableCollectionId": "col:Shape",
+      "resolvedType": "FLOAT"
+    },
+    {
+      "action": "CREATE",
+      "id": "var:Shape/cut/alt/br",
+      "name": "cut/alt/br",
+      "variableCollectionId": "col:Shape",
+      "resolvedType": "FLOAT"
+    },
+    {
+      "action": "CREATE",
+      "id": "var:Shape/cut/alt/bl",
+      "name": "cut/alt/bl",
+      "variableCollectionId": "col:Shape",
+      "resolvedType": "FLOAT"
+    },
+    {
+      "action": "CREATE",
+      "id": "var:Shape/cut/ticket/tl",
+      "name": "cut/ticket/tl",
+      "variableCollectionId": "col:Shape",
+      "resolvedType": "FLOAT"
+    },
+    {
+      "action": "CREATE",
+      "id": "var:Shape/cut/ticket/tr",
+      "name": "cut/ticket/tr",
+      "variableCollectionId": "col:Shape",
+      "resolvedType": "FLOAT"
+    },
+    {
+      "action": "CREATE",
+      "id": "var:Shape/cut/ticket/br",
+      "name": "cut/ticket/br",
+      "variableCollectionId": "col:Shape",
+      "resolvedType": "FLOAT"
+    },
+    {
+      "action": "CREATE",
+      "id": "var:Shape/cut/ticket/bl",
+      "name": "cut/ticket/bl",
+      "variableCollectionId": "col:Shape",
+      "resolvedType": "FLOAT"
+    },
+    {
+      "action": "CREATE",
+      "id": "var:Shape/cut/banner/tl",
+      "name": "cut/banner/tl",
+      "variableCollectionId": "col:Shape",
+      "resolvedType": "FLOAT"
+    },
+    {
+      "action": "CREATE",
+      "id": "var:Shape/cut/banner/tr",
+      "name": "cut/banner/tr",
+      "variableCollectionId": "col:Shape",
+      "resolvedType": "FLOAT"
+    },
+    {
+      "action": "CREATE",
+      "id": "var:Shape/cut/banner/br",
+      "name": "cut/banner/br",
+      "variableCollectionId": "col:Shape",
+      "resolvedType": "FLOAT"
+    },
+    {
+      "action": "CREATE",
+      "id": "var:Shape/cut/banner/bl",
+      "name": "cut/banner/bl",
+      "variableCollectionId": "col:Shape",
+      "resolvedType": "FLOAT"
+    },
+    {
+      "action": "CREATE",
+      "id": "var:Shape/cut/day/tl",
+      "name": "cut/day/tl",
+      "variableCollectionId": "col:Shape",
+      "resolvedType": "FLOAT"
+    },
+    {
+      "action": "CREATE",
+      "id": "var:Shape/cut/day/tr",
+      "name": "cut/day/tr",
+      "variableCollectionId": "col:Shape",
+      "resolvedType": "FLOAT"
+    },
+    {
+      "action": "CREATE",
+      "id": "var:Shape/cut/day/br",
+      "name": "cut/day/br",
+      "variableCollectionId": "col:Shape",
+      "resolvedType": "FLOAT"
+    },
+    {
+      "action": "CREATE",
+      "id": "var:Shape/cut/day/bl",
+      "name": "cut/day/bl",
+      "variableCollectionId": "col:Shape",
+      "resolvedType": "FLOAT"
+    },
+    {
+      "action": "CREATE",
+      "id": "var:Shape/cut/tab/tl",
+      "name": "cut/tab/tl",
+      "variableCollectionId": "col:Shape",
+      "resolvedType": "FLOAT"
+    },
+    {
+      "action": "CREATE",
+      "id": "var:Shape/cut/tab/tr",
+      "name": "cut/tab/tr",
+      "variableCollectionId": "col:Shape",
+      "resolvedType": "FLOAT"
+    },
+    {
+      "action": "CREATE",
+      "id": "var:Shape/cut/tab/br",
+      "name": "cut/tab/br",
+      "variableCollectionId": "col:Shape",
+      "resolvedType": "FLOAT"
+    },
+    {
+      "action": "CREATE",
+      "id": "var:Shape/cut/tab/bl",
+      "name": "cut/tab/bl",
+      "variableCollectionId": "col:Shape",
+      "resolvedType": "FLOAT"
+    },
+    {
+      "action": "CREATE",
+      "id": "var:Shape/cut/scribble/tl",
+      "name": "cut/scribble/tl",
+      "variableCollectionId": "col:Shape",
+      "resolvedType": "FLOAT"
+    },
+    {
+      "action": "CREATE",
+      "id": "var:Shape/cut/scribble/tr",
+      "name": "cut/scribble/tr",
+      "variableCollectionId": "col:Shape",
+      "resolvedType": "FLOAT"
+    },
+    {
+      "action": "CREATE",
+      "id": "var:Shape/cut/scribble/br",
+      "name": "cut/scribble/br",
+      "variableCollectionId": "col:Shape",
+      "resolvedType": "FLOAT"
+    },
+    {
+      "action": "CREATE",
+      "id": "var:Shape/cut/scribble/bl",
+      "name": "cut/scribble/bl",
+      "variableCollectionId": "col:Shape",
+      "resolvedType": "FLOAT"
+    },
+    {
+      "action": "CREATE",
+      "id": "var:Shape/border/hairline",
+      "name": "border/hairline",
+      "variableCollectionId": "col:Shape",
+      "resolvedType": "FLOAT"
+    },
+    {
+      "action": "CREATE",
+      "id": "var:Shape/border/thin",
+      "name": "border/thin",
+      "variableCollectionId": "col:Shape",
+      "resolvedType": "FLOAT"
+    },
+    {
+      "action": "CREATE",
+      "id": "var:Shape/border/regular",
+      "name": "border/regular",
+      "variableCollectionId": "col:Shape",
+      "resolvedType": "FLOAT"
+    },
+    {
+      "action": "CREATE",
+      "id": "var:Shape/border/thick",
+      "name": "border/thick",
+      "variableCollectionId": "col:Shape",
+      "resolvedType": "FLOAT"
+    },
+    {
+      "action": "CREATE",
+      "id": "var:Shape/border/focus",
+      "name": "border/focus",
+      "variableCollectionId": "col:Shape",
+      "resolvedType": "FLOAT"
+    },
+    {
+      "action": "CREATE",
+      "id": "var:Shape/elevation/1/offset",
+      "name": "elevation/1/offset",
+      "variableCollectionId": "col:Shape",
+      "resolvedType": "FLOAT"
+    },
+    {
+      "action": "CREATE",
+      "id": "var:Shape/elevation/1/color",
+      "name": "elevation/1/color",
+      "variableCollectionId": "col:Shape",
+      "resolvedType": "COLOR"
+    },
+    {
+      "action": "CREATE",
+      "id": "var:Shape/elevation/1/color-dark",
+      "name": "elevation/1/color-dark",
+      "variableCollectionId": "col:Shape",
+      "resolvedType": "COLOR"
+    },
+    {
+      "action": "CREATE",
+      "id": "var:Shape/elevation/2/offset",
+      "name": "elevation/2/offset",
+      "variableCollectionId": "col:Shape",
+      "resolvedType": "FLOAT"
+    },
+    {
+      "action": "CREATE",
+      "id": "var:Shape/elevation/2/color",
+      "name": "elevation/2/color",
+      "variableCollectionId": "col:Shape",
+      "resolvedType": "COLOR"
+    },
+    {
+      "action": "CREATE",
+      "id": "var:Shape/elevation/2/color-dark",
+      "name": "elevation/2/color-dark",
+      "variableCollectionId": "col:Shape",
+      "resolvedType": "COLOR"
+    },
+    {
+      "action": "CREATE",
+      "id": "var:Shape/elevation/3/offset",
+      "name": "elevation/3/offset",
+      "variableCollectionId": "col:Shape",
+      "resolvedType": "FLOAT"
+    },
+    {
+      "action": "CREATE",
+      "id": "var:Shape/elevation/3/color",
+      "name": "elevation/3/color",
+      "variableCollectionId": "col:Shape",
+      "resolvedType": "COLOR"
+    },
+    {
+      "action": "CREATE",
+      "id": "var:Shape/elevation/3/color-dark",
+      "name": "elevation/3/color-dark",
+      "variableCollectionId": "col:Shape",
+      "resolvedType": "COLOR"
+    },
+    {
+      "action": "CREATE",
+      "id": "var:Motion/easing/standard",
+      "name": "easing/standard",
+      "variableCollectionId": "col:Motion",
+      "resolvedType": "STRING"
+    },
+    {
+      "action": "CREATE",
+      "id": "var:Motion/easing/emphasized",
+      "name": "easing/emphasized",
+      "variableCollectionId": "col:Motion",
+      "resolvedType": "STRING"
+    },
+    {
+      "action": "CREATE",
+      "id": "var:Motion/easing/emphasized-decelerate",
+      "name": "easing/emphasized-decelerate",
+      "variableCollectionId": "col:Motion",
+      "resolvedType": "STRING"
+    },
+    {
+      "action": "CREATE",
+      "id": "var:Motion/easing/emphasized-accelerate",
+      "name": "easing/emphasized-accelerate",
+      "variableCollectionId": "col:Motion",
+      "resolvedType": "STRING"
+    },
+    {
+      "action": "CREATE",
+      "id": "var:Motion/easing/standard-decelerate",
+      "name": "easing/standard-decelerate",
+      "variableCollectionId": "col:Motion",
+      "resolvedType": "STRING"
+    },
+    {
+      "action": "CREATE",
+      "id": "var:Motion/easing/standard-accelerate",
+      "name": "easing/standard-accelerate",
+      "variableCollectionId": "col:Motion",
+      "resolvedType": "STRING"
+    },
+    {
+      "action": "CREATE",
+      "id": "var:Motion/easing/linear",
+      "name": "easing/linear",
+      "variableCollectionId": "col:Motion",
+      "resolvedType": "STRING"
+    },
+    {
+      "action": "CREATE",
+      "id": "var:Motion/duration/short1",
+      "name": "duration/short1",
+      "variableCollectionId": "col:Motion",
+      "resolvedType": "FLOAT",
+      "description": "milliseconds"
+    },
+    {
+      "action": "CREATE",
+      "id": "var:Motion/duration/short2",
+      "name": "duration/short2",
+      "variableCollectionId": "col:Motion",
+      "resolvedType": "FLOAT",
+      "description": "milliseconds"
+    },
+    {
+      "action": "CREATE",
+      "id": "var:Motion/duration/short3",
+      "name": "duration/short3",
+      "variableCollectionId": "col:Motion",
+      "resolvedType": "FLOAT",
+      "description": "milliseconds"
+    },
+    {
+      "action": "CREATE",
+      "id": "var:Motion/duration/short4",
+      "name": "duration/short4",
+      "variableCollectionId": "col:Motion",
+      "resolvedType": "FLOAT",
+      "description": "milliseconds"
+    },
+    {
+      "action": "CREATE",
+      "id": "var:Motion/duration/medium1",
+      "name": "duration/medium1",
+      "variableCollectionId": "col:Motion",
+      "resolvedType": "FLOAT",
+      "description": "milliseconds"
+    },
+    {
+      "action": "CREATE",
+      "id": "var:Motion/duration/medium2",
+      "name": "duration/medium2",
+      "variableCollectionId": "col:Motion",
+      "resolvedType": "FLOAT",
+      "description": "milliseconds"
+    },
+    {
+      "action": "CREATE",
+      "id": "var:Motion/duration/medium3",
+      "name": "duration/medium3",
+      "variableCollectionId": "col:Motion",
+      "resolvedType": "FLOAT",
+      "description": "milliseconds"
+    },
+    {
+      "action": "CREATE",
+      "id": "var:Motion/duration/medium4",
+      "name": "duration/medium4",
+      "variableCollectionId": "col:Motion",
+      "resolvedType": "FLOAT",
+      "description": "milliseconds"
+    },
+    {
+      "action": "CREATE",
+      "id": "var:Motion/duration/long1",
+      "name": "duration/long1",
+      "variableCollectionId": "col:Motion",
+      "resolvedType": "FLOAT",
+      "description": "milliseconds"
+    },
+    {
+      "action": "CREATE",
+      "id": "var:Motion/duration/long2",
+      "name": "duration/long2",
+      "variableCollectionId": "col:Motion",
+      "resolvedType": "FLOAT",
+      "description": "milliseconds"
+    },
+    {
+      "action": "CREATE",
+      "id": "var:Motion/duration/long3",
+      "name": "duration/long3",
+      "variableCollectionId": "col:Motion",
+      "resolvedType": "FLOAT",
+      "description": "milliseconds"
+    },
+    {
+      "action": "CREATE",
+      "id": "var:Motion/duration/long4",
+      "name": "duration/long4",
+      "variableCollectionId": "col:Motion",
+      "resolvedType": "FLOAT",
+      "description": "milliseconds"
+    },
+    {
+      "action": "CREATE",
+      "id": "var:Motion/duration/extra-long1",
+      "name": "duration/extra-long1",
+      "variableCollectionId": "col:Motion",
+      "resolvedType": "FLOAT",
+      "description": "milliseconds"
+    },
+    {
+      "action": "CREATE",
+      "id": "var:Motion/duration/extra-long2",
+      "name": "duration/extra-long2",
+      "variableCollectionId": "col:Motion",
+      "resolvedType": "FLOAT",
+      "description": "milliseconds"
+    },
+    {
+      "action": "CREATE",
+      "id": "var:Motion/duration/draw",
+      "name": "duration/draw",
+      "variableCollectionId": "col:Motion",
+      "resolvedType": "FLOAT",
+      "description": "milliseconds"
+    },
+    {
+      "action": "CREATE",
+      "id": "var:Layout/bar-h",
+      "name": "bar-h",
+      "variableCollectionId": "col:Layout",
+      "resolvedType": "FLOAT"
+    },
+    {
+      "action": "CREATE",
+      "id": "var:Layout/gutter",
+      "name": "gutter",
+      "variableCollectionId": "col:Layout",
+      "resolvedType": "FLOAT"
+    },
+    {
+      "action": "CREATE",
+      "id": "var:Layout/max-width",
+      "name": "max-width",
+      "variableCollectionId": "col:Layout",
+      "resolvedType": "FLOAT"
+    },
+    {
+      "action": "CREATE",
+      "id": "var:Layout/touch-target",
+      "name": "touch-target",
+      "variableCollectionId": "col:Layout",
+      "resolvedType": "FLOAT"
+    },
+    {
+      "action": "CREATE",
+      "id": "var:Layout/z/base",
+      "name": "z/base",
+      "variableCollectionId": "col:Layout",
+      "resolvedType": "FLOAT"
+    },
+    {
+      "action": "CREATE",
+      "id": "var:Layout/z/tear",
+      "name": "z/tear",
+      "variableCollectionId": "col:Layout",
+      "resolvedType": "FLOAT"
+    },
+    {
+      "action": "CREATE",
+      "id": "var:Layout/z/tab",
+      "name": "z/tab",
+      "variableCollectionId": "col:Layout",
+      "resolvedType": "FLOAT"
+    },
+    {
+      "action": "CREATE",
+      "id": "var:Layout/z/sticker",
+      "name": "z/sticker",
+      "variableCollectionId": "col:Layout",
+      "resolvedType": "FLOAT"
+    },
+    {
+      "action": "CREATE",
+      "id": "var:Layout/z/fab",
+      "name": "z/fab",
+      "variableCollectionId": "col:Layout",
+      "resolvedType": "FLOAT"
+    },
+    {
+      "action": "CREATE",
+      "id": "var:Layout/z/app-bar",
+      "name": "z/app-bar",
+      "variableCollectionId": "col:Layout",
+      "resolvedType": "FLOAT"
+    },
+    {
+      "action": "CREATE",
+      "id": "var:Layout/z/scrim",
+      "name": "z/scrim",
+      "variableCollectionId": "col:Layout",
+      "resolvedType": "FLOAT"
+    },
+    {
+      "action": "CREATE",
+      "id": "var:Layout/z/drawer",
+      "name": "z/drawer",
+      "variableCollectionId": "col:Layout",
+      "resolvedType": "FLOAT"
+    },
+    {
+      "action": "CREATE",
+      "id": "var:Layout/z/skip-link",
+      "name": "z/skip-link",
+      "variableCollectionId": "col:Layout",
+      "resolvedType": "FLOAT"
+    }
+  ],
+  "variableModeValues": [
+    {
+      "variableId": "var:Primitives/palette/paper",
+      "modeId": "mode:Primitives:Default",
+      "value": {
+        "r": 0.9568627450980393,
+        "g": 0.9254901960784314,
+        "b": 0.8588235294117647,
+        "a": 1
+      }
+    },
+    {
+      "variableId": "var:Primitives/palette/ink",
+      "modeId": "mode:Primitives:Default",
+      "value": {
+        "r": 0.13333333333333333,
+        "g": 0.11372549019607843,
+        "b": 0.09411764705882353,
+        "a": 1
+      }
+    },
+    {
+      "variableId": "var:Primitives/palette/cobalt",
+      "modeId": "mode:Primitives:Default",
+      "value": {
+        "r": 0.11372549019607843,
+        "g": 0.23137254901960785,
+        "b": 0.6196078431372549,
+        "a": 1
+      }
+    },
+    {
+      "variableId": "var:Primitives/palette/clay",
+      "modeId": "mode:Primitives:Default",
+      "value": {
+        "r": 0.6392156862745098,
+        "g": 0.24705882352941178,
+        "b": 0.09411764705882353,
+        "a": 1
+      }
+    },
+    {
+      "variableId": "var:Primitives/palette/sun",
+      "modeId": "mode:Primitives:Default",
+      "value": {
+        "r": 0.9529411764705882,
+        "g": 0.7764705882352941,
+        "b": 0.23921568627450981,
+        "a": 1
+      }
+    },
+    {
+      "variableId": "var:Primitives/palette/paper-light",
+      "modeId": "mode:Primitives:Default",
+      "value": {
+        "r": 0.984313725490196,
+        "g": 0.9647058823529412,
+        "b": 0.9176470588235294,
+        "a": 1
+      }
+    },
+    {
+      "variableId": "var:Primitives/palette/night",
+      "modeId": "mode:Primitives:Default",
+      "value": {
+        "r": 0.10196078431372549,
+        "g": 0.08627450980392157,
+        "b": 0.06666666666666667,
+        "a": 1
+      }
+    },
+    {
+      "variableId": "var:Primitives/palette/night-text",
+      "modeId": "mode:Primitives:Default",
+      "value": {
+        "r": 0.9333333333333333,
+        "g": 0.8901960784313725,
+        "b": 0.8,
+        "a": 1
+      }
+    },
+    {
+      "variableId": "var:Primitives/fixed/receipt-paper",
+      "modeId": "mode:Primitives:Default",
+      "value": {
+        "r": 0.984313725490196,
+        "g": 0.9647058823529412,
+        "b": 0.9176470588235294,
+        "a": 1
+      }
+    },
+    {
+      "variableId": "var:Primitives/fixed/receipt-ink",
+      "modeId": "mode:Primitives:Default",
+      "value": {
+        "r": 0.13333333333333333,
+        "g": 0.11372549019607843,
+        "b": 0.09411764705882353,
+        "a": 1
+      }
+    },
+    {
+      "variableId": "var:Primitives/fixed/receipt-muted",
+      "modeId": "mode:Primitives:Default",
+      "value": {
+        "r": 0.35294117647058826,
+        "g": 0.30980392156862746,
+        "b": 0.25882352941176473,
+        "a": 1
+      }
+    },
+    {
+      "variableId": "var:Primitives/fixed/receipt-accent",
+      "modeId": "mode:Primitives:Default",
+      "value": {
+        "r": 0.6392156862745098,
+        "g": 0.24705882352941178,
+        "b": 0.09411764705882353,
+        "a": 1
+      }
+    },
+    {
+      "variableId": "var:Primitives/fixed/receipt-rule",
+      "modeId": "mode:Primitives:Default",
+      "value": {
+        "r": 0.49019607843137253,
+        "g": 0.43529411764705883,
+        "b": 0.3568627450980392,
+        "a": 1
+      }
+    },
+    {
+      "variableId": "var:Primitives/fixed/receipt-in",
+      "modeId": "mode:Primitives:Default",
+      "value": {
+        "r": 0.11372549019607843,
+        "g": 0.23137254901960785,
+        "b": 0.6196078431372549,
+        "a": 1
+      }
+    },
+    {
+      "variableId": "var:Primitives/fixed/receipt-out",
+      "modeId": "mode:Primitives:Default",
+      "value": {
+        "r": 0.6392156862745098,
+        "g": 0.24705882352941178,
+        "b": 0.09411764705882353,
+        "a": 1
+      }
+    },
+    {
+      "variableId": "var:Primitives/fixed/footer-bg",
+      "modeId": "mode:Primitives:Default",
+      "value": {
+        "r": 0.13333333333333333,
+        "g": 0.11372549019607843,
+        "b": 0.09411764705882353,
+        "a": 1
+      }
+    },
+    {
+      "variableId": "var:Primitives/fixed/footer-on",
+      "modeId": "mode:Primitives:Default",
+      "value": {
+        "r": 0.9568627450980393,
+        "g": 0.9254901960784314,
+        "b": 0.8588235294117647,
+        "a": 1
+      }
+    },
+    {
+      "variableId": "var:Primitives/fixed/footer-accent",
+      "modeId": "mode:Primitives:Default",
+      "value": {
+        "r": 0.9137254901960784,
+        "g": 0.5254901960784314,
+        "b": 0.3607843137254902,
+        "a": 1
+      }
+    },
+    {
+      "variableId": "var:Primitives/fixed/footer-link",
+      "modeId": "mode:Primitives:Default",
+      "value": {
+        "r": 0.9725490196078431,
+        "g": 0.9058823529411765,
+        "b": 0.6705882352941176,
+        "a": 1
+      }
+    },
+    {
+      "variableId": "var:Primitives/fixed/footer-body",
+      "modeId": "mode:Primitives:Default",
+      "value": {
+        "r": 0.8470588235294118,
+        "g": 0.8,
+        "b": 0.7058823529411765,
+        "a": 1
+      }
+    },
+    {
+      "variableId": "var:Primitives/fixed/footer-muted",
+      "modeId": "mode:Primitives:Default",
+      "value": {
+        "r": 0.8117647058823529,
+        "g": 0.7607843137254902,
+        "b": 0.6627450980392157,
+        "a": 1
+      }
+    },
+    {
+      "variableId": "var:Primitives/fixed/footer-fine",
+      "modeId": "mode:Primitives:Default",
+      "value": {
+        "r": 0.7254901960784313,
+        "g": 0.6705882352941176,
+        "b": 0.5686274509803921,
+        "a": 1
+      }
+    },
+    {
+      "variableId": "var:Primitives/fixed/footer-rule",
+      "modeId": "mode:Primitives:Default",
+      "value": {
+        "r": 0.42745098039215684,
+        "g": 0.3764705882352941,
+        "b": 0.30196078431372547,
+        "a": 1
+      }
+    },
+    {
+      "variableId": "var:Primitives/fixed/duo-cobalt",
+      "modeId": "mode:Primitives:Default",
+      "value": {
+        "r": 0.11372549019607843,
+        "g": 0.23137254901960785,
+        "b": 0.6196078431372549,
+        "a": 1
+      }
+    },
+    {
+      "variableId": "var:Primitives/fixed/duo-clay",
+      "modeId": "mode:Primitives:Default",
+      "value": {
+        "r": 0.6392156862745098,
+        "g": 0.24705882352941178,
+        "b": 0.09411764705882353,
+        "a": 1
+      }
+    },
+    {
+      "variableId": "var:Primitives/fixed/ink-line",
+      "modeId": "mode:Primitives:Default",
+      "value": {
+        "r": 0.13333333333333333,
+        "g": 0.11372549019607843,
+        "b": 0.09411764705882353,
+        "a": 0.12
+      }
+    },
+    {
+      "variableId": "var:Theme/md-sys-color/primary",
+      "modeId": "mode:Theme:Light",
+      "value": {
+        "r": 0.11372549019607843,
+        "g": 0.23137254901960785,
+        "b": 0.6196078431372549,
+        "a": 1
+      }
+    },
+    {
+      "variableId": "var:Theme/md-sys-color/primary",
+      "modeId": "mode:Theme:Dark",
+      "value": {
+        "r": 0.6627450980392157,
+        "g": 0.7333333333333333,
+        "b": 1,
+        "a": 1
+      }
+    },
+    {
+      "variableId": "var:Theme/md-sys-color/on-primary",
+      "modeId": "mode:Theme:Light",
+      "value": {
+        "r": 0.984313725490196,
+        "g": 0.9647058823529412,
+        "b": 0.9176470588235294,
+        "a": 1
+      }
+    },
+    {
+      "variableId": "var:Theme/md-sys-color/on-primary",
+      "modeId": "mode:Theme:Dark",
+      "value": {
+        "r": 0.047058823529411764,
+        "g": 0.10196078431372549,
+        "b": 0.30196078431372547,
+        "a": 1
+      }
+    },
+    {
+      "variableId": "var:Theme/md-sys-color/primary-container",
+      "modeId": "mode:Theme:Light",
+      "value": {
+        "r": 0.8509803921568627,
+        "g": 0.8784313725490196,
+        "b": 0.9725490196078431,
+        "a": 1
+      }
+    },
+    {
+      "variableId": "var:Theme/md-sys-color/primary-container",
+      "modeId": "mode:Theme:Dark",
+      "value": {
+        "r": 0.1450980392156863,
+        "g": 0.25098039215686274,
+        "b": 0.6235294117647059,
+        "a": 1
+      }
+    },
+    {
+      "variableId": "var:Theme/md-sys-color/on-primary-container",
+      "modeId": "mode:Theme:Light",
+      "value": {
+        "r": 0.047058823529411764,
+        "g": 0.10196078431372549,
+        "b": 0.30196078431372547,
+        "a": 1
+      }
+    },
+    {
+      "variableId": "var:Theme/md-sys-color/on-primary-container",
+      "modeId": "mode:Theme:Dark",
+      "value": {
+        "r": 0.8588235294117647,
+        "g": 0.8862745098039215,
+        "b": 1,
+        "a": 1
+      }
+    },
+    {
+      "variableId": "var:Theme/md-sys-color/secondary",
+      "modeId": "mode:Theme:Light",
+      "value": {
+        "r": 0.35294117647058826,
+        "g": 0.30980392156862746,
+        "b": 0.25882352941176473,
+        "a": 1
+      }
+    },
+    {
+      "variableId": "var:Theme/md-sys-color/secondary",
+      "modeId": "mode:Theme:Dark",
+      "value": {
+        "r": 0.8392156862745098,
+        "g": 0.7843137254901961,
+        "b": 0.6901960784313725,
+        "a": 1
+      }
+    },
+    {
+      "variableId": "var:Theme/md-sys-color/on-secondary",
+      "modeId": "mode:Theme:Light",
+      "value": {
+        "r": 0.984313725490196,
+        "g": 0.9647058823529412,
+        "b": 0.9176470588235294,
+        "a": 1
+      }
+    },
+    {
+      "variableId": "var:Theme/md-sys-color/on-secondary",
+      "modeId": "mode:Theme:Dark",
+      "value": {
+        "r": 0.16862745098039217,
+        "g": 0.1411764705882353,
+        "b": 0.10588235294117647,
+        "a": 1
+      }
+    },
+    {
+      "variableId": "var:Theme/md-sys-color/secondary-container",
+      "modeId": "mode:Theme:Light",
+      "value": {
+        "r": 0.9098039215686274,
+        "g": 0.8627450980392157,
+        "b": 0.7647058823529411,
+        "a": 1
+      }
+    },
+    {
+      "variableId": "var:Theme/md-sys-color/secondary-container",
+      "modeId": "mode:Theme:Dark",
+      "value": {
+        "r": 0.2901960784313726,
+        "g": 0.25098039215686274,
+        "b": 0.20392156862745098,
+        "a": 1
+      }
+    },
+    {
+      "variableId": "var:Theme/md-sys-color/on-secondary-container",
+      "modeId": "mode:Theme:Light",
+      "value": {
+        "r": 0.16862745098039217,
+        "g": 0.1411764705882353,
+        "b": 0.10588235294117647,
+        "a": 1
+      }
+    },
+    {
+      "variableId": "var:Theme/md-sys-color/on-secondary-container",
+      "modeId": "mode:Theme:Dark",
+      "value": {
+        "r": 0.9411764705882353,
+        "g": 0.8941176470588236,
+        "b": 0.796078431372549,
+        "a": 1
+      }
+    },
+    {
+      "variableId": "var:Theme/md-sys-color/tertiary",
+      "modeId": "mode:Theme:Light",
+      "value": {
+        "r": 0.6392156862745098,
+        "g": 0.24705882352941178,
+        "b": 0.09411764705882353,
+        "a": 1
+      }
+    },
+    {
+      "variableId": "var:Theme/md-sys-color/tertiary",
+      "modeId": "mode:Theme:Dark",
+      "value": {
+        "r": 1,
+        "g": 0.7098039215686275,
+        "b": 0.5843137254901961,
+        "a": 1
+      }
+    },
+    {
+      "variableId": "var:Theme/md-sys-color/on-tertiary",
+      "modeId": "mode:Theme:Light",
+      "value": {
+        "r": 1,
+        "g": 0.9803921568627451,
+        "b": 0.9490196078431372,
+        "a": 1
+      }
+    },
+    {
+      "variableId": "var:Theme/md-sys-color/on-tertiary",
+      "modeId": "mode:Theme:Dark",
+      "value": {
+        "r": 0.2901960784313726,
+        "g": 0.08627450980392157,
+        "b": 0,
+        "a": 1
+      }
+    },
+    {
+      "variableId": "var:Theme/md-sys-color/tertiary-container",
+      "modeId": "mode:Theme:Light",
+      "value": {
+        "r": 0.9647058823529412,
+        "g": 0.8352941176470589,
+        "b": 0.7686274509803922,
+        "a": 1
+      }
+    },
+    {
+      "variableId": "var:Theme/md-sys-color/tertiary-container",
+      "modeId": "mode:Theme:Dark",
+      "value": {
+        "r": 0.47843137254901963,
+        "g": 0.17254901960784313,
+        "b": 0.047058823529411764,
+        "a": 1
+      }
+    },
+    {
+      "variableId": "var:Theme/md-sys-color/on-tertiary-container",
+      "modeId": "mode:Theme:Light",
+      "value": {
+        "r": 0.22745098039215686,
+        "g": 0.07058823529411765,
+        "b": 0.01568627450980392,
+        "a": 1
+      }
+    },
+    {
+      "variableId": "var:Theme/md-sys-color/on-tertiary-container",
+      "modeId": "mode:Theme:Dark",
+      "value": {
+        "r": 1,
+        "g": 0.8588235294117647,
+        "b": 0.803921568627451,
+        "a": 1
+      }
+    },
+    {
+      "variableId": "var:Theme/md-sys-color/error",
+      "modeId": "mode:Theme:Light",
+      "value": {
+        "r": 0.7294117647058823,
+        "g": 0.10196078431372549,
+        "b": 0.10196078431372549,
+        "a": 1
+      }
+    },
+    {
+      "variableId": "var:Theme/md-sys-color/error",
+      "modeId": "mode:Theme:Dark",
+      "value": {
+        "r": 1,
+        "g": 0.7058823529411765,
+        "b": 0.6705882352941176,
+        "a": 1
+      }
+    },
+    {
+      "variableId": "var:Theme/md-sys-color/on-error",
+      "modeId": "mode:Theme:Light",
+      "value": {
+        "r": 1,
+        "g": 1,
+        "b": 1,
+        "a": 1
+      }
+    },
+    {
+      "variableId": "var:Theme/md-sys-color/on-error",
+      "modeId": "mode:Theme:Dark",
+      "value": {
+        "r": 0.4117647058823529,
+        "g": 0,
+        "b": 0.0196078431372549,
+        "a": 1
+      }
+    },
+    {
+      "variableId": "var:Theme/md-sys-color/error-container",
+      "modeId": "mode:Theme:Light",
+      "value": {
+        "r": 1,
+        "g": 0.8549019607843137,
+        "b": 0.8392156862745098,
+        "a": 1
+      }
+    },
+    {
+      "variableId": "var:Theme/md-sys-color/error-container",
+      "modeId": "mode:Theme:Dark",
+      "value": {
+        "r": 0.5764705882352941,
+        "g": 0,
+        "b": 0.0392156862745098,
+        "a": 1
+      }
+    },
+    {
+      "variableId": "var:Theme/md-sys-color/on-error-container",
+      "modeId": "mode:Theme:Light",
+      "value": {
+        "r": 0.2549019607843137,
+        "g": 0,
+        "b": 0.00784313725490196,
+        "a": 1
+      }
+    },
+    {
+      "variableId": "var:Theme/md-sys-color/on-error-container",
+      "modeId": "mode:Theme:Dark",
+      "value": {
+        "r": 1,
+        "g": 0.8549019607843137,
+        "b": 0.8392156862745098,
+        "a": 1
+      }
+    },
+    {
+      "variableId": "var:Theme/md-sys-color/background",
+      "modeId": "mode:Theme:Light",
+      "value": {
+        "r": 0.9568627450980393,
+        "g": 0.9254901960784314,
+        "b": 0.8588235294117647,
+        "a": 1
+      }
+    },
+    {
+      "variableId": "var:Theme/md-sys-color/background",
+      "modeId": "mode:Theme:Dark",
+      "value": {
+        "r": 0.10196078431372549,
+        "g": 0.08627450980392157,
+        "b": 0.06666666666666667,
+        "a": 1
+      }
+    },
+    {
+      "variableId": "var:Theme/md-sys-color/on-background",
+      "modeId": "mode:Theme:Light",
+      "value": {
+        "r": 0.13333333333333333,
+        "g": 0.11372549019607843,
+        "b": 0.09411764705882353,
+        "a": 1
+      }
+    },
+    {
+      "variableId": "var:Theme/md-sys-color/on-background",
+      "modeId": "mode:Theme:Dark",
+      "value": {
+        "r": 0.9333333333333333,
+        "g": 0.8901960784313725,
+        "b": 0.8,
+        "a": 1
+      }
+    },
+    {
+      "variableId": "var:Theme/md-sys-color/surface",
+      "modeId": "mode:Theme:Light",
+      "value": {
+        "r": 0.9568627450980393,
+        "g": 0.9254901960784314,
+        "b": 0.8588235294117647,
+        "a": 1
+      }
+    },
+    {
+      "variableId": "var:Theme/md-sys-color/surface",
+      "modeId": "mode:Theme:Dark",
+      "value": {
+        "r": 0.10196078431372549,
+        "g": 0.08627450980392157,
+        "b": 0.06666666666666667,
+        "a": 1
+      }
+    },
+    {
+      "variableId": "var:Theme/md-sys-color/on-surface",
+      "modeId": "mode:Theme:Light",
+      "value": {
+        "r": 0.13333333333333333,
+        "g": 0.11372549019607843,
+        "b": 0.09411764705882353,
+        "a": 1
+      }
+    },
+    {
+      "variableId": "var:Theme/md-sys-color/on-surface",
+      "modeId": "mode:Theme:Dark",
+      "value": {
+        "r": 0.9333333333333333,
+        "g": 0.8901960784313725,
+        "b": 0.8,
+        "a": 1
+      }
+    },
+    {
+      "variableId": "var:Theme/md-sys-color/surface-variant",
+      "modeId": "mode:Theme:Light",
+      "value": {
+        "r": 0.9019607843137255,
+        "g": 0.8627450980392157,
+        "b": 0.7764705882352941,
+        "a": 1
+      }
+    },
+    {
+      "variableId": "var:Theme/md-sys-color/surface-variant",
+      "modeId": "mode:Theme:Dark",
+      "value": {
+        "r": 0.23921568627450981,
+        "g": 0.20784313725490197,
+        "b": 0.16862745098039217,
+        "a": 1
+      }
+    },
+    {
+      "variableId": "var:Theme/md-sys-color/on-surface-variant",
+      "modeId": "mode:Theme:Light",
+      "value": {
+        "r": 0.35294117647058826,
+        "g": 0.30980392156862746,
+        "b": 0.25882352941176473,
+        "a": 1
+      }
+    },
+    {
+      "variableId": "var:Theme/md-sys-color/on-surface-variant",
+      "modeId": "mode:Theme:Dark",
+      "value": {
+        "r": 0.8117647058823529,
+        "g": 0.7607843137254902,
+        "b": 0.6627450980392157,
+        "a": 1
+      }
+    },
+    {
+      "variableId": "var:Theme/md-sys-color/outline",
+      "modeId": "mode:Theme:Light",
+      "value": {
+        "r": 0.49019607843137253,
+        "g": 0.43529411764705883,
+        "b": 0.3568627450980392,
+        "a": 1
+      }
+    },
+    {
+      "variableId": "var:Theme/md-sys-color/outline",
+      "modeId": "mode:Theme:Dark",
+      "value": {
+        "r": 0.6039215686274509,
+        "g": 0.5490196078431373,
+        "b": 0.4627450980392157,
+        "a": 1
+      }
+    },
+    {
+      "variableId": "var:Theme/md-sys-color/outline-variant",
+      "modeId": "mode:Theme:Light",
+      "value": {
+        "r": 0.8274509803921568,
+        "g": 0.7803921568627451,
+        "b": 0.6823529411764706,
+        "a": 1
+      }
+    },
+    {
+      "variableId": "var:Theme/md-sys-color/outline-variant",
+      "modeId": "mode:Theme:Dark",
+      "value": {
+        "r": 0.2901960784313726,
+        "g": 0.25098039215686274,
+        "b": 0.20392156862745098,
+        "a": 1
+      }
+    },
+    {
+      "variableId": "var:Theme/md-sys-color/shadow",
+      "modeId": "mode:Theme:Light",
+      "value": {
+        "r": 0.13333333333333333,
+        "g": 0.11372549019607843,
+        "b": 0.09411764705882353,
+        "a": 1
+      }
+    },
+    {
+      "variableId": "var:Theme/md-sys-color/shadow",
+      "modeId": "mode:Theme:Dark",
+      "value": {
+        "r": 0,
+        "g": 0,
+        "b": 0,
+        "a": 1
+      }
+    },
+    {
+      "variableId": "var:Theme/md-sys-color/scrim",
+      "modeId": "mode:Theme:Light",
+      "value": {
+        "r": 0.13333333333333333,
+        "g": 0.11372549019607843,
+        "b": 0.09411764705882353,
+        "a": 1
+      }
+    },
+    {
+      "variableId": "var:Theme/md-sys-color/scrim",
+      "modeId": "mode:Theme:Dark",
+      "value": {
+        "r": 0.13333333333333333,
+        "g": 0.11372549019607843,
+        "b": 0.09411764705882353,
+        "a": 1
+      }
+    },
+    {
+      "variableId": "var:Theme/md-sys-color/inverse-surface",
+      "modeId": "mode:Theme:Light",
+      "value": {
+        "r": 0.16470588235294117,
+        "g": 0.1411764705882353,
+        "b": 0.11372549019607843,
+        "a": 1
+      }
+    },
+    {
+      "variableId": "var:Theme/md-sys-color/inverse-surface",
+      "modeId": "mode:Theme:Dark",
+      "value": {
+        "r": 0.9333333333333333,
+        "g": 0.8901960784313725,
+        "b": 0.8,
+        "a": 1
+      }
+    },
+    {
+      "variableId": "var:Theme/md-sys-color/inverse-on-surface",
+      "modeId": "mode:Theme:Light",
+      "value": {
+        "r": 0.9568627450980393,
+        "g": 0.9254901960784314,
+        "b": 0.8588235294117647,
+        "a": 1
+      }
+    },
+    {
+      "variableId": "var:Theme/md-sys-color/inverse-on-surface",
+      "modeId": "mode:Theme:Dark",
+      "value": {
+        "r": 0.16470588235294117,
+        "g": 0.1411764705882353,
+        "b": 0.11372549019607843,
+        "a": 1
+      }
+    },
+    {
+      "variableId": "var:Theme/md-sys-color/inverse-primary",
+      "modeId": "mode:Theme:Light",
+      "value": {
+        "r": 0.6627450980392157,
+        "g": 0.7333333333333333,
+        "b": 1,
+        "a": 1
+      }
+    },
+    {
+      "variableId": "var:Theme/md-sys-color/inverse-primary",
+      "modeId": "mode:Theme:Dark",
+      "value": {
+        "r": 0.11372549019607843,
+        "g": 0.23137254901960785,
+        "b": 0.6196078431372549,
+        "a": 1
+      }
+    },
+    {
+      "variableId": "var:Theme/md-sys-color/surface-container-lowest",
+      "modeId": "mode:Theme:Light",
+      "value": {
+        "r": 0.984313725490196,
+        "g": 0.9647058823529412,
+        "b": 0.9176470588235294,
+        "a": 1
+      }
+    },
+    {
+      "variableId": "var:Theme/md-sys-color/surface-container-lowest",
+      "modeId": "mode:Theme:Dark",
+      "value": {
+        "r": 0.0784313725490196,
+        "g": 0.06666666666666667,
+        "b": 0.050980392156862744,
+        "a": 1
+      }
+    },
+    {
+      "variableId": "var:Theme/md-sys-color/surface-container-low",
+      "modeId": "mode:Theme:Light",
+      "value": {
+        "r": 0.9372549019607843,
+        "g": 0.9019607843137255,
+        "b": 0.8235294117647058,
+        "a": 1
+      }
+    },
+    {
+      "variableId": "var:Theme/md-sys-color/surface-container-low",
+      "modeId": "mode:Theme:Dark",
+      "value": {
+        "r": 0.12941176470588237,
+        "g": 0.10980392156862745,
+        "b": 0.08627450980392157,
+        "a": 1
+      }
+    },
+    {
+      "variableId": "var:Theme/md-sys-color/surface-container",
+      "modeId": "mode:Theme:Light",
+      "value": {
+        "r": 0.9176470588235294,
+        "g": 0.8666666666666667,
+        "b": 0.7686274509803922,
+        "a": 1
+      }
+    },
+    {
+      "variableId": "var:Theme/md-sys-color/surface-container",
+      "modeId": "mode:Theme:Dark",
+      "value": {
+        "r": 0.1568627450980392,
+        "g": 0.13333333333333333,
+        "b": 0.10588235294117647,
+        "a": 1
+      }
+    },
+    {
+      "variableId": "var:Theme/md-sys-color/surface-container-high",
+      "modeId": "mode:Theme:Light",
+      "value": {
+        "r": 0.8941176470588236,
+        "g": 0.8392156862745098,
+        "b": 0.7333333333333333,
+        "a": 1
+      }
+    },
+    {
+      "variableId": "var:Theme/md-sys-color/surface-container-high",
+      "modeId": "mode:Theme:Dark",
+      "value": {
+        "r": 0.19607843137254902,
+        "g": 0.16862745098039217,
+        "b": 0.13725490196078433,
+        "a": 1
+      }
+    },
+    {
+      "variableId": "var:Theme/md-sys-color/surface-container-highest",
+      "modeId": "mode:Theme:Light",
+      "value": {
+        "r": 0.8666666666666667,
+        "g": 0.8117647058823529,
+        "b": 0.6980392156862745,
+        "a": 1
+      }
+    },
+    {
+      "variableId": "var:Theme/md-sys-color/surface-container-highest",
+      "modeId": "mode:Theme:Dark",
+      "value": {
+        "r": 0.23921568627450981,
+        "g": 0.20784313725490197,
+        "b": 0.16862745098039217,
+        "a": 1
+      }
+    },
+    {
+      "variableId": "var:Theme/md-sys-color/surface-tint",
+      "modeId": "mode:Theme:Light",
+      "value": {
+        "r": 0.11372549019607843,
+        "g": 0.23137254901960785,
+        "b": 0.6196078431372549,
+        "a": 1
+      }
+    },
+    {
+      "variableId": "var:Theme/md-sys-color/surface-tint",
+      "modeId": "mode:Theme:Dark",
+      "value": {
+        "r": 0.6627450980392157,
+        "g": 0.7333333333333333,
+        "b": 1,
+        "a": 1
+      }
+    },
+    {
+      "variableId": "var:Theme/md-sys-color/sun",
+      "modeId": "mode:Theme:Light",
+      "value": {
+        "r": 0.9529411764705882,
+        "g": 0.7764705882352941,
+        "b": 0.23921568627450981,
+        "a": 1
+      }
+    },
+    {
+      "variableId": "var:Theme/md-sys-color/sun",
+      "modeId": "mode:Theme:Dark",
+      "value": {
+        "r": 0.9529411764705882,
+        "g": 0.7764705882352941,
+        "b": 0.23921568627450981,
+        "a": 1
+      }
+    },
+    {
+      "variableId": "var:Theme/md-sys-color/on-sun",
+      "modeId": "mode:Theme:Light",
+      "value": {
+        "r": 0.13333333333333333,
+        "g": 0.11372549019607843,
+        "b": 0.09411764705882353,
+        "a": 1
+      }
+    },
+    {
+      "variableId": "var:Theme/md-sys-color/on-sun",
+      "modeId": "mode:Theme:Dark",
+      "value": {
+        "r": 0.13333333333333333,
+        "g": 0.11372549019607843,
+        "b": 0.09411764705882353,
+        "a": 1
+      }
+    },
+    {
+      "variableId": "var:Theme/md-sys-color/sun-container",
+      "modeId": "mode:Theme:Light",
+      "value": {
+        "r": 0.9725490196078431,
+        "g": 0.9058823529411765,
+        "b": 0.6705882352941176,
+        "a": 1
+      }
+    },
+    {
+      "variableId": "var:Theme/md-sys-color/sun-container",
+      "modeId": "mode:Theme:Dark",
+      "value": {
+        "r": 0.3568627450980392,
+        "g": 0.2901960784313726,
+        "b": 0.06274509803921569,
+        "a": 1
+      }
+    },
+    {
+      "variableId": "var:Theme/md-sys-color/on-sun-container",
+      "modeId": "mode:Theme:Light",
+      "value": {
+        "r": 0.22745098039215686,
+        "g": 0.17254901960784313,
+        "b": 0,
+        "a": 1
+      }
+    },
+    {
+      "variableId": "var:Theme/md-sys-color/on-sun-container",
+      "modeId": "mode:Theme:Dark",
+      "value": {
+        "r": 0.984313725490196,
+        "g": 0.9137254901960784,
+        "b": 0.6588235294117647,
+        "a": 1
+      }
+    },
+    {
+      "variableId": "var:Theme/md-sys-color/highlight-on-primary",
+      "modeId": "mode:Theme:Light",
+      "value": {
+        "r": 0.9529411764705882,
+        "g": 0.7764705882352941,
+        "b": 0.23921568627450981,
+        "a": 1
+      }
+    },
+    {
+      "variableId": "var:Theme/md-sys-color/highlight-on-primary",
+      "modeId": "mode:Theme:Dark",
+      "value": {
+        "r": 0.047058823529411764,
+        "g": 0.10196078431372549,
+        "b": 0.30196078431372547,
+        "a": 1
+      }
+    },
+    {
+      "variableId": "var:Theme/md-sys-color/on-primary-muted",
+      "modeId": "mode:Theme:Light",
+      "value": {
+        "r": 0.8509803921568627,
+        "g": 0.8784313725490196,
+        "b": 0.9725490196078431,
+        "a": 1
+      }
+    },
+    {
+      "variableId": "var:Theme/md-sys-color/on-primary-muted",
+      "modeId": "mode:Theme:Dark",
+      "value": {
+        "r": 0.10588235294117647,
+        "g": 0.1843137254901961,
+        "b": 0.47843137254901963,
+        "a": 1
+      }
+    },
+    {
+      "variableId": "var:Theme/md-sys-color/sun-outline",
+      "modeId": "mode:Theme:Light",
+      "value": {
+        "r": 0.49019607843137253,
+        "g": 0.43529411764705883,
+        "b": 0.3568627450980392,
+        "a": 1
+      }
+    },
+    {
+      "variableId": "var:Theme/md-sys-color/sun-outline",
+      "modeId": "mode:Theme:Dark",
+      "value": {
+        "r": 0.6588235294117647,
+        "g": 0.6039215686274509,
+        "b": 0.24705882352941178,
+        "a": 1
+      }
+    },
+    {
+      "variableId": "var:Type/family/display",
+      "modeId": "mode:Type:Default",
+      "value": "Fraunces"
+    },
+    {
+      "variableId": "var:Type/family/body",
+      "modeId": "mode:Type:Default",
+      "value": "Atkinson Hyperlegible Next"
+    },
+    {
+      "variableId": "var:Type/family/label",
+      "modeId": "mode:Type:Default",
+      "value": "DM Mono"
+    },
+    {
+      "variableId": "var:Type/family/hand",
+      "modeId": "mode:Type:Default",
+      "value": "Caveat"
+    },
+    {
+      "variableId": "var:Type/size/display-large",
+      "modeId": "mode:Type:Default",
+      "value": 89.6
+    },
+    {
+      "variableId": "var:Type/size/headline-large",
+      "modeId": "mode:Type:Default",
+      "value": 56
+    },
+    {
+      "variableId": "var:Type/size/headline-medium",
+      "modeId": "mode:Type:Default",
+      "value": 36
+    },
+    {
+      "variableId": "var:Type/size/title-large",
+      "modeId": "mode:Type:Default",
+      "value": 22
+    },
+    {
+      "variableId": "var:Type/size/title-medium",
+      "modeId": "mode:Type:Default",
+      "value": 17
+    },
+    {
+      "variableId": "var:Type/size/body-large",
+      "modeId": "mode:Type:Default",
+      "value": 17
+    },
+    {
+      "variableId": "var:Type/size/body-medium",
+      "modeId": "mode:Type:Default",
+      "value": 15
+    },
+    {
+      "variableId": "var:Type/size/label-large",
+      "modeId": "mode:Type:Default",
+      "value": 14
+    },
+    {
+      "variableId": "var:Type/size/label-medium",
+      "modeId": "mode:Type:Default",
+      "value": 12
+    },
+    {
+      "variableId": "var:Type/size/lead",
+      "modeId": "mode:Type:Default",
+      "value": null
+    },
+    {
+      "variableId": "var:Type/size/caption",
+      "modeId": "mode:Type:Default",
+      "value": 11
+    },
+    {
+      "variableId": "var:Type/size/hand",
+      "modeId": "mode:Type:Default",
+      "value": 24
+    },
+    {
+      "variableId": "var:Type/weight/regular",
+      "modeId": "mode:Type:Default",
+      "value": 400
+    },
+    {
+      "variableId": "var:Type/weight/medium",
+      "modeId": "mode:Type:Default",
+      "value": 500
+    },
+    {
+      "variableId": "var:Type/weight/semibold",
+      "modeId": "mode:Type:Default",
+      "value": 650
+    },
+    {
+      "variableId": "var:Type/weight/bold",
+      "modeId": "mode:Type:Default",
+      "value": 700
+    },
+    {
+      "variableId": "var:Type/weight/extrabold",
+      "modeId": "mode:Type:Default",
+      "value": 800
+    },
+    {
+      "variableId": "var:Type/leading/display",
+      "modeId": "mode:Type:Default",
+      "value": 0.98
+    },
+    {
+      "variableId": "var:Type/leading/headline",
+      "modeId": "mode:Type:Default",
+      "value": 1.04
+    },
+    {
+      "variableId": "var:Type/leading/title-xl",
+      "modeId": "mode:Type:Default",
+      "value": 1.1
+    },
+    {
+      "variableId": "var:Type/leading/title",
+      "modeId": "mode:Type:Default",
+      "value": 1.2
+    },
+    {
+      "variableId": "var:Type/leading/lead",
+      "modeId": "mode:Type:Default",
+      "value": 1.55
+    },
+    {
+      "variableId": "var:Type/leading/body",
+      "modeId": "mode:Type:Default",
+      "value": 1.6
+    },
+    {
+      "variableId": "var:Type/leading/label",
+      "modeId": "mode:Type:Default",
+      "value": 1
+    },
+    {
+      "variableId": "var:Type/leading/mono",
+      "modeId": "mode:Type:Default",
+      "value": 1.5
+    },
+    {
+      "variableId": "var:Type/tracking-em/display",
+      "modeId": "mode:Type:Default",
+      "value": -0.025
+    },
+    {
+      "variableId": "var:Type/tracking-em/headline",
+      "modeId": "mode:Type:Default",
+      "value": -0.02
+    },
+    {
+      "variableId": "var:Type/tracking-em/title-xl",
+      "modeId": "mode:Type:Default",
+      "value": -0.015
+    },
+    {
+      "variableId": "var:Type/tracking-em/body",
+      "modeId": "mode:Type:Default",
+      "value": 0
+    },
+    {
+      "variableId": "var:Type/tracking-em/button",
+      "modeId": "mode:Type:Default",
+      "value": 0.02
+    },
+    {
+      "variableId": "var:Type/tracking-em/mono",
+      "modeId": "mode:Type:Default",
+      "value": 0.02
+    },
+    {
+      "variableId": "var:Type/tracking-em/mono-wide",
+      "modeId": "mode:Type:Default",
+      "value": 0.08
+    },
+    {
+      "variableId": "var:Type/tracking-em/stamp",
+      "modeId": "mode:Type:Default",
+      "value": 0.14
+    },
+    {
+      "variableId": "var:Space/space/0",
+      "modeId": "mode:Space:Default",
+      "value": 0
+    },
+    {
+      "variableId": "var:Space/space/1",
+      "modeId": "mode:Space:Default",
+      "value": 4
+    },
+    {
+      "variableId": "var:Space/space/2",
+      "modeId": "mode:Space:Default",
+      "value": 8
+    },
+    {
+      "variableId": "var:Space/space/3",
+      "modeId": "mode:Space:Default",
+      "value": 12
+    },
+    {
+      "variableId": "var:Space/space/4",
+      "modeId": "mode:Space:Default",
+      "value": 16
+    },
+    {
+      "variableId": "var:Space/space/5",
+      "modeId": "mode:Space:Default",
+      "value": 20
+    },
+    {
+      "variableId": "var:Space/space/6",
+      "modeId": "mode:Space:Default",
+      "value": 24
+    },
+    {
+      "variableId": "var:Space/space/8",
+      "modeId": "mode:Space:Default",
+      "value": 32
+    },
+    {
+      "variableId": "var:Space/space/10",
+      "modeId": "mode:Space:Default",
+      "value": 40
+    },
+    {
+      "variableId": "var:Space/space/12",
+      "modeId": "mode:Space:Default",
+      "value": 48
+    },
+    {
+      "variableId": "var:Space/space/14",
+      "modeId": "mode:Space:Default",
+      "value": 56
+    },
+    {
+      "variableId": "var:Space/space/16",
+      "modeId": "mode:Space:Default",
+      "value": 64
+    },
+    {
+      "variableId": "var:Space/space/20",
+      "modeId": "mode:Space:Default",
+      "value": 80
+    },
+    {
+      "variableId": "var:Space/space/24",
+      "modeId": "mode:Space:Default",
+      "value": 96
+    },
+    {
+      "variableId": "var:Shape/corner/extra-small",
+      "modeId": "mode:Shape:Default",
+      "value": 3
+    },
+    {
+      "variableId": "var:Shape/corner/small",
+      "modeId": "mode:Shape:Default",
+      "value": 6
+    },
+    {
+      "variableId": "var:Shape/corner/medium",
+      "modeId": "mode:Shape:Default",
+      "value": 10
+    },
+    {
+      "variableId": "var:Shape/corner/large",
+      "modeId": "mode:Shape:Default",
+      "value": 18
+    },
+    {
+      "variableId": "var:Shape/corner/full",
+      "modeId": "mode:Shape:Default",
+      "value": 999
+    },
+    {
+      "variableId": "var:Shape/cut/primary/tl",
+      "modeId": "mode:Shape:Default",
+      "value": 22
+    },
+    {
+      "variableId": "var:Shape/cut/primary/tr",
+      "modeId": "mode:Shape:Default",
+      "value": 5
+    },
+    {
+      "variableId": "var:Shape/cut/primary/br",
+      "modeId": "mode:Shape:Default",
+      "value": 22
+    },
+    {
+      "variableId": "var:Shape/cut/primary/bl",
+      "modeId": "mode:Shape:Default",
+      "value": 5
+    },
+    {
+      "variableId": "var:Shape/cut/alt/tl",
+      "modeId": "mode:Shape:Default",
+      "value": 5
+    },
+    {
+      "variableId": "var:Shape/cut/alt/tr",
+      "modeId": "mode:Shape:Default",
+      "value": 20
+    },
+    {
+      "variableId": "var:Shape/cut/alt/br",
+      "modeId": "mode:Shape:Default",
+      "value": 5
+    },
+    {
+      "variableId": "var:Shape/cut/alt/bl",
+      "modeId": "mode:Shape:Default",
+      "value": 20
+    },
+    {
+      "variableId": "var:Shape/cut/ticket/tl",
+      "modeId": "mode:Shape:Default",
+      "value": 3
+    },
+    {
+      "variableId": "var:Shape/cut/ticket/tr",
+      "modeId": "mode:Shape:Default",
+      "value": 16
+    },
+    {
+      "variableId": "var:Shape/cut/ticket/br",
+      "modeId": "mode:Shape:Default",
+      "value": 3
+    },
+    {
+      "variableId": "var:Shape/cut/ticket/bl",
+      "modeId": "mode:Shape:Default",
+      "value": 16
+    },
+    {
+      "variableId": "var:Shape/cut/banner/tl",
+      "modeId": "mode:Shape:Default",
+      "value": 3
+    },
+    {
+      "variableId": "var:Shape/cut/banner/tr",
+      "modeId": "mode:Shape:Default",
+      "value": 12
+    },
+    {
+      "variableId": "var:Shape/cut/banner/br",
+      "modeId": "mode:Shape:Default",
+      "value": 3
+    },
+    {
+      "variableId": "var:Shape/cut/banner/bl",
+      "modeId": "mode:Shape:Default",
+      "value": 12
+    },
+    {
+      "variableId": "var:Shape/cut/day/tl",
+      "modeId": "mode:Shape:Default",
+      "value": 2
+    },
+    {
+      "variableId": "var:Shape/cut/day/tr",
+      "modeId": "mode:Shape:Default",
+      "value": 14
+    },
+    {
+      "variableId": "var:Shape/cut/day/br",
+      "modeId": "mode:Shape:Default",
+      "value": 2
+    },
+    {
+      "variableId": "var:Shape/cut/day/bl",
+      "modeId": "mode:Shape:Default",
+      "value": 14
+    },
+    {
+      "variableId": "var:Shape/cut/tab/tl",
+      "modeId": "mode:Shape:Default",
+      "value": 16
+    },
+    {
+      "variableId": "var:Shape/cut/tab/tr",
+      "modeId": "mode:Shape:Default",
+      "value": 16
+    },
+    {
+      "variableId": "var:Shape/cut/tab/br",
+      "modeId": "mode:Shape:Default",
+      "value": 0
+    },
+    {
+      "variableId": "var:Shape/cut/tab/bl",
+      "modeId": "mode:Shape:Default",
+      "value": 0
+    },
+    {
+      "variableId": "var:Shape/cut/scribble/tl",
+      "modeId": "mode:Shape:Default",
+      "value": 50
+    },
+    {
+      "variableId": "var:Shape/cut/scribble/tr",
+      "modeId": "mode:Shape:Default",
+      "value": 44
+    },
+    {
+      "variableId": "var:Shape/cut/scribble/br",
+      "modeId": "mode:Shape:Default",
+      "value": 52
+    },
+    {
+      "variableId": "var:Shape/cut/scribble/bl",
+      "modeId": "mode:Shape:Default",
+      "value": 48
+    },
+    {
+      "variableId": "var:Shape/border/hairline",
+      "modeId": "mode:Shape:Default",
+      "value": 1
+    },
+    {
+      "variableId": "var:Shape/border/thin",
+      "modeId": "mode:Shape:Default",
+      "value": 1.5
+    },
+    {
+      "variableId": "var:Shape/border/regular",
+      "modeId": "mode:Shape:Default",
+      "value": 2
+    },
+    {
+      "variableId": "var:Shape/border/thick",
+      "modeId": "mode:Shape:Default",
+      "value": 2.5
+    },
+    {
+      "variableId": "var:Shape/border/focus",
+      "modeId": "mode:Shape:Default",
+      "value": 3
+    },
+    {
+      "variableId": "var:Shape/elevation/1/offset",
+      "modeId": "mode:Shape:Default",
+      "value": 2
+    },
+    {
+      "variableId": "var:Shape/elevation/1/color",
+      "modeId": "mode:Shape:Default",
+      "value": {
+        "r": 0.13333333333333333,
+        "g": 0.11372549019607843,
+        "b": 0.09411764705882353,
+        "a": 0.9
+      }
+    },
+    {
+      "variableId": "var:Shape/elevation/1/color-dark",
+      "modeId": "mode:Shape:Default",
+      "value": {
+        "r": 0,
+        "g": 0,
+        "b": 0,
+        "a": 0.8
+      }
+    },
+    {
+      "variableId": "var:Shape/elevation/2/offset",
+      "modeId": "mode:Shape:Default",
+      "value": 3
+    },
+    {
+      "variableId": "var:Shape/elevation/2/color",
+      "modeId": "mode:Shape:Default",
+      "value": {
+        "r": 0.13333333333333333,
+        "g": 0.11372549019607843,
+        "b": 0.09411764705882353,
+        "a": 0.9
+      }
+    },
+    {
+      "variableId": "var:Shape/elevation/2/color-dark",
+      "modeId": "mode:Shape:Default",
+      "value": {
+        "r": 0,
+        "g": 0,
+        "b": 0,
+        "a": 0.8
+      }
+    },
+    {
+      "variableId": "var:Shape/elevation/3/offset",
+      "modeId": "mode:Shape:Default",
+      "value": 5
+    },
+    {
+      "variableId": "var:Shape/elevation/3/color",
+      "modeId": "mode:Shape:Default",
+      "value": {
+        "r": 0.13333333333333333,
+        "g": 0.11372549019607843,
+        "b": 0.09411764705882353,
+        "a": 0.9
+      }
+    },
+    {
+      "variableId": "var:Shape/elevation/3/color-dark",
+      "modeId": "mode:Shape:Default",
+      "value": {
+        "r": 0,
+        "g": 0,
+        "b": 0,
+        "a": 0.8
+      }
+    },
+    {
+      "variableId": "var:Motion/easing/standard",
+      "modeId": "mode:Motion:Default",
+      "value": "cubic-bezier(0.2,0,0,1)"
+    },
+    {
+      "variableId": "var:Motion/easing/emphasized",
+      "modeId": "mode:Motion:Default",
+      "value": "cubic-bezier(0.2,0,0,1)"
+    },
+    {
+      "variableId": "var:Motion/easing/emphasized-decelerate",
+      "modeId": "mode:Motion:Default",
+      "value": "cubic-bezier(0.05,0.7,0.1,1)"
+    },
+    {
+      "variableId": "var:Motion/easing/emphasized-accelerate",
+      "modeId": "mode:Motion:Default",
+      "value": "cubic-bezier(0.3,0,0.8,0.15)"
+    },
+    {
+      "variableId": "var:Motion/easing/standard-decelerate",
+      "modeId": "mode:Motion:Default",
+      "value": "cubic-bezier(0,0,0,1)"
+    },
+    {
+      "variableId": "var:Motion/easing/standard-accelerate",
+      "modeId": "mode:Motion:Default",
+      "value": "cubic-bezier(0.3,0,1,1)"
+    },
+    {
+      "variableId": "var:Motion/easing/linear",
+      "modeId": "mode:Motion:Default",
+      "value": "cubic-bezier(0,0,1,1)"
+    },
+    {
+      "variableId": "var:Motion/duration/short1",
+      "modeId": "mode:Motion:Default",
+      "value": 50
+    },
+    {
+      "variableId": "var:Motion/duration/short2",
+      "modeId": "mode:Motion:Default",
+      "value": 100
+    },
+    {
+      "variableId": "var:Motion/duration/short3",
+      "modeId": "mode:Motion:Default",
+      "value": 150
+    },
+    {
+      "variableId": "var:Motion/duration/short4",
+      "modeId": "mode:Motion:Default",
+      "value": 200
+    },
+    {
+      "variableId": "var:Motion/duration/medium1",
+      "modeId": "mode:Motion:Default",
+      "value": 250
+    },
+    {
+      "variableId": "var:Motion/duration/medium2",
+      "modeId": "mode:Motion:Default",
+      "value": 300
+    },
+    {
+      "variableId": "var:Motion/duration/medium3",
+      "modeId": "mode:Motion:Default",
+      "value": 350
+    },
+    {
+      "variableId": "var:Motion/duration/medium4",
+      "modeId": "mode:Motion:Default",
+      "value": 400
+    },
+    {
+      "variableId": "var:Motion/duration/long1",
+      "modeId": "mode:Motion:Default",
+      "value": 450
+    },
+    {
+      "variableId": "var:Motion/duration/long2",
+      "modeId": "mode:Motion:Default",
+      "value": 500
+    },
+    {
+      "variableId": "var:Motion/duration/long3",
+      "modeId": "mode:Motion:Default",
+      "value": 550
+    },
+    {
+      "variableId": "var:Motion/duration/long4",
+      "modeId": "mode:Motion:Default",
+      "value": 600
+    },
+    {
+      "variableId": "var:Motion/duration/extra-long1",
+      "modeId": "mode:Motion:Default",
+      "value": 700
+    },
+    {
+      "variableId": "var:Motion/duration/extra-long2",
+      "modeId": "mode:Motion:Default",
+      "value": 800
+    },
+    {
+      "variableId": "var:Motion/duration/draw",
+      "modeId": "mode:Motion:Default",
+      "value": 900
+    },
+    {
+      "variableId": "var:Layout/bar-h",
+      "modeId": "mode:Layout:Mobile 390",
+      "value": 64
+    },
+    {
+      "variableId": "var:Layout/bar-h",
+      "modeId": "mode:Layout:Desktop 1280",
+      "value": 72
+    },
+    {
+      "variableId": "var:Layout/gutter",
+      "modeId": "mode:Layout:Mobile 390",
+      "value": 19.5
+    },
+    {
+      "variableId": "var:Layout/gutter",
+      "modeId": "mode:Layout:Desktop 1280",
+      "value": 48
+    },
+    {
+      "variableId": "var:Layout/max-width",
+      "modeId": "mode:Layout:Mobile 390",
+      "value": 390
+    },
+    {
+      "variableId": "var:Layout/max-width",
+      "modeId": "mode:Layout:Desktop 1280",
+      "value": 1180
+    },
+    {
+      "variableId": "var:Layout/touch-target",
+      "modeId": "mode:Layout:Mobile 390",
+      "value": 48
+    },
+    {
+      "variableId": "var:Layout/touch-target",
+      "modeId": "mode:Layout:Desktop 1280",
+      "value": 48
+    },
+    {
+      "variableId": "var:Layout/z/base",
+      "modeId": "mode:Layout:Mobile 390",
+      "value": 0
+    },
+    {
+      "variableId": "var:Layout/z/base",
+      "modeId": "mode:Layout:Desktop 1280",
+      "value": 0
+    },
+    {
+      "variableId": "var:Layout/z/tear",
+      "modeId": "mode:Layout:Mobile 390",
+      "value": 2
+    },
+    {
+      "variableId": "var:Layout/z/tear",
+      "modeId": "mode:Layout:Desktop 1280",
+      "value": 2
+    },
+    {
+      "variableId": "var:Layout/z/tab",
+      "modeId": "mode:Layout:Mobile 390",
+      "value": 2
+    },
+    {
+      "variableId": "var:Layout/z/tab",
+      "modeId": "mode:Layout:Desktop 1280",
+      "value": 2
+    },
+    {
+      "variableId": "var:Layout/z/sticker",
+      "modeId": "mode:Layout:Mobile 390",
+      "value": 4
+    },
+    {
+      "variableId": "var:Layout/z/sticker",
+      "modeId": "mode:Layout:Desktop 1280",
+      "value": 4
+    },
+    {
+      "variableId": "var:Layout/z/fab",
+      "modeId": "mode:Layout:Mobile 390",
+      "value": 35
+    },
+    {
+      "variableId": "var:Layout/z/fab",
+      "modeId": "mode:Layout:Desktop 1280",
+      "value": 35
+    },
+    {
+      "variableId": "var:Layout/z/app-bar",
+      "modeId": "mode:Layout:Mobile 390",
+      "value": 40
+    },
+    {
+      "variableId": "var:Layout/z/app-bar",
+      "modeId": "mode:Layout:Desktop 1280",
+      "value": 40
+    },
+    {
+      "variableId": "var:Layout/z/scrim",
+      "modeId": "mode:Layout:Mobile 390",
+      "value": 50
+    },
+    {
+      "variableId": "var:Layout/z/scrim",
+      "modeId": "mode:Layout:Desktop 1280",
+      "value": 50
+    },
+    {
+      "variableId": "var:Layout/z/drawer",
+      "modeId": "mode:Layout:Mobile 390",
+      "value": 60
+    },
+    {
+      "variableId": "var:Layout/z/drawer",
+      "modeId": "mode:Layout:Desktop 1280",
+      "value": 60
+    },
+    {
+      "variableId": "var:Layout/z/skip-link",
+      "modeId": "mode:Layout:Mobile 390",
+      "value": 100
+    },
+    {
+      "variableId": "var:Layout/z/skip-link",
+      "modeId": "mode:Layout:Desktop 1280",
+      "value": 100
+    }
+  ]
+}

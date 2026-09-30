@@ -1,0 +1,55 @@
+import { Meta } from '@storybook/addon-docs/blocks';
+import { tokens } from '../../dist/tokens.js';
+
+<Meta title="Foundations/Spacing" />
+
+# Spacing
+
+A 4dp base with an 8dp rhythm on the even steps. Layout numbers are the site's, unchanged.
+
+| Token | CSS var | Value |
+| --- | --- | --- |
+| 0 | --rumbo-space-0 | 0px |
+| 1 | --rumbo-space-1 | 4px |
+| 2 | --rumbo-space-2 | 8px |
+| 3 | --rumbo-space-3 | 12px |
+| 4 | --rumbo-space-4 | 16px |
+| 5 | --rumbo-space-5 | 20px |
+| 6 | --rumbo-space-6 | 24px |
+| 8 | --rumbo-space-8 | 32px |
+| 10 | --rumbo-space-10 | 40px |
+| 12 | --rumbo-space-12 | 48px |
+| 14 | --rumbo-space-14 | 56px |
+| 16 | --rumbo-space-16 | 64px |
+| 20 | --rumbo-space-20 | 80px |
+| 24 | --rumbo-space-24 | 96px |
+
+
+## Layout
+
+| Token | CSS var | Value | Note |
+| --- | --- | --- | --- |
+| bar-h | `--bar-h` | 64px (72px ≥ 900px) | App bar |
+| gutter | `--gutter` | clamp(18px, 5vw, 48px) | Page side padding |
+| max | `--max` | 1180px | Content width |
+| touch-target | `--rumbo-touch-target` | 48px | Every interactive element |
+| section padding | — | clamp(72px, 11vw, 132px) | Vertical, per section |
+
+
+## Breakpoints
+
+| Token | Value | What changes |
+| --- | --- | --- |
+| sm | 640px | Choice chips go to 3 columns, receipt 2 columns |
+| md | 900px | Top nav replaces Menu; bar is 72dp; hero and route go two-column |
+| lg | 1100px | FAQ two-column; stepper indents |
+| frame-mobile | 390px | Figma / screenshot frame |
+| frame-desktop | 1280px | Figma / screenshot frame |
+
+
+CSS media queries cannot read custom properties, so breakpoints exist in tokens for JS, Figma and docs; keep the literals in CSS.
+
+
+<div className="rumbo" style={{padding:24,marginTop:16}}>
+  {Object.entries(tokens.space).map(([k,v]) => <div key={k} style={{display:'flex',alignItems:'center',gap:12,marginBottom:6}}><span className="mono" style={{width:70}}>space/{k}</span><span style={{display:'block',height:16,width:v,background:'var(--md-sys-color-primary)'}}></span><span className="mono">{v}</span></div>)}
+</div>

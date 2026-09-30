@@ -1,0 +1,102 @@
+import { Meta } from '@storybook/addon-docs/blocks';
+
+
+<Meta title="Usage guide" />
+
+# Usage guide
+
+## Install and consume tokens
+
+The DS is a folder next to the site (`design-system/`). Nothing is published. The site is not modified by it.
+
+```bash
+cd design-system
+npm install
+npm run tokens          # tokens/tokens.json  →  dist/tokens.css, dist/tokens.js, dist/tokens.d.ts,
+                        #                        tokens/tokens-studio.json, tokens/figma-variables.json
+npm run verify:tokens   # compares dist/tokens.css with ../styles.css
+npm run storybook       # dev server on :6006
+npm run build-storybook # static build in storybook-static/
+npm run test:stories    # loads every story (light+dark) in Chrome, runs axe, takes screenshots
+```
+
+**CSS:** `<link rel="stylesheet" href="design-system/dist/tokens.css">`, then use `var(--md-sys-color-primary)`, `var(--md-sys-shape-corner-medium)`, `var(--rumbo-space-4)` etc. Set `data-theme="dark"` on `<html>` (or any element) to force night train; without it the OS preference is used.
+
+**JS/TS:** `import { tokens, colorLight, colorDark, cssVars } from './design-system/dist/tokens.js'`.
+
+**Components:** copy the CSS from `src/css/components.css` + `src/css/ds.css` (or import them) and the markup from the component's `.js` file. Behaviour lives in `src/lib/behaviors.js` (one delegated listener set for tabs, accordion, drawer, form errors). Shared SVG filters (`#wobble`, `#wear`, `#azul`) come from `src/lib/filters.js` and must be in the document once.
+
+**Tokens are the single source of truth.** Edit `tokens/tokens.json`, run `npm run tokens`, never edit `dist/*` or `tokens/tokens-studio.json` / `figma-variables.json`.
+
+## Naming
+
+- M3 roles keep M3 names: `--md-sys-color-*`, `--md-sys-typescale-*`, `--md-sys-shape-corner-*`, `--md-sys-elevation-*`, `--md-sys-motion-*`, `--md-sys-state-*`. These match the site exactly.
+- Anything Rumbo-specific is `--rumbo-*` (space, weights, tracking, fixed print colours, z-index, breakpoints), or one of the site's historical short names: `--font-display|body|label|hand`, `--shape-cut`, `--shape-cut-alt`, `--soft-shadow`, `--bar-h`, `--gutter`, `--max`.
+- Component classes are BEM: `.block`, `.block__element`, `.block--modifier`; state uses `.is-*` (`is-invalid`, `is-open`) or ARIA attributes (`[aria-expanded="true"]`, `[aria-current]`). Prefer ARIA attributes for state that assistive tech needs.
+- `.state` adds the M3 state layer to any interactive thing. `.mono` is the label voice.
+
+## Add a component
+
+1. Look at what the site does. Find the pattern in `styles.css` / `index.html`. If it does not exist, ask whether it should.
+2. Make `src/components/<Name>/<Name>.js` exporting a function that returns a string of HTML (props in, markup out, correct roles).
+3. Put CSS in `src/css/ds.css` (or `components.css` if it is verbatim from the site). Use only tokens; no new hex values. If you need one, add it to `tokens.json`.
+4. Write `<Name>.stories.js`: `Default`, a `Variants` story, a `States` story (use `.is-hover`, `.is-focus`, `.is-pressed`, disabled, error), controls for each prop.
+5. Add the docs entry to `scripts/component-docs.mjs` (props, do/don't, a11y, measured contrast). `npm run docs` writes the MDX page and the markdown copy.
+6. `npm run build-storybook && npm run test:stories`. Fix axe. Look at the screenshot in both themes.
+7. Add the component to `docs/figma-build-plan.md`.
+
+## Do and don't
+
+**Do**
+- Cut corners on the diagonal, ink borders, hard shadows, dashed dividers.
+- One filled button, one yellow highlight, one stamp per view.
+- Use sun as a fill or highlighter only.
+- Keep tilt ≤ 5° on decoration and ≤ 1.4° on cards; never tilt form controls.
+- Use real text for every fact; keep decoration `aria-hidden`.
+- Say when something is sample or unconfirmed.
+
+**Don't**
+- Round all four corners, use blurred material shadows, or gradients as fills.
+- Put sun-yellow text on paper.
+- Use the hand font for anything a person must read to finish a task.
+- Use more than two tilted things in a row.
+- Hide licence credits.
+- Promise trials, placements, contracts, or results.
+
+## Content voice: specific, warm, wry
+
+Sound like a coach who also does the logistics: plain, exact, a little dry, never selling.
+
+- **Specific.** “A $500 deposit holds a place. The balance is due 1 April 2027.” beats “Secure your spot today.”
+- **Warm.** Speak to the parent and the player as adults: “You can ask us anything, including the awkward stuff.”
+- **Wry.** One dry aside per section, no more: “Tram rides are optional; ice cream is not.” Wry never punches at the reader, the kid, or a club.
+- **Honest.** Say what is not confirmed. “Being arranged. Nothing is confirmed yet.”
+- **Short.** One idea a sentence. Verbs first on buttons. No exclamation marks.
+- **Numbers.** Digits, units and dates in full: “Sun 11 Jul – Sat 24 Jul 2027”, “1:6”, “$4,850”.
+- **Errors.** Say what to do next: “Please enter an age between 12 and 17.”
+- **Accents.** Málaga, Belém, pastéis de nata. Spell places properly.
+
+### Banned words and phrases
+
+Never on a Rumbo surface: *world-class*, *elite*, *pro pathway*, *academy-grade*, *guaranteed* (anything), *trial*, *scouted*, *placement* (as a promise), *unlock*, *elevate*, *level up*, *next level*, *transformative*, *journey*, *dream*, *passionate*, *seamless*, *cutting-edge*, *game-changer*, *state-of-the-art*, *best-in-class*, *limited spots*, *don't miss out*, *act now*, *sign up today*, *click here*, *submit*, *learn more*, *unforgettable*, *life-changing*, *once in a lifetime*, *the best of the best*, *hurry*, *exclusive*, *premier*, *partner club*/*official partner* (unless true and written), any club or academy name implying affiliation.
+
+Allowed instead: *small*, *coach-led*, *two weeks*, *friendlies*, *sample*, *draft*, *hoped for*, *confirmed*, *we'll write when*, *nothing to pay to sign up*.
+
+## Folder map
+
+```
+design-system/
+  tokens/tokens.json               source of truth (W3C DTCG-style)
+  tokens/tokens-studio.json        generated, Tokens Studio import
+  tokens/figma-variables.json      generated, Figma Variables payload
+  dist/tokens.css|js|d.ts          generated
+  scripts/                         build-tokens, verify-tokens, contrast, build-docs, verify-stories, figma-assets
+  src/css/                         base, components (from site), ds (additions), fonts
+  src/lib/                         behaviors, icons, filters, photos, edges, story helpers
+  src/components/<Name>/           .js markup, .stories.js, .mdx
+  src/docs/                        Foundations, Accessibility, Usage guide MDX
+  docs/                            markdown copies + figma-build-plan.md
+  figma-assets/                    SVG exports + page reference PNGs
+  screenshots/                     Storybook screenshots + report
+  .storybook/                      config
+```

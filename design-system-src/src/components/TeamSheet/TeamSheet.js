@@ -1,0 +1,7 @@
+export const staff = [['1', 'Marco', 'Head coach, sessions and selection for friendlies'], ['2', 'Ana', 'Goalkeeper coach, also runs video review'], ['3', 'Diego', 'Assistant coach for the older group'], ['4', 'Sofia', 'Welfare lead and chaperone, first-aid certified'], ['5', 'Joseph', 'Runs Rumbo. Logistics, parents, and bags.']];
+export function teamSheet({ kicker = 'Team sheet · sample staff', title = 'The adults on the trip', rows = staff, foot = 'Names above are sample. Final staff and full names go to families before registration closes.', tilt = true } = {}) {
+  return `<div class="sheet${tilt ? '' : ' sheet--flat'}" role="group" aria-labelledby="sheet-title-x"><p class="sheet__k mono">${kicker}</p><h3 class="title-xl" id="sheet-title-x">${title}</h3><ul class="sheet__list">${rows.map(([n, name, role]) => `<li><span class="sheet__no mono">${n}</span><span class="sheet__name">${name}</span><span class="sheet__role">${role}</span></li>`).join('')}</ul>${foot ? `<p class="sheet__foot mono">${foot}</p>` : ''}</div>`;
+}
+export function personCard({ no = '4', name = 'Sofia', role = 'Welfare lead and chaperone, first-aid certified', tags = ['First aid'], tone = '' } = {}) {
+  return `<article class="person${tone ? ' person--' + tone : ''}"><span class="person__no" aria-hidden="true">${no}</span><h3 class="person__name">${name}</h3><p class="person__role">${role}</p>${tags.length ? `<div class="person__tags">${tags.map((t) => `<span class="tag">${t}</span>`).join('')}</div>` : ''}</article>`;
+}

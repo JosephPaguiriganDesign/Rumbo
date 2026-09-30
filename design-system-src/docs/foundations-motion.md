@@ -1,0 +1,48 @@
+# Motion
+
+M3 easing and duration tokens, used sparingly. The rule: **motion shows cause and effect** (a tab lifts, a drawer slides, a route draws) and never decorates on its own.
+
+## Easing
+
+| Token | CSS var | Curve | Use |
+| --- | --- | --- | --- |
+| standard | --md-sys-motion-easing-standard | cubic-bezier(0.2, 0, 0, 1) | Hover fades, state layers |
+| emphasized | --md-sys-motion-easing-emphasized | cubic-bezier(0.2, 0, 0, 1) | Drawer, tabs, accordion, route |
+| emphasized-decelerate | --md-sys-motion-easing-emphasized-decelerate | cubic-bezier(0.05, 0.7, 0.1, 1) | Things entering: panels, reveals, button lift |
+| emphasized-accelerate | --md-sys-motion-easing-emphasized-accelerate | cubic-bezier(0.3, 0, 0.8, 0.15) | Things leaving |
+| standard-decelerate | --md-sys-motion-easing-standard-decelerate | cubic-bezier(0, 0, 0, 1) | DS addition |
+| standard-accelerate | --md-sys-motion-easing-standard-accelerate | cubic-bezier(0.3, 0, 1, 1) | DS addition |
+| linear | --md-sys-motion-easing-linear | cubic-bezier(0, 0, 1, 1) | Colour fades only |
+
+
+## Duration
+
+| Token | CSS var | Value | Used by |
+| --- | --- | --- | --- |
+| short1 | --md-sys-motion-duration-short1 | 50ms |  |
+| short2 | --md-sys-motion-duration-short2 | 100ms | Icon/colour |
+| short3 | --md-sys-motion-duration-short3 | 150ms |  |
+| short4 | --md-sys-motion-duration-short4 | 200ms | Hover, state layer, field colour |
+| medium1 | --md-sys-motion-duration-medium1 | 250ms |  |
+| medium2 | --md-sys-motion-duration-medium2 | 300ms | Scrim, tab lift, accordion icon, app bar |
+| medium3 | --md-sys-motion-duration-medium3 | 350ms |  |
+| medium4 | --md-sys-motion-duration-medium4 | 400ms | Drawer, accordion height, panel enter |
+| long1 | --md-sys-motion-duration-long1 | 450ms |  |
+| long2 | --md-sys-motion-duration-long2 | 500ms | Scroll reveal |
+| long3 | --md-sys-motion-duration-long3 | 550ms |  |
+| long4 | --md-sys-motion-duration-long4 | 600ms |  |
+| extra-long1 | --md-sys-motion-duration-extra-long1 | 700ms | Reserved |
+| extra-long2 | --md-sys-motion-duration-extra-long2 | 800ms |  |
+| draw | --md-sys-motion-duration-draw | 900ms | Tactics arrows |
+
+
+## Reduced motion
+
+`@media (prefers-reduced-motion: reduce)` sets every transition and animation to 0.01ms, shows all reveals, draws the tactics board and route immediately, and stops smooth scroll. The Storybook toolbar has a **Motion: reduced** switch that applies the same rule to a story.
+
+## Patterns
+
+- Reveal: fade + 18px rise, `long2`, decelerate, stagger 60ms × sibling index (max 4).
+- Tab / panel: panel rises 10px, `medium4`.
+- Accordion: `grid-template-rows 0fr → 1fr`, so height animates without measuring.
+- Route line: the dotted line's `stroke-dashoffset` follows scroll progress; the head pin follows the path.

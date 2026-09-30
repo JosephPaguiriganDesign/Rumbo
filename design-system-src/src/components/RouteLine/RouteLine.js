@@ -1,0 +1,5 @@
+/** Route line / progress: dotted track that fills with progress (0..1) and a head pin. Exposed as role=progressbar-ish text via aria-valuenow on a meter. */
+export function routeLine({ progress = 0.4, stops = ['Land', 'Lisbon coast', 'Málaga coast'], label = 'Trip progress', now = '' } = {}) {
+  const pct = Math.round(progress * 100);
+  return `<div class="route-line" style="--progress:${progress}" role="progressbar" aria-label="${label}" aria-valuemin="0" aria-valuemax="100" aria-valuenow="${pct}" aria-valuetext="${now || pct + '% of the route'}"><div class="route-line__track" aria-hidden="true"><span class="route-line__base"></span><span class="route-line__done"></span><span class="route-line__pin" style="left:0"></span><span class="route-line__pin" style="left:50%"></span><span class="route-line__pin" style="left:100%"></span><span class="route-line__pin route-line__pin--head"></span></div><div class="route-line__stops" aria-hidden="true">${stops.map((s) => `<span>${s}</span>`).join('')}</div>${now ? `<p class="route-line__now">${now}</p>` : ''}</div>`;
+}

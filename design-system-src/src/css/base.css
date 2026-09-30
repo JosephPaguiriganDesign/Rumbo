@@ -1,0 +1,31 @@
+/* Base for everything inside a .rumbo scope (Storybook stories wrap in .rumbo so the docs chrome is untouched).
+   On the real site these rules are global (see styles.css "base"). */
+@import "../../dist/tokens.css";
+@import "./fonts.css";
+.rumbo{
+  --paper-noise:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.8' numOctaves='2' seed='3'/%3E%3CfeColorMatrix values='0 0 0 0 .35 0 0 0 0 .27 0 0 0 0 .15 0 0 0 .09 0'/%3E%3C/filter%3E%3Crect width='160' height='160' filter='url(%23n)'/%3E%3C/svg%3E");
+  margin:0;
+  font:400 var(--md-sys-typescale-body-large)/1.6 var(--font-body);
+  color:var(--md-sys-color-on-surface);
+  background:var(--md-sys-color-surface) var(--paper-noise);
+  -webkit-font-smoothing:antialiased;
+  text-align:left;
+}
+.rumbo, .rumbo *,.rumbo *::before,.rumbo *::after{box-sizing:border-box}
+.rumbo img,.rumbo svg{display:block;max-width:100%}
+.rumbo :where(h1,h2,h3,h4,p,ul,ol,dl,dd,figure){margin:0}
+.rumbo :where(ul,ol){padding:0;list-style:none}
+.rumbo :where(a){color:var(--md-sys-color-primary);text-underline-offset:.2em;text-decoration-thickness:1.5px}
+.rumbo :where(a:hover){text-decoration-thickness:3px}
+.rumbo-pad{padding:32px 24px}
+.rumbo-pad--wide{padding:56px 24px}
+/* focus: 3px ring, 3px offset. Sun on dark surfaces (site: dark scheme + cobalt/ink panels). */
+:where(.rumbo) :focus-visible{outline:3px solid var(--md-sys-color-primary);outline-offset:3px;border-radius:4px}
+.rumbo .on-primary-panel :focus-visible,.rumbo .site-footer :focus-visible,.rumbo .section--how :focus-visible,.rumbo .section--cost :focus-visible{outline-color:var(--md-sys-color-sun)}
+.rumbo[data-theme="dark"] :focus-visible,[data-theme="dark"] .rumbo :focus-visible{outline-color:var(--md-sys-color-sun)}
+@media (prefers-color-scheme:dark){.rumbo:not([data-theme="light"]) :focus-visible{outline-color:var(--md-sys-color-sun)}}
+/* Forced-colors (Windows High Contrast): keep the ring visible, drop decorative shadows/masks that hide borders */
+@media (forced-colors:active){:where(.rumbo) :focus-visible{outline:3px solid Highlight}.btn{border-color:ButtonText}}
+@media (prefers-reduced-motion:reduce){
+  .rumbo *,.rumbo *::before,.rumbo *::after{transition-duration:.01ms!important;animation-duration:.01ms!important}
+}

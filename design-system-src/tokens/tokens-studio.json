@@ -1,0 +1,1104 @@
+{
+  "core/palette": {
+    "palette": {
+      "paper": {
+        "value": "#f4ecdb",
+        "type": "color",
+        "description": "Warm paper. Page background."
+      },
+      "ink": {
+        "value": "#221d18",
+        "type": "color",
+        "description": "Ink. Text, borders, hard shadows."
+      },
+      "cobalt": {
+        "value": "#1d3b9e",
+        "type": "color",
+        "description": "Azulejo cobalt. Primary."
+      },
+      "clay": {
+        "value": "#a33f18",
+        "type": "color",
+        "description": "Iberian roof-tile clay. Tertiary / accent."
+      },
+      "sun": {
+        "value": "#f3c63d",
+        "type": "color",
+        "description": "Grass-line yellow. Used like a highlighter."
+      },
+      "paper-light": {
+        "value": "#fbf6ea",
+        "type": "color",
+        "description": "Lightest paper (card face, on-primary)."
+      },
+      "night": {
+        "value": "#1a1611",
+        "type": "color",
+        "description": "Night-train ink. Dark background."
+      },
+      "night-text": {
+        "value": "#eee3cc",
+        "type": "color",
+        "description": "Dark-mode text on night."
+      }
+    }
+  },
+  "theme/light": {
+    "primary": {
+      "value": "{palette.cobalt}",
+      "type": "color"
+    },
+    "on-primary": {
+      "value": "{palette.paper-light}",
+      "type": "color"
+    },
+    "primary-container": {
+      "value": "#d9e0f8",
+      "type": "color"
+    },
+    "on-primary-container": {
+      "value": "#0c1a4d",
+      "type": "color"
+    },
+    "secondary": {
+      "value": "#5a4f42",
+      "type": "color"
+    },
+    "on-secondary": {
+      "value": "#fbf6ea",
+      "type": "color"
+    },
+    "secondary-container": {
+      "value": "#e8dcc3",
+      "type": "color"
+    },
+    "on-secondary-container": {
+      "value": "#2b241b",
+      "type": "color"
+    },
+    "tertiary": {
+      "value": "{palette.clay}",
+      "type": "color"
+    },
+    "on-tertiary": {
+      "value": "#fffaf2",
+      "type": "color"
+    },
+    "tertiary-container": {
+      "value": "#f6d5c4",
+      "type": "color"
+    },
+    "on-tertiary-container": {
+      "value": "#3a1204",
+      "type": "color"
+    },
+    "error": {
+      "value": "#ba1a1a",
+      "type": "color"
+    },
+    "on-error": {
+      "value": "#ffffff",
+      "type": "color"
+    },
+    "error-container": {
+      "value": "#ffdad6",
+      "type": "color"
+    },
+    "on-error-container": {
+      "value": "#410002",
+      "type": "color"
+    },
+    "background": {
+      "value": "{palette.paper}",
+      "type": "color"
+    },
+    "on-background": {
+      "value": "{palette.ink}",
+      "type": "color"
+    },
+    "surface": {
+      "value": "{palette.paper}",
+      "type": "color"
+    },
+    "on-surface": {
+      "value": "{palette.ink}",
+      "type": "color"
+    },
+    "surface-variant": {
+      "value": "#e6dcc6",
+      "type": "color"
+    },
+    "on-surface-variant": {
+      "value": "#5a4f42",
+      "type": "color"
+    },
+    "outline": {
+      "value": "#7d6f5b",
+      "type": "color"
+    },
+    "outline-variant": {
+      "value": "#d3c7ae",
+      "type": "color"
+    },
+    "shadow": {
+      "value": "{palette.ink}",
+      "type": "color"
+    },
+    "scrim": {
+      "value": "{palette.ink}",
+      "type": "color"
+    },
+    "inverse-surface": {
+      "value": "#2a241d",
+      "type": "color"
+    },
+    "inverse-on-surface": {
+      "value": "{palette.paper}",
+      "type": "color"
+    },
+    "inverse-primary": {
+      "value": "#a9bbff",
+      "type": "color"
+    },
+    "surface-container-lowest": {
+      "value": "#fbf6ea",
+      "type": "color"
+    },
+    "surface-container-low": {
+      "value": "#efe6d2",
+      "type": "color"
+    },
+    "surface-container": {
+      "value": "#eaddc4",
+      "type": "color"
+    },
+    "surface-container-high": {
+      "value": "#e4d6bb",
+      "type": "color"
+    },
+    "surface-container-highest": {
+      "value": "#ddcfb2",
+      "type": "color"
+    },
+    "surface-tint": {
+      "value": "{palette.cobalt}",
+      "type": "color"
+    },
+    "sun": {
+      "value": "{palette.sun}",
+      "type": "color",
+      "description": "Extended colour: highlighter yellow."
+    },
+    "on-sun": {
+      "value": "{palette.ink}",
+      "type": "color"
+    },
+    "sun-container": {
+      "value": "#f8e7ab",
+      "type": "color"
+    },
+    "on-sun-container": {
+      "value": "#3a2c00",
+      "type": "color"
+    },
+    "highlight-on-primary": {
+      "value": "{palette.sun}",
+      "type": "color",
+      "description": "Custom role: marker-yellow accent on a primary (cobalt) panel: step numbers, section numerals."
+    },
+    "on-primary-muted": {
+      "value": "#d9e0f8",
+      "type": "color",
+      "description": "Custom role: secondary text on a primary panel (the site uses primary-container for this)."
+    },
+    "sun-outline": {
+      "value": "#7d6f5b",
+      "type": "color",
+      "description": "Custom role: rule/outline used on sun-container panels (dashed fact lines)."
+    }
+  },
+  "theme/dark": {
+    "primary": {
+      "value": "#a9bbff",
+      "type": "color"
+    },
+    "on-primary": {
+      "value": "#0c1a4d",
+      "type": "color"
+    },
+    "primary-container": {
+      "value": "#25409f",
+      "type": "color"
+    },
+    "on-primary-container": {
+      "value": "#dbe2ff",
+      "type": "color"
+    },
+    "secondary": {
+      "value": "#d6c8b0",
+      "type": "color"
+    },
+    "on-secondary": {
+      "value": "#2b241b",
+      "type": "color"
+    },
+    "secondary-container": {
+      "value": "#4a4034",
+      "type": "color"
+    },
+    "on-secondary-container": {
+      "value": "#f0e4cb",
+      "type": "color"
+    },
+    "tertiary": {
+      "value": "#ffb595",
+      "type": "color"
+    },
+    "on-tertiary": {
+      "value": "#4a1600",
+      "type": "color"
+    },
+    "tertiary-container": {
+      "value": "#7a2c0c",
+      "type": "color"
+    },
+    "on-tertiary-container": {
+      "value": "#ffdbcd",
+      "type": "color"
+    },
+    "background": {
+      "value": "{palette.night}",
+      "type": "color"
+    },
+    "on-background": {
+      "value": "{palette.night-text}",
+      "type": "color"
+    },
+    "surface": {
+      "value": "{palette.night}",
+      "type": "color"
+    },
+    "on-surface": {
+      "value": "{palette.night-text}",
+      "type": "color"
+    },
+    "surface-variant": {
+      "value": "#3d352b",
+      "type": "color"
+    },
+    "on-surface-variant": {
+      "value": "#cfc2a9",
+      "type": "color"
+    },
+    "outline": {
+      "value": "#9a8c76",
+      "type": "color"
+    },
+    "outline-variant": {
+      "value": "#4a4034",
+      "type": "color"
+    },
+    "shadow": {
+      "value": "#000000",
+      "type": "color"
+    },
+    "inverse-surface": {
+      "value": "{palette.night-text}",
+      "type": "color"
+    },
+    "inverse-on-surface": {
+      "value": "#2a241d",
+      "type": "color"
+    },
+    "inverse-primary": {
+      "value": "{palette.cobalt}",
+      "type": "color"
+    },
+    "surface-container-lowest": {
+      "value": "#14110d",
+      "type": "color"
+    },
+    "surface-container-low": {
+      "value": "#211c16",
+      "type": "color"
+    },
+    "surface-container": {
+      "value": "#28221b",
+      "type": "color"
+    },
+    "surface-container-high": {
+      "value": "#322b23",
+      "type": "color"
+    },
+    "surface-container-highest": {
+      "value": "#3d352b",
+      "type": "color"
+    },
+    "sun-container": {
+      "value": "#5b4a10",
+      "type": "color"
+    },
+    "on-sun-container": {
+      "value": "#fbe9a8",
+      "type": "color"
+    },
+    "error": {
+      "value": "#ffb4ab",
+      "type": "color"
+    },
+    "on-error": {
+      "value": "#690005",
+      "type": "color"
+    },
+    "error-container": {
+      "value": "#93000a",
+      "type": "color"
+    },
+    "on-error-container": {
+      "value": "#ffdad6",
+      "type": "color"
+    },
+    "surface-tint": {
+      "value": "#a9bbff",
+      "type": "color"
+    },
+    "highlight-on-primary": {
+      "value": "#0c1a4d",
+      "type": "color"
+    },
+    "on-primary-muted": {
+      "value": "#1b2f7a",
+      "type": "color"
+    },
+    "sun-outline": {
+      "value": "#a89a3f",
+      "type": "color"
+    }
+  },
+  "core/fixed": {
+    "receipt-paper": {
+      "value": "#fbf6ea",
+      "type": "color",
+      "description": "Receipt face. Site uses surface-container-lowest, which turns near-black in dark; DS pins it to paper."
+    },
+    "receipt-ink": {
+      "value": "#221d18",
+      "type": "color"
+    },
+    "receipt-muted": {
+      "value": "#5a4f42",
+      "type": "color"
+    },
+    "receipt-accent": {
+      "value": "#a33f18",
+      "type": "color"
+    },
+    "receipt-rule": {
+      "value": "#7d6f5b",
+      "type": "color"
+    },
+    "receipt-in": {
+      "value": "#1d3b9e",
+      "type": "color"
+    },
+    "receipt-out": {
+      "value": "#a33f18",
+      "type": "color"
+    },
+    "footer-bg": {
+      "value": "#221d18",
+      "type": "color"
+    },
+    "footer-on": {
+      "value": "#f4ecdb",
+      "type": "color"
+    },
+    "footer-accent": {
+      "value": "#e9865c",
+      "type": "color"
+    },
+    "footer-link": {
+      "value": "#f8e7ab",
+      "type": "color"
+    },
+    "footer-body": {
+      "value": "#d8ccb4",
+      "type": "color"
+    },
+    "footer-muted": {
+      "value": "#cfc2a9",
+      "type": "color"
+    },
+    "footer-fine": {
+      "value": "#b9ab91",
+      "type": "color"
+    },
+    "footer-rule": {
+      "value": "#6d604d",
+      "type": "color"
+    },
+    "duo-cobalt": {
+      "value": "#1d3b9e",
+      "type": "color"
+    },
+    "duo-clay": {
+      "value": "#a33f18",
+      "type": "color"
+    },
+    "ink-line": {
+      "value": "rgb(34 29 24 / .12)",
+      "type": "color",
+      "description": "Hairline around tape."
+    }
+  },
+  "core/type": {
+    "font": {
+      "family": {
+        "display": {
+          "value": "Fraunces",
+          "type": "fontFamilies",
+          "description": "Fraunces: headlines, numerals, drawer links. Uses SOFT and WONK axes."
+        },
+        "body": {
+          "value": "Atkinson Hyperlegible Next",
+          "type": "fontFamilies",
+          "description": "Body copy, buttons, form input text."
+        },
+        "label": {
+          "value": "DM Mono",
+          "type": "fontFamilies",
+          "description": "Mono labels, dates, captions, stamps."
+        },
+        "hand": {
+          "value": "Caveat",
+          "type": "fontFamilies",
+          "description": "Margin notes only. Never for essential content."
+        }
+      }
+    },
+    "type": {
+      "scale": {
+        "display-large": {
+          "value": "clamp(2.75rem,9.2vw,5.6rem)",
+          "type": "spacing"
+        },
+        "headline-large": {
+          "value": "clamp(2.1rem,6.2vw,3.5rem)",
+          "type": "spacing"
+        },
+        "headline-medium": {
+          "value": "clamp(1.6rem,4.6vw,2.25rem)",
+          "type": "spacing"
+        },
+        "title-large": {
+          "value": "1.375rem",
+          "type": "spacing"
+        },
+        "title-medium": {
+          "value": "1.0625rem",
+          "type": "spacing"
+        },
+        "body-large": {
+          "value": "1.0625rem",
+          "type": "spacing"
+        },
+        "body-medium": {
+          "value": "0.9375rem",
+          "type": "spacing"
+        },
+        "label-large": {
+          "value": "0.875rem",
+          "type": "spacing"
+        },
+        "label-medium": {
+          "value": "0.75rem",
+          "type": "spacing"
+        },
+        "lead": {
+          "value": "clamp(1.0625rem,2.6vw,1.25rem)",
+          "type": "spacing"
+        },
+        "caption": {
+          "value": "0.6875rem",
+          "type": "spacing",
+          "description": "Mono captions under photos. Site uses .6-.66rem; the DS raises the floor to 11px. Never use for essential text."
+        },
+        "hand": {
+          "value": "1.5rem",
+          "type": "spacing"
+        }
+      },
+      "weight": {
+        "regular": {
+          "value": "400",
+          "type": "fontWeights"
+        },
+        "medium": {
+          "value": "500",
+          "type": "fontWeights"
+        },
+        "semibold": {
+          "value": "650",
+          "type": "fontWeights"
+        },
+        "bold": {
+          "value": "700",
+          "type": "fontWeights"
+        },
+        "extrabold": {
+          "value": "800",
+          "type": "fontWeights"
+        }
+      },
+      "leading": {
+        "display": {
+          "value": "0.98",
+          "type": "number"
+        },
+        "headline": {
+          "value": "1.04",
+          "type": "number"
+        },
+        "title-xl": {
+          "value": "1.1",
+          "type": "number"
+        },
+        "title": {
+          "value": "1.2",
+          "type": "number"
+        },
+        "lead": {
+          "value": "1.55",
+          "type": "number"
+        },
+        "body": {
+          "value": "1.6",
+          "type": "number"
+        },
+        "label": {
+          "value": "1",
+          "type": "number"
+        },
+        "mono": {
+          "value": "1.5",
+          "type": "number"
+        }
+      },
+      "tracking": {
+        "display": {
+          "value": "-0.025em",
+          "type": "spacing"
+        },
+        "headline": {
+          "value": "-0.02em",
+          "type": "spacing"
+        },
+        "title-xl": {
+          "value": "-0.015em",
+          "type": "spacing"
+        },
+        "body": {
+          "value": "0",
+          "type": "spacing"
+        },
+        "button": {
+          "value": "0.02em",
+          "type": "spacing"
+        },
+        "mono": {
+          "value": "0.02em",
+          "type": "spacing"
+        },
+        "mono-wide": {
+          "value": "0.08em",
+          "type": "spacing"
+        },
+        "stamp": {
+          "value": "0.14em",
+          "type": "spacing"
+        }
+      }
+    }
+  },
+  "core/space": {
+    "space": {
+      "0": {
+        "value": "0px",
+        "type": "spacing"
+      },
+      "1": {
+        "value": "4px",
+        "type": "spacing"
+      },
+      "2": {
+        "value": "8px",
+        "type": "spacing"
+      },
+      "3": {
+        "value": "12px",
+        "type": "spacing"
+      },
+      "4": {
+        "value": "16px",
+        "type": "spacing"
+      },
+      "5": {
+        "value": "20px",
+        "type": "spacing"
+      },
+      "6": {
+        "value": "24px",
+        "type": "spacing"
+      },
+      "8": {
+        "value": "32px",
+        "type": "spacing"
+      },
+      "10": {
+        "value": "40px",
+        "type": "spacing"
+      },
+      "12": {
+        "value": "48px",
+        "type": "spacing"
+      },
+      "14": {
+        "value": "56px",
+        "type": "spacing"
+      },
+      "16": {
+        "value": "64px",
+        "type": "spacing"
+      },
+      "20": {
+        "value": "80px",
+        "type": "spacing"
+      },
+      "24": {
+        "value": "96px",
+        "type": "spacing"
+      }
+    }
+  },
+  "core/shape": {
+    "shape": {
+      "corner": {
+        "extra-small": {
+          "value": "3px",
+          "type": "spacing"
+        },
+        "small": {
+          "value": "6px",
+          "type": "spacing"
+        },
+        "medium": {
+          "value": "10px",
+          "type": "spacing"
+        },
+        "large": {
+          "value": "18px",
+          "type": "spacing"
+        },
+        "full": {
+          "value": "9999px",
+          "type": "spacing"
+        }
+      },
+      "cut": {
+        "primary": {
+          "value": "22px 5px 22px 5px",
+          "type": "other",
+          "description": "Filled button, FAB."
+        },
+        "alt": {
+          "value": "5px 20px 5px 20px",
+          "type": "other",
+          "description": "Tonal button, menu button."
+        },
+        "ticket": {
+          "value": "3px 16px 3px 16px",
+          "type": "other",
+          "description": "Ticket-punch chip."
+        },
+        "banner": {
+          "value": "3px 12px 3px 12px",
+          "type": "other",
+          "description": "Notice banner."
+        },
+        "day": {
+          "value": "2px 14px 2px 14px",
+          "type": "other",
+          "description": "Timeline day card."
+        },
+        "tab": {
+          "value": "16px 16px 0 0",
+          "type": "other",
+          "description": "Folder tab."
+        },
+        "scribble": {
+          "value": "50% 44% 52% 48%",
+          "type": "other",
+          "description": "Hand-drawn round icon holder."
+        }
+      },
+      "border": {
+        "hairline": {
+          "value": "1px",
+          "type": "spacing"
+        },
+        "thin": {
+          "value": "1.5px",
+          "type": "spacing"
+        },
+        "regular": {
+          "value": "2px",
+          "type": "spacing"
+        },
+        "thick": {
+          "value": "2.5px",
+          "type": "spacing"
+        },
+        "focus": {
+          "value": "3px",
+          "type": "spacing"
+        }
+      },
+      "focus-offset": {
+        "value": "3px",
+        "type": "spacing"
+      }
+    }
+  },
+  "core/elevation": {
+    "elevation": {
+      "light": {
+        "1": {
+          "value": [
+            {
+              "x": "2",
+              "y": "2",
+              "blur": "0",
+              "spread": "0",
+              "color": "rgb(34 29 24 / .9)",
+              "type": "dropShadow"
+            }
+          ],
+          "type": "boxShadow"
+        },
+        "2": {
+          "value": [
+            {
+              "x": "3",
+              "y": "3",
+              "blur": "0",
+              "spread": "0",
+              "color": "rgb(34 29 24 / .9)",
+              "type": "dropShadow"
+            }
+          ],
+          "type": "boxShadow"
+        },
+        "3": {
+          "value": [
+            {
+              "x": "5",
+              "y": "5",
+              "blur": "0",
+              "spread": "0",
+              "color": "rgb(34 29 24 / .9)",
+              "type": "dropShadow"
+            }
+          ],
+          "type": "boxShadow"
+        }
+      },
+      "dark": {
+        "1": {
+          "value": [
+            {
+              "x": "2",
+              "y": "2",
+              "blur": "0",
+              "spread": "0",
+              "color": "rgb(0 0 0 / .8)",
+              "type": "dropShadow"
+            }
+          ],
+          "type": "boxShadow"
+        },
+        "2": {
+          "value": [
+            {
+              "x": "3",
+              "y": "3",
+              "blur": "0",
+              "spread": "0",
+              "color": "rgb(0 0 0 / .8)",
+              "type": "dropShadow"
+            }
+          ],
+          "type": "boxShadow"
+        },
+        "3": {
+          "value": [
+            {
+              "x": "5",
+              "y": "5",
+              "blur": "0",
+              "spread": "0",
+              "color": "rgb(0 0 0 / .8)",
+              "type": "dropShadow"
+            }
+          ],
+          "type": "boxShadow"
+        }
+      },
+      "soft": {
+        "value": [
+          {
+            "x": "0",
+            "y": "1",
+            "blur": "1",
+            "spread": "0",
+            "color": "rgb(34 29 24 / .18)",
+            "type": "dropShadow"
+          },
+          {
+            "x": "0",
+            "y": "10",
+            "blur": "20",
+            "spread": "-8",
+            "color": "rgb(34 29 24 / .35)",
+            "type": "dropShadow"
+          }
+        ],
+        "type": "boxShadow",
+        "description": "Pinned print / photo shadow."
+      },
+      "receipt": {
+        "value": [
+          {
+            "x": "0",
+            "y": "18",
+            "blur": "30",
+            "spread": "-12",
+            "color": "rgb(0 0 0 / .6)",
+            "type": "dropShadow"
+          }
+        ],
+        "type": "boxShadow",
+        "description": "Receipt on dark ground."
+      }
+    }
+  },
+  "core/motion": {
+    "motion": {
+      "easing": {
+        "standard": {
+          "value": "cubic-bezier(0.2,0,0,1)",
+          "type": "other"
+        },
+        "emphasized": {
+          "value": "cubic-bezier(0.2,0,0,1)",
+          "type": "other",
+          "description": "M3 emphasized is a path; the site approximates it with a single curve."
+        },
+        "emphasized-decelerate": {
+          "value": "cubic-bezier(0.05,0.7,0.1,1)",
+          "type": "other"
+        },
+        "emphasized-accelerate": {
+          "value": "cubic-bezier(0.3,0,0.8,0.15)",
+          "type": "other"
+        },
+        "standard-decelerate": {
+          "value": "cubic-bezier(0,0,0,1)",
+          "type": "other"
+        },
+        "standard-accelerate": {
+          "value": "cubic-bezier(0.3,0,1,1)",
+          "type": "other"
+        },
+        "linear": {
+          "value": "cubic-bezier(0,0,1,1)",
+          "type": "other"
+        }
+      },
+      "duration": {
+        "short1": {
+          "value": "50ms",
+          "type": "other"
+        },
+        "short2": {
+          "value": "100ms",
+          "type": "other"
+        },
+        "short3": {
+          "value": "150ms",
+          "type": "other"
+        },
+        "short4": {
+          "value": "200ms",
+          "type": "other"
+        },
+        "medium1": {
+          "value": "250ms",
+          "type": "other"
+        },
+        "medium2": {
+          "value": "300ms",
+          "type": "other"
+        },
+        "medium3": {
+          "value": "350ms",
+          "type": "other"
+        },
+        "medium4": {
+          "value": "400ms",
+          "type": "other"
+        },
+        "long1": {
+          "value": "450ms",
+          "type": "other"
+        },
+        "long2": {
+          "value": "500ms",
+          "type": "other"
+        },
+        "long3": {
+          "value": "550ms",
+          "type": "other"
+        },
+        "long4": {
+          "value": "600ms",
+          "type": "other"
+        },
+        "extra-long1": {
+          "value": "700ms",
+          "type": "other"
+        },
+        "extra-long2": {
+          "value": "800ms",
+          "type": "other"
+        },
+        "draw": {
+          "value": "900ms",
+          "type": "other",
+          "description": "Tactics-board arrow draw-in."
+        }
+      }
+    }
+  },
+  "core/z-breakpoint": {
+    "z": {
+      "base": {
+        "value": "0",
+        "type": "number"
+      },
+      "tear": {
+        "value": "2",
+        "type": "number"
+      },
+      "tab": {
+        "value": "2",
+        "type": "number"
+      },
+      "sticker": {
+        "value": "4",
+        "type": "number",
+        "description": "Tape, stamps on collage."
+      },
+      "fab": {
+        "value": "35",
+        "type": "number"
+      },
+      "app-bar": {
+        "value": "40",
+        "type": "number"
+      },
+      "scrim": {
+        "value": "50",
+        "type": "number"
+      },
+      "drawer": {
+        "value": "60",
+        "type": "number"
+      },
+      "skip-link": {
+        "value": "100",
+        "type": "number"
+      }
+    },
+    "breakpoint": {
+      "sm": {
+        "value": "640px",
+        "type": "spacing"
+      },
+      "md": {
+        "value": "900px",
+        "type": "spacing"
+      },
+      "lg": {
+        "value": "1100px",
+        "type": "spacing"
+      },
+      "frame-mobile": {
+        "value": "390px",
+        "type": "spacing",
+        "description": "Design frame, mobile."
+      },
+      "frame-desktop": {
+        "value": "1280px",
+        "type": "spacing",
+        "description": "Design frame, desktop."
+      }
+    }
+  },
+  "$themes": [
+    {
+      "id": "light",
+      "name": "Light (day dispatch)",
+      "selectedTokenSets": {
+        "core/palette": "source",
+        "core/fixed": "enabled",
+        "core/type": "enabled",
+        "core/space": "enabled",
+        "core/shape": "enabled",
+        "core/elevation": "enabled",
+        "core/motion": "enabled",
+        "core/z-breakpoint": "enabled",
+        "theme/light": "enabled"
+      }
+    },
+    {
+      "id": "dark",
+      "name": "Dark (night train)",
+      "selectedTokenSets": {
+        "core/palette": "source",
+        "core/fixed": "enabled",
+        "core/type": "enabled",
+        "core/space": "enabled",
+        "core/shape": "enabled",
+        "core/elevation": "enabled",
+        "core/motion": "enabled",
+        "core/z-breakpoint": "enabled",
+        "theme/light": "enabled",
+        "theme/dark": "enabled"
+      }
+    }
+  ],
+  "$metadata": {
+    "tokenSetOrder": [
+      "core/palette",
+      "core/fixed",
+      "core/type",
+      "core/space",
+      "core/shape",
+      "core/elevation",
+      "core/motion",
+      "core/z-breakpoint",
+      "theme/light",
+      "theme/dark"
+    ]
+  }
+}
