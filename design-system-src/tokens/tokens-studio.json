@@ -922,6 +922,16 @@
         "linear": {
           "value": "cubic-bezier(0,0,1,1)",
           "type": "other"
+        },
+        "thump": {
+          "value": "cubic-bezier(0.34,1.56,0.64,1)",
+          "type": "other",
+          "description": "Overshoot. Stamps, pins, section numbers, tab pop, FAB."
+        },
+        "wipe": {
+          "value": "cubic-bezier(0.76,0,0.24,1)",
+          "type": "other",
+          "description": "Strong in-out. The torn-paper wipe between legs."
         }
       },
       "duration": {
@@ -985,6 +995,16 @@
           "value": "900ms",
           "type": "other",
           "description": "Tactics-board arrow draw-in."
+        },
+        "stagger": {
+          "value": "70ms",
+          "type": "other",
+          "description": "Delay between siblings in a staggered entrance."
+        },
+        "count": {
+          "value": "1400ms",
+          "type": "other",
+          "description": "Number count-up."
         }
       }
     }

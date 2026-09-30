@@ -253,7 +253,9 @@ export type TokenTree = {
       "emphasized-accelerate": string,
       "standard-decelerate": string,
       "standard-accelerate": string,
-      "linear": string
+      "linear": string,
+      "thump": string,
+      "wipe": string
     },
     "duration": {
       "short1": string,
@@ -270,7 +272,9 @@ export type TokenTree = {
       "long4": string,
       "extra-long1": string,
       "extra-long2": string,
-      "draw": string
+      "draw": string,
+      "stagger": string,
+      "count": string
     }
   },
   "z": {

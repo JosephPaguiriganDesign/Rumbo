@@ -96,6 +96,11 @@
   --md-sys-motion-duration-medium4:400ms;
   --md-sys-motion-duration-long2:500ms;
   --md-sys-motion-duration-extra-long1:700ms;
+  /* Rumbo motion additions (mirrored in design-system tokens): overshoot for stamps/pins, strong in-out for the paper wipe */
+  --md-sys-motion-easing-thump:cubic-bezier(.34,1.56,.64,1);
+  --md-sys-motion-easing-wipe:cubic-bezier(.76,0,.24,1);
+  --md-sys-motion-duration-stagger:70ms;
+  --md-sys-motion-duration-count:1400ms;
 
   --bar-h:64px;
   --gutter:clamp(18px,5vw,48px);
@@ -251,7 +256,7 @@ main{display:block}
 
 /* ================= HERO ================= */
 .hero{position:relative;padding:calc(var(--bar-h) + 36px) 0 clamp(72px,10vw,120px);background:var(--md-sys-color-surface) var(--paper-noise);overflow:hidden;overflow:clip}
-.hero::before{content:"";position:absolute;right:-8%;top:8%;width:min(560px,80vw);aspect-ratio:1;background:radial-gradient(circle at 30% 30%,var(--md-sys-color-sun-container),transparent 70%);opacity:.9;z-index:0;pointer-events:none}
+.hero__sun{position:absolute;right:-8%;top:8%;width:min(560px,80vw);aspect-ratio:1;background:radial-gradient(circle at 30% 30%,var(--md-sys-color-sun-container),transparent 70%);opacity:.9;z-index:0;pointer-events:none}
 .hero__inner{position:relative;z-index:1;display:grid;gap:44px}
 .stampline{margin-bottom:22px}
 .stampline__box{display:inline-block;font:500 .8125rem/1 var(--font-label);letter-spacing:.14em;text-transform:uppercase;color:var(--md-sys-color-tertiary);border:2px solid var(--md-sys-color-tertiary);padding:9px 12px 8px;transform:rotate(-2deg);border-radius:3px}
@@ -313,8 +318,6 @@ main{display:block}
 .ftab:not([aria-selected="true"]):nth-of-type(2){border-radius:16px 16px 0 0}
 .leg{position:relative;background:var(--md-sys-color-sun-container);border:2px solid var(--md-sys-color-on-surface);padding:clamp(20px,4vw,40px);display:grid;gap:28px;box-shadow:var(--md-sys-elevation-3)}
 .leg[hidden]{display:none}
-.leg.is-entering{animation:legIn var(--md-sys-motion-duration-medium4) var(--md-sys-motion-easing-emphasized-decelerate)}
-@keyframes legIn{from{opacity:0;transform:translateY(10px)}}
 .leg__pics{display:grid;grid-template-columns:5fr 6fr;gap:14px;align-items:start;position:relative}
 .pic{background:var(--md-sys-color-surface-container-lowest);padding:6px 6px 22px;border:1.5px solid var(--md-sys-color-on-surface);position:relative;box-shadow:var(--soft-shadow)}
 .pic figcaption{position:absolute;left:8px;bottom:4px;font-size:.6rem;color:var(--md-sys-color-on-surface-variant)}
@@ -337,7 +340,8 @@ main{display:block}
    - the plain greyscale photo is always the base layer and is visible on its own. The tint overlay only exists where
      mix-blend-mode is supported, so if blending is missing the photo is shown untinted instead of being covered. */
 .duo{position:relative;isolation:isolate;overflow:hidden;background:#fbf6ea}
-.duo img{width:100%;height:100%;object-fit:cover;filter:grayscale(1) contrast(1.1) brightness(1.02);mix-blend-mode:multiply}
+.duo__in{position:absolute;left:0;right:0;top:-9%;bottom:-9%;background:#fbf6ea}
+.duo img{display:block;width:100%;height:100%;object-fit:cover;filter:grayscale(1) contrast(1.1) brightness(1.02);mix-blend-mode:multiply}
 .duo::before{content:"";position:absolute;inset:0;z-index:2;background:radial-gradient(circle,rgb(34 29 24 / .28) .9px,transparent 1.2px) 0 0/5px 5px;pointer-events:none;opacity:.4}
 @supports (mix-blend-mode:lighten){
   .duo::after{content:"";position:absolute;inset:0;background:var(--duo);mix-blend-mode:lighten;pointer-events:none}
@@ -431,7 +435,7 @@ main{display:block}
 .acc__h{font:inherit}
 .acc__btn{display:flex;align-items:center;justify-content:space-between;gap:16px;width:100%;min-height:64px;padding:14px 4px;background:none;border:0;color:var(--md-sys-color-on-surface);text-align:left;cursor:pointer;font:650 clamp(1.125rem,3.6vw,1.4rem)/1.2 var(--font-display);font-variation-settings:"SOFT" 50,"WONK" 1}
 .acc__btn::after{border-radius:8px}
-.acc__icon{flex:none;width:36px;height:36px;padding:5px;border:2px solid var(--md-sys-color-on-surface);border-radius:50% 44% 52% 48%;color:var(--md-sys-color-on-surface);transition:transform var(--md-sys-motion-duration-medium2) var(--md-sys-motion-easing-emphasized),background var(--md-sys-motion-duration-short4) linear}
+.acc__icon{flex:none;width:36px;height:36px;padding:5px;border:2px solid var(--md-sys-color-on-surface);border-radius:50% 44% 52% 48%;color:var(--md-sys-color-on-surface);transition:transform var(--md-sys-motion-duration-long2) var(--md-sys-motion-easing-thump),background var(--md-sys-motion-duration-short4) linear}
 .acc__btn[aria-expanded="true"] .acc__icon{transform:rotate(135deg);background:var(--md-sys-color-sun)}
 .acc__panel{display:block}
 .js .acc__panel{display:grid;grid-template-rows:0fr;visibility:hidden;transition:grid-template-rows var(--md-sys-motion-duration-medium4) var(--md-sys-motion-easing-emphasized),visibility 0s linear var(--md-sys-motion-duration-medium4)}
@@ -452,16 +456,16 @@ main{display:block}
 .banner svg{flex:none;color:var(--md-sys-color-tertiary);margin-top:1px}
 .tf{position:relative;display:grid;gap:4px}
 .tf__label{display:block;font-weight:500;color:var(--md-sys-color-on-surface-variant);padding:0}
-.tf__input{width:100%;min-height:52px;padding:10px 4px 8px;font:500 1.15rem/1.3 var(--font-body);color:var(--md-sys-color-on-surface);background:repeating-linear-gradient(transparent 0 100%);border:0;border-bottom:2.5px solid var(--md-sys-color-on-surface);border-radius:0;appearance:none;-webkit-appearance:none;transition:background var(--md-sys-motion-duration-short4) linear,border-color var(--md-sys-motion-duration-short4) linear}
-.tf__input:hover{background:rgb(243 198 61 / .2);background:color-mix(in srgb,var(--md-sys-color-sun) 20%,transparent)}
-.tf__input:focus{outline:0;background:rgb(243 198 61 / .34);background:color-mix(in srgb,var(--md-sys-color-sun) 34%,transparent);border-bottom-color:var(--md-sys-color-primary);box-shadow:0 3px 0 var(--md-sys-color-primary)}
+.tf__input{width:100%;min-height:52px;padding:10px 4px 8px;font:500 1.15rem/1.3 var(--font-body);color:var(--md-sys-color-on-surface);background-color:transparent;background-image:linear-gradient(var(--md-sys-color-primary),var(--md-sys-color-primary));background-repeat:no-repeat;background-position:0 100%;background-size:0 5px;background-origin:border-box;border:0;border-bottom:2.5px solid var(--md-sys-color-on-surface);border-radius:0;appearance:none;-webkit-appearance:none;transition:background-color var(--md-sys-motion-duration-short4) linear,border-color var(--md-sys-motion-duration-short4) linear,background-size var(--md-sys-motion-duration-medium4) var(--md-sys-motion-easing-emphasized)}
+.tf__input:hover{background-color:rgb(243 198 61 / .2);background-color:color-mix(in srgb,var(--md-sys-color-sun) 20%,transparent)}
+.tf__input:focus{outline:0;background-color:rgb(243 198 61 / .34);background-color:color-mix(in srgb,var(--md-sys-color-sun) 34%,transparent);border-bottom-color:var(--md-sys-color-primary);background-size:100% 5px}
 .tf__input:focus-visible{outline:0}
 .tf--short{max-width:15rem}
 .tf__hint{font-size:.85rem;color:var(--md-sys-color-on-surface-variant)}
 .tf__err{display:flex;gap:8px;align-items:center;font-weight:700;font-size:.9rem;color:var(--md-sys-color-error)}
 .tf__err::before{content:"!";display:grid;place-items:center;width:20px;height:20px;border-radius:50%;background:var(--md-sys-color-error);color:#fff;font-size:.8rem;flex:none}
 .tf__err[hidden]{display:none}
-.tf.is-invalid .tf__input{border-bottom-color:var(--md-sys-color-error);background:rgb(255 218 214 / .55);background:color-mix(in srgb,var(--md-sys-color-error-container) 55%,transparent)}
+.tf.is-invalid .tf__input{border-bottom-color:var(--md-sys-color-error);background-color:rgb(255 218 214 / .55);background-color:color-mix(in srgb,var(--md-sys-color-error-container) 55%,transparent)}
 .tf--select .tf__input{padding-right:40px;cursor:pointer}
 .tf--select .tf__input option{color:#221d18}
 .tf__arrow{position:absolute;right:2px;bottom:12px;pointer-events:none;color:var(--md-sys-color-on-surface)}
@@ -501,12 +505,10 @@ main{display:block}
 .fine-foot{color:#b9ab91;text-transform:none;letter-spacing:.02em}
 
 /* ---------- FAB: a little sticker ---------- */
-.fab{position:fixed;right:16px;bottom:16px;z-index:35;display:inline-flex;align-items:center;min-height:52px;padding:0 22px;background:var(--md-sys-color-sun);color:var(--md-sys-color-on-sun);border:2px solid var(--md-sys-color-on-surface);border-radius:var(--shape-cut);box-shadow:var(--md-sys-elevation-2);font:700 .9375rem/1 var(--font-body);text-decoration:none;transform:translateY(90px) rotate(-3deg);opacity:0;pointer-events:none;transition:transform var(--md-sys-motion-duration-medium4) var(--md-sys-motion-easing-emphasized),opacity var(--md-sys-motion-duration-short4) linear}
+.fab{position:fixed;right:16px;bottom:16px;z-index:35;display:inline-flex;align-items:center;min-height:52px;padding:0 22px;background:var(--md-sys-color-sun);color:var(--md-sys-color-on-sun);border:2px solid var(--md-sys-color-on-surface);border-radius:var(--shape-cut);box-shadow:var(--md-sys-elevation-2);font:700 .9375rem/1 var(--font-body);text-decoration:none;transform:translateY(90px) rotate(-3deg);opacity:0;pointer-events:none;transition:transform var(--md-sys-motion-duration-long2) var(--md-sys-motion-easing-thump),opacity var(--md-sys-motion-duration-short4) linear}
 .fab.is-visible{transform:rotate(-3deg);opacity:1;pointer-events:auto}
 
 /* ---------- reveal ---------- */
-.js .reveal{opacity:0;transform:translateY(18px)}
-.js .reveal.in{opacity:1;transform:none;transition:opacity var(--md-sys-motion-duration-long2) var(--md-sys-motion-easing-emphasized-decelerate) var(--d,0ms),transform var(--md-sys-motion-duration-long2) var(--md-sys-motion-easing-emphasized-decelerate) var(--d,0ms)}
 
 /* ================= wider layouts ================= */
 @media (min-width:640px){
@@ -559,12 +561,187 @@ main{display:block}
   .receipt__cols{gap:44px}
 }
 
+
+/* =====================================================================
+   MOTION LAYER
+   Rules: transform / opacity only (plus one tiny paint-only underline on form fields and the SVG stroke draw),
+   individual transform properties (translate / rotate / scale) so motion composes with the resting rotations above,
+   parallax is written by app.js with rAF into `translate`, nothing here needs JS to be *visible*: every hidden
+   start state is gated on html.mo, which app.js removes again if it fails (head script also drops it after 4s
+   if app.js never reports in). Tokens: --md-sys-motion-* in :root (thump, wipe, stagger, count).
+   ===================================================================== */
+
+/* ---------- hero: staged entrance (plays once, on load) ---------- */
+@keyframes mRise{from{opacity:0;translate:0 26px}}
+@keyframes mWord{from{opacity:0;translate:0 .6em;rotate:3deg}}
+@keyframes mDrop{from{opacity:0;translate:0 -54px;rotate:-8deg}}
+@keyframes mSlide{from{opacity:0;translate:70px 0;rotate:5deg}}
+@keyframes mThump{0%{opacity:0;scale:2.5;rotate:9deg}55%{opacity:.95;scale:.9}100%{scale:1}}
+@keyframes mPeel{0%{opacity:0;rotate:-38deg;scale:.9 .4}60%{opacity:1}100%{rotate:0deg;scale:1 1}}
+@keyframes mTug{0%,100%{rotate:0deg;translate:0 0}30%{rotate:-4deg;translate:3px -3px}52%{rotate:1.5deg;translate:-1px 1px}}
+@keyframes mPop{from{opacity:0;scale:.6}}
+.w{display:inline-block}
+.mo .hero:not(.is-live) :is(.stampline__box,.w,.hero .lead,.actions,.hero__aside,.board-back,.board,.print,.pass,.stamp,.tape--a,.margin-note--hero,.hero__doodle,.hero__sun){opacity:0}
+.mo .hero.is-live .stampline__box{animation:mRise 700ms var(--md-sys-motion-easing-emphasized-decelerate) backwards}
+.mo .hero.is-live .w{animation:mWord 900ms var(--md-sys-motion-easing-emphasized-decelerate) calc(140ms + var(--i,0)*80ms) backwards}
+.mo .hero.is-live .lead{animation:mRise 800ms var(--md-sys-motion-easing-emphasized-decelerate) 700ms backwards}
+.mo .hero.is-live .actions{animation:mRise 800ms var(--md-sys-motion-easing-emphasized-decelerate) 820ms backwards}
+.mo .hero.is-live .hero__aside{animation:mRise 800ms var(--md-sys-motion-easing-emphasized-decelerate) 960ms backwards}
+.mo .hero.is-live .hero__sun{animation:mPop 1600ms var(--md-sys-motion-easing-emphasized-decelerate) backwards}
+.mo .hero.is-live .board-back{animation:mSlide 900ms var(--md-sys-motion-easing-emphasized-decelerate) 250ms backwards}
+.mo .hero.is-live .board{animation:mDrop 900ms var(--md-sys-motion-easing-thump) 450ms backwards}
+.mo .hero.is-live .print{animation:mDrop 950ms var(--md-sys-motion-easing-thump) 650ms backwards}
+.mo .hero.is-live .tape--a{transform-origin:0 50%;animation:mPeel 700ms var(--md-sys-motion-easing-emphasized-decelerate) 1250ms backwards}
+.mo .hero.is-live .pass{animation:mSlide 900ms var(--md-sys-motion-easing-emphasized-decelerate) 900ms backwards}
+.mo .hero.is-live .pass__stub{transform-origin:0 100%;animation:mTug 900ms var(--md-sys-motion-easing-standard) 2100ms}
+.mo .hero.is-live .stamp{animation:mThump 650ms var(--md-sys-motion-easing-thump) 1500ms backwards}
+.mo .hero.is-live .margin-note--hero{animation:mRise 800ms var(--md-sys-motion-easing-emphasized-decelerate) 1900ms backwards}
+.mo .hero.is-live .hero__doodle{animation:mRise 900ms var(--md-sys-motion-easing-emphasized-decelerate) 1100ms backwards}
+
+/* hero doodles: a hand-drawn ball and a dashed pass that sit deep behind the collage (parallax layers) */
+.hero__doodle{position:absolute;z-index:0;pointer-events:none;opacity:.6;overflow:visible}
+.hero__doodle--ball{width:64px;left:5%;bottom:14px}
+.hero__doodle--pass{display:none;width:200px;left:42%;top:calc(var(--bar-h) + 18px);opacity:.42}
+.hero__doodle path{stroke-dasharray:1;stroke-dashoffset:0}
+.mo .hero:not(.is-live) .hero__doodle path{stroke-dashoffset:1}
+.mo .hero.is-live .hero__doodle path{transition:stroke-dashoffset 1100ms var(--md-sys-motion-easing-emphasized) 1300ms}
+.hero.is-px [data-pxh]:not(.stamp){will-change:translate}
+@media (min-width:900px){.hero__doodle--ball{width:96px;left:3%;bottom:26px}.hero__doodle--pass{display:block}}
+
+/* ---------- scroll reveals: one shared system, varied by data-rv ---------- */
+.count{display:inline-block;font-variant-numeric:tabular-nums}
+.mo .reveal{opacity:0;translate:0 24px}
+.mo .reveal.in{opacity:1;translate:none;transition:opacity var(--md-sys-motion-duration-long2) var(--md-sys-motion-easing-emphasized-decelerate) var(--d,0ms),translate var(--md-sys-motion-duration-extra-long1) var(--md-sys-motion-easing-emphasized-decelerate) var(--d,0ms)}
+/* card: cut paper that lands with a little tilt */
+.mo .reveal[data-rv="card"]{translate:0 34px;rotate:-1.6deg}
+.mo .reveal[data-rv="card"].in{rotate:none;transition-property:opacity,translate,rotate}
+/* thump: section numbers and stamps hit the page (overshoot easing) */
+.mo .reveal[data-rv="thump"],.mo .stamp--draft.reveal{translate:none;scale:2.2;rotate:-8deg}
+.mo .reveal[data-rv="thump"].in,.mo .stamp--draft.reveal.in{scale:1;rotate:none;transition:opacity 220ms linear var(--d,0ms),scale 620ms var(--md-sys-motion-easing-thump) var(--d,0ms),rotate 620ms var(--md-sys-motion-easing-thump) var(--d,0ms)}
+.mo .sec-num.reveal.in{opacity:.9}
+/* headline words rise one after another; the highlighter is swept on afterwards */
+.mo .reveal[data-rv="words"]{opacity:1;translate:none}
+.mo .reveal[data-rv="words"] .w{opacity:0;translate:0 .6em;rotate:2.5deg}
+.mo .reveal[data-rv="words"].in .w{opacity:1;translate:none;rotate:none;transition:opacity 500ms linear calc(var(--d,0ms) + 80ms + var(--i,0)*55ms),translate 800ms var(--md-sys-motion-easing-emphasized-decelerate) calc(var(--d,0ms) + 80ms + var(--i,0)*55ms),rotate 800ms var(--md-sys-motion-easing-emphasized-decelerate) calc(var(--d,0ms) + 80ms + var(--i,0)*55ms)}
+.hl{position:relative;isolation:isolate}
+.mo .hl{background:none}
+.mo .hl::before{content:"";position:absolute;left:0;right:0;top:58%;bottom:8%;z-index:-1;background:var(--md-sys-color-sun);transform:scaleX(0);transform-origin:0 50%}
+.mo .reveal.in .hl::before{transform:scaleX(1);transition:transform 700ms var(--md-sys-motion-easing-emphasized) 650ms}
+/* torn edge: the rip opens upward from the section edge */
+.mo .tear.reveal{translate:none;opacity:1;scale:1 0;transform-origin:50% 100%}
+.mo .tear.reveal.in{scale:1 1;transition:scale 700ms var(--md-sys-motion-easing-thump)}
+/* children of a group arrive in sequence */
+.mo [data-rv="stagger"]>*{opacity:0;translate:0 20px}
+.mo [data-rv="stagger"].in>*{opacity:1;translate:none;transition:opacity 500ms var(--md-sys-motion-easing-emphasized-decelerate) calc(var(--d,0ms) + var(--i,0)*var(--md-sys-motion-duration-stagger)),translate 700ms var(--md-sys-motion-easing-emphasized-decelerate) calc(var(--d,0ms) + var(--i,0)*var(--md-sys-motion-duration-stagger))}
+.mo .play[data-rv="stagger"]:not(.in) .play__n{scale:.3}
+.mo .play[data-rv="stagger"].in .play__n{scale:1;transition:scale 600ms var(--md-sys-motion-easing-thump) calc(var(--i,0)*var(--md-sys-motion-duration-stagger) + 160ms)}
+/* receipt prints out of a slot: chunky, stepped, like thermal paper */
+.mo .reveal[data-rv="print"]{opacity:1;translate:none;clip-path:inset(0 0 100% 0)}
+.mo .reveal[data-rv="print"].in{clip-path:inset(-40px -40px -40px -40px);transition:clip-path 1500ms steps(22,end)}
+/* hand-drawn arrow beside the steps draws itself */
+.mo .play__arrow.reveal{translate:none;opacity:1}
+.mo .play__arrow.reveal path{stroke-dashoffset:1}
+.mo .play__arrow.reveal.in path{stroke-dashoffset:0;transition:stroke-dashoffset 1400ms var(--md-sys-motion-easing-emphasized) 300ms}
+/* tape on the form sticks down */
+.mo .form.reveal::before{transform-origin:0 50%;scale:1 .3;opacity:0}
+.mo .form.reveal.in::before{scale:1 1;opacity:1;transition:scale 500ms var(--md-sys-motion-easing-thump) 500ms,opacity 200ms linear 500ms}
+
+/* ---------- route map: pins pop when the line reaches them, the head pulses while it travels ---------- */
+.map__dot,.map__ring{transform-box:fill-box;transform-origin:50% 50%}
+.map__dot{transition:transform 500ms var(--md-sys-motion-easing-thump)}
+.mo .map__dot:not(.hit){transform:scale(.001)}
+.map__dot.ping{animation:mPing 800ms var(--md-sys-motion-easing-thump)}
+@keyframes mPing{40%{transform:scale(1.9)}100%{transform:scale(1)}}
+.map__ring{opacity:0}
+.map.is-moving .map__ring{opacity:.5;animation:mRing 1100ms ease-out infinite}
+@keyframes mRing{from{transform:scale(1);opacity:.55}to{transform:scale(3.2);opacity:0}}
+
+/* app bar: a little ball rolls along the dotted route as you read */
+.app-bar__ball{position:absolute;left:0;bottom:-11px;width:16px;height:16px;pointer-events:none;z-index:1;will-change:transform}
+.app-bar__ball svg{display:block}
+
+/* ---------- tabs: designed leg-to-leg transition ---------- */
+@keyframes mWipeFwd{from{clip-path:polygon(104% -3%,120% -3%,111% 12%,119% 26%,110% 40%,118% 55%,111% 70%,120% 84%,112% 103%,104% 103%)}to{clip-path:polygon(104% -3%,-8% -3%,-17% 12%,-9% 26%,-18% 40%,-10% 55%,-17% 70%,-8% 84%,-16% 103%,104% 103%)}}
+@keyframes mWipeBack{from{clip-path:polygon(-4% -3%,-20% -3%,-11% 12%,-19% 26%,-10% 40%,-18% 55%,-11% 70%,-20% 84%,-12% 103%,-4% 103%)}to{clip-path:polygon(-4% -3%,108% -3%,117% 12%,109% 26%,118% 40%,110% 55%,117% 70%,108% 84%,116% 103%,-4% 103%)}}
+@keyframes mOutFwd{to{transform:translateX(-3%) scale(.985);opacity:.55}}
+@keyframes mOutBack{to{transform:translateX(3%) scale(.985);opacity:.55}}
+@keyframes mPicIn{from{opacity:0;translate:0 30px;rotate:-6deg}}
+@keyframes mDevelop{from{opacity:0;scale:1.14}}
+.leg.is-entering:not(.is-vt){animation:mWipeFwd 720ms var(--md-sys-motion-easing-wipe) backwards}
+.leg.is-entering[data-dir="back"]:not(.is-vt){animation-name:mWipeBack}
+:is(.leg.is-entering,.leg.is-after) .pic{animation:mPicIn 800ms var(--md-sys-motion-easing-thump) calc(280ms + var(--i,0)*140ms) backwards}
+:is(.leg.is-entering,.leg.is-after) .duo__in{animation:mDevelop 1100ms var(--md-sys-motion-easing-emphasized-decelerate) calc(320ms + var(--i,0)*140ms) backwards}
+:is(.leg.is-entering,.leg.is-after) .leg__body>*{animation:mRise 700ms var(--md-sys-motion-easing-emphasized-decelerate) calc(300ms + var(--i,0)*70ms) backwards}
+.ftab.pop{animation:mTabPop 520ms var(--md-sys-motion-easing-thump)}
+@keyframes mTabPop{40%{scale:1.07 .96}100%{scale:1}}
+@supports (view-transition-name:none){
+  html.vt-fwd .leg:not([hidden]),html.vt-back .leg:not([hidden]){view-transition-name:leg}
+  html.vt-fwd::view-transition-old(root),html.vt-fwd::view-transition-new(root),html.vt-back::view-transition-old(root),html.vt-back::view-transition-new(root){animation:none;mix-blend-mode:normal}
+  ::view-transition-group(leg){animation-duration:720ms;animation-timing-function:var(--md-sys-motion-easing-wipe)}
+  ::view-transition-old(leg),::view-transition-new(leg){mix-blend-mode:normal;animation-duration:720ms;animation-timing-function:var(--md-sys-motion-easing-wipe);animation-fill-mode:both}
+  html.vt-fwd::view-transition-old(leg){animation-name:mOutFwd}
+  html.vt-fwd::view-transition-new(leg){animation-name:mWipeFwd}
+  html.vt-back::view-transition-old(leg){animation-name:mOutBack}
+  html.vt-back::view-transition-new(leg){animation-name:mWipeBack}
+}
+
+/* ---------- drawer: ticket stub tears in, items follow ---------- */
+.drawer::before{transform-origin:50% 0;transition:transform 500ms var(--md-sys-motion-easing-emphasized) 120ms}
+.mo .drawer:not(.is-open)::before{transform:scaleY(0)}
+.mo .drawer .drawer__head,.mo .drawer nav>*{opacity:0;translate:26px 0;transition:opacity 160ms linear,translate 160ms linear}
+.mo .drawer.is-open .drawer__head,.mo .drawer.is-open nav>*{opacity:1;translate:none;transition:opacity 420ms var(--md-sys-motion-easing-emphasized-decelerate) calc(140ms + var(--i,0)*55ms),translate 560ms var(--md-sys-motion-easing-emphasized-decelerate) calc(140ms + var(--i,0)*55ms)}
+.menu-btn__lines i{transition:width var(--md-sys-motion-duration-medium2) var(--md-sys-motion-easing-emphasized)}
+.menu-btn:hover .menu-btn__lines i:nth-child(2),.menu-btn:active .menu-btn__lines i:nth-child(2){width:100%}
+.menu-btn:active{scale:.96}
+.menu-btn{transition:scale var(--md-sys-motion-duration-short4) var(--md-sys-motion-easing-thump)}
+
+/* ---------- micro-interactions ---------- */
+.btn svg{transition:translate var(--md-sys-motion-duration-medium2) var(--md-sys-motion-easing-thump)}
+.btn:hover svg{translate:5px 0}
+.btn:active svg{translate:8px 0}
+.btn--tonal:hover{transform:translate(-1px,-1px);box-shadow:var(--md-sys-elevation-2)}
+.btn--text{transition:letter-spacing var(--md-sys-motion-duration-medium2) var(--md-sys-motion-easing-emphasized),text-decoration-thickness var(--md-sys-motion-duration-short4) linear}
+.btn--text:hover{letter-spacing:.05em;text-decoration-thickness:3px}
+.btn--tonal,.btn--filled{transition:transform var(--md-sys-motion-duration-short4) var(--md-sys-motion-easing-thump),box-shadow var(--md-sys-motion-duration-short4) var(--md-sys-motion-easing-standard)}
+.top-nav__link{transition:translate var(--md-sys-motion-duration-short4) var(--md-sys-motion-easing-thump)}
+.top-nav__link:hover{translate:0 -2px}
+.tf__label{transition:color var(--md-sys-motion-duration-short4) linear,translate var(--md-sys-motion-duration-medium2) var(--md-sys-motion-easing-emphasized)}
+.tf:focus-within .tf__label{color:var(--md-sys-color-primary);translate:2px 0}
+@keyframes mShake{15%{translate:-7px 0}35%{translate:6px 0}55%{translate:-4px 0}75%{translate:2px 0}}
+.tf.is-invalid{animation:mShake 420ms var(--md-sys-motion-easing-standard)}
+@keyframes mPunch{0%{scale:1}35%{scale:1.035 .94}100%{scale:1}}
+.punch input:checked+.punch__body{animation:mPunch 420ms var(--md-sys-motion-easing-thump)}
+.mo .acc__panel p{opacity:0;translate:0 -8px;transition:opacity var(--md-sys-motion-duration-short4) linear,translate var(--md-sys-motion-duration-short4) linear}
+.mo .acc.is-open .acc__panel p{opacity:1;translate:none;transition:opacity var(--md-sys-motion-duration-medium4) linear 120ms,translate var(--md-sys-motion-duration-long2) var(--md-sys-motion-easing-emphasized-decelerate) 100ms}
+.mo .acc:has(.acc__btn[aria-expanded="true"]) .acc__panel p{opacity:1;translate:none;transition:opacity var(--md-sys-motion-duration-medium4) linear 120ms,translate var(--md-sys-motion-duration-long2) var(--md-sys-motion-easing-emphasized-decelerate) 100ms}
+.acc__btn span{transition:translate var(--md-sys-motion-duration-medium2) var(--md-sys-motion-easing-emphasized)}
+.acc.is-open .acc__btn span{translate:6px 0}
+.credits summary::before{transition:rotate var(--md-sys-motion-duration-medium2) var(--md-sys-motion-easing-thump)}
+.credits[open] summary::before{rotate:180deg}
+.stamp,.stamp--draft{transform-origin:50% 50%}
+
 /* ---------- reduced motion ---------- */
 @media (prefers-reduced-motion:reduce){
   html{scroll-behavior:auto}
-  *,*::before,*::after{transition-duration:.01ms!important;animation-duration:.01ms!important}
-  .js .reveal{opacity:1;transform:none}
+  *,*::before,*::after{transition-duration:.01ms!important;animation-duration:.01ms!important;animation-delay:0s!important;animation-iteration-count:1!important}
+  /* keep one simple thing: a short opacity fade for reveals. No travel, tilt, scale, wipes or parallax. */
+  .mo .reveal,.mo [data-rv="stagger"]>*,.mo .reveal[data-rv="words"] .w{translate:none!important;rotate:none!important;scale:none!important}
+  .mo .reveal.in,.mo [data-rv="stagger"].in>*,.mo .reveal[data-rv="words"].in .w{transition:opacity 300ms linear!important;transition-delay:0ms!important}
+  .mo .reveal[data-rv="print"]{clip-path:none!important}
+  .mo .tear.reveal{scale:none!important}
+  .mo .hl::before{transform:none!important;transition:none!important}
+  .mo .map__dot:not(.hit){transform:none}
+  .mo .hero:not(.is-live) :is(.stampline__box,.w,.hero .lead,.actions,.hero__aside,.board-back,.board,.print,.pass,.stamp,.tape--a,.margin-note--hero,.hero__doodle,.hero__sun){opacity:1}
+  .mo .hero:not(.is-live) .stamp{opacity:.92}
+  .mo .hero:not(.is-live) .hero__doodle{opacity:.6}
+  .mo .hero:not(.is-live) .hero__doodle--pass{opacity:.42}
+  .mo .drawer:not(.is-open)::before{transform:none}
+  .mo .drawer .drawer__head,.mo .drawer nav>*{translate:none!important}
+  .mo .form.reveal::before{scale:none!important;opacity:1}
   .js .board:not(.is-drawn) .tb-arrow{stroke-dashoffset:0}
   .js .board:not(.is-drawn) .tb-o{opacity:1}
+  .map.is-moving .map__ring{animation:none;opacity:0}
+  .app-bar__ball{display:none}
+  .tf.is-invalid{animation:none}
 }
 @media print{.app-bar,.fab,.drawer{display:none}}

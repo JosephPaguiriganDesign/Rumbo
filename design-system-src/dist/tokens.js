@@ -253,7 +253,9 @@ export const tokens = {
       "emphasized-accelerate": "cubic-bezier(0.3,0,0.8,0.15)",
       "standard-decelerate": "cubic-bezier(0,0,0,1)",
       "standard-accelerate": "cubic-bezier(0.3,0,1,1)",
-      "linear": "cubic-bezier(0,0,1,1)"
+      "linear": "cubic-bezier(0,0,1,1)",
+      "thump": "cubic-bezier(0.34,1.56,0.64,1)",
+      "wipe": "cubic-bezier(0.76,0,0.24,1)"
     },
     "duration": {
       "short1": "50ms",
@@ -270,7 +272,9 @@ export const tokens = {
       "long4": "600ms",
       "extra-long1": "700ms",
       "extra-long2": "800ms",
-      "draw": "900ms"
+      "draw": "900ms",
+      "stagger": "70ms",
+      "count": "1400ms"
     }
   },
   "z": {
@@ -422,6 +426,8 @@ export const cssVars = {
     "--md-sys-motion-easing-standard-decelerate": "cubic-bezier(0,0,0,1)",
     "--md-sys-motion-easing-standard-accelerate": "cubic-bezier(0.3,0,1,1)",
     "--md-sys-motion-easing-linear": "cubic-bezier(0,0,1,1)",
+    "--md-sys-motion-easing-thump": "cubic-bezier(0.34,1.56,0.64,1)",
+    "--md-sys-motion-easing-wipe": "cubic-bezier(0.76,0,0.24,1)",
     "--md-sys-motion-duration-short1": "50ms",
     "--md-sys-motion-duration-short2": "100ms",
     "--md-sys-motion-duration-short3": "150ms",
@@ -437,6 +443,8 @@ export const cssVars = {
     "--md-sys-motion-duration-extra-long1": "700ms",
     "--md-sys-motion-duration-extra-long2": "800ms",
     "--md-sys-motion-duration-draw": "900ms",
+    "--md-sys-motion-duration-stagger": "70ms",
+    "--md-sys-motion-duration-count": "1400ms",
     "--rumbo-z-base": 0,
     "--rumbo-z-tear": 2,
     "--rumbo-z-tab": 2,

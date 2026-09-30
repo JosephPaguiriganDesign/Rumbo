@@ -197,11 +197,11 @@ M3 easing and duration tokens, used sparingly. The rule: **motion shows cause an
 
 ## Easing
 
-${table(['Token', 'CSS var', 'Curve', 'Use'], group('motion.easing.').map(([n, k]) => [n, `--md-sys-motion-easing-${n}`, `cubic-bezier(${val(k).join(', ')})`, { standard: 'Hover fades, state layers', emphasized: 'Drawer, tabs, accordion, route', 'emphasized-decelerate': 'Things entering: panels, reveals, button lift', 'emphasized-accelerate': 'Things leaving', 'standard-decelerate': 'DS addition', 'standard-accelerate': 'DS addition', linear: 'Colour fades only' }[n] || '']))}
+${table(['Token', 'CSS var', 'Curve', 'Use'], group('motion.easing.').map(([n, k]) => [n, `--md-sys-motion-easing-${n}`, `cubic-bezier(${val(k).join(', ')})`, { standard: 'Hover fades, state layers', emphasized: 'Drawer, tabs, accordion, route', 'emphasized-decelerate': 'Things entering: panels, reveals, button lift', 'emphasized-accelerate': 'Things leaving', 'standard-decelerate': 'DS addition', 'standard-accelerate': 'DS addition', linear: 'Colour fades only', thump: 'Overshoot: stamps, pins, section numbers, tab pop, FAB, accordion icon', wipe: 'Torn-paper wipe between legs' }[n] || '']))}
 
 ## Duration
 
-${table(['Token', 'CSS var', 'Value', 'Used by'], group('motion.duration.').map(([n, k]) => [n, `--md-sys-motion-duration-${n}`, val(k), { short2: 'Icon/colour', short4: 'Hover, state layer, field colour', medium2: 'Scrim, tab lift, accordion icon, app bar', medium4: 'Drawer, accordion height, panel enter', long2: 'Scroll reveal', 'extra-long1': 'Reserved', draw: 'Tactics arrows' }[n] || '']))}
+${table(['Token', 'CSS var', 'Value', 'Used by'], group('motion.duration.').map(([n, k]) => [n, `--md-sys-motion-duration-${n}`, val(k), { short2: 'Icon/colour', short4: 'Hover, state layer, field colour', medium2: 'Scrim, tab lift, accordion icon, app bar', medium4: 'Drawer, accordion height, panel enter', long2: 'Scroll reveal', 'extra-long1': 'Reserved', draw: 'Tactics arrows', stagger: 'Sibling delay in staggered entrances', count: 'Number count-up' }[n] || '']))}
 
 ## Reduced motion
 
@@ -209,10 +209,16 @@ ${table(['Token', 'CSS var', 'Value', 'Used by'], group('motion.duration.').map(
 
 ## Patterns
 
-- Reveal: fade + 18px rise, \`long2\`, decelerate, stagger 60ms × sibling index (max 4).
-- Tab / panel: panel rises 10px, \`medium4\`.
-- Accordion: \`grid-template-rows 0fr → 1fr\`, so height animates without measuring.
-- Route line: the dotted line's \`stroke-dashoffset\` follows scroll progress; the head pin follows the path.
+- **Reveal**: one system, varied by \`data-rv\`. Default is fade + 24px rise (\`long2\`, decelerate). \`card\` lands with a small tilt, \`thump\` (section numbers, DRAFT stamp) scales down from 2.2x with the overshoot easing, \`words\` (headlines) rises word by word then sweeps the highlighter on, \`tear\` opens the torn edge upward, \`print\` (receipt) prints out in 22 chunky steps, \`stagger\` delays each child by the stagger token (max 9).
+- **Hero entrance**: plays once on load, after fonts are ready. Words rise, board and photo drop in with overshoot, ticket slides in and its stub tugs, tape peels, SALIDA stamp thumps at 1.5s.
+- **Parallax**: hero layers (sun glow, doodles, board-back, board, print, tape, ticket, note) get a scroll offset of 2 to 30% of scroll distance; photo frames move the image inside its frame by up to 7.5% of the frame height (the image sits in a 118%-tall layer, so the frame never shows a gap). Written by JS with requestAnimationFrame into the individual \`translate\` property, so it composes with each element's resting rotation. Never applied to elements with \`mix-blend-mode\` (the SALIDA stamp is only animated on entrance).
+- **Route**: dotted line and head follow scroll; pins pop (\`thump\`) when the line reaches them; a ripple pulses from the head while the route is moving. The app-bar progress line has a ball that rolls along it.
+- **Tab / leg switch**: View Transitions API where available (old leg slides back, new leg is wiped in with a torn edge); otherwise the same wipe as a CSS clip-path animation. Then photos drop in and "develop" (scale-down fade), text rises in sequence. Direction follows tab order.
+- **Drawer**: ticket perforation grows down the stub, header and links slide in one after another.
+- **Accordion**: \`grid-template-rows 0fr → 1fr\`; the answer fades and settles in after the height opens; the plus turns 135° with overshoot.
+- **Form**: fields underline with a wipe-in bar on focus, invalid fields shake once, chosen options punch.
+- **Reduced motion**: no parallax, no travel/tilt/scale, no wipes, no count-up, no ball. Reveals keep a 300ms opacity fade. Everything is visible with JS off or if app.js fails (the motion start-states hang off \`html.mo\`, which is removed after 3.5s if app.js never finishes).
+- **Budget**: transform / opacity / individual transform properties only, plus SVG stroke-dashoffset and one background-size underline on inputs. \`will-change\` only on hero parallax layers and the app-bar ball.
 `,
   jsx: `
 <div className="rumbo" style={{padding:24,marginTop:16}}>

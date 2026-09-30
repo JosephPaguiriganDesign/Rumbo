@@ -1295,6 +1295,20 @@
     },
     {
       "action": "CREATE",
+      "id": "var:Motion/easing/thump",
+      "name": "easing/thump",
+      "variableCollectionId": "col:Motion",
+      "resolvedType": "STRING"
+    },
+    {
+      "action": "CREATE",
+      "id": "var:Motion/easing/wipe",
+      "name": "easing/wipe",
+      "variableCollectionId": "col:Motion",
+      "resolvedType": "STRING"
+    },
+    {
+      "action": "CREATE",
       "id": "var:Motion/duration/short1",
       "name": "duration/short1",
       "variableCollectionId": "col:Motion",
@@ -1409,6 +1423,22 @@
       "action": "CREATE",
       "id": "var:Motion/duration/draw",
       "name": "duration/draw",
+      "variableCollectionId": "col:Motion",
+      "resolvedType": "FLOAT",
+      "description": "milliseconds"
+    },
+    {
+      "action": "CREATE",
+      "id": "var:Motion/duration/stagger",
+      "name": "duration/stagger",
+      "variableCollectionId": "col:Motion",
+      "resolvedType": "FLOAT",
+      "description": "milliseconds"
+    },
+    {
+      "action": "CREATE",
+      "id": "var:Motion/duration/count",
+      "name": "duration/count",
       "variableCollectionId": "col:Motion",
       "resolvedType": "FLOAT",
       "description": "milliseconds"
@@ -3162,6 +3192,16 @@
       "value": "cubic-bezier(0,0,1,1)"
     },
     {
+      "variableId": "var:Motion/easing/thump",
+      "modeId": "mode:Motion:Default",
+      "value": "cubic-bezier(0.34,1.56,0.64,1)"
+    },
+    {
+      "variableId": "var:Motion/easing/wipe",
+      "modeId": "mode:Motion:Default",
+      "value": "cubic-bezier(0.76,0,0.24,1)"
+    },
+    {
       "variableId": "var:Motion/duration/short1",
       "modeId": "mode:Motion:Default",
       "value": 50
@@ -3235,6 +3275,16 @@
       "variableId": "var:Motion/duration/draw",
       "modeId": "mode:Motion:Default",
       "value": 900
+    },
+    {
+      "variableId": "var:Motion/duration/stagger",
+      "modeId": "mode:Motion:Default",
+      "value": 70
+    },
+    {
+      "variableId": "var:Motion/duration/count",
+      "modeId": "mode:Motion:Default",
+      "value": 1400
     },
     {
       "variableId": "var:Layout/bar-h",
